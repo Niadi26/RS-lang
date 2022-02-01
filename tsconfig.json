@@ -1,0 +1,16 @@
+{
+  // настройки строгости
+  "extends": "./tsconfig-checks.json",
+  "compilerOptions": {
+    // все остальные настройки
+    "target": "ES2015",
+    "module": "commonjs",
+    "allowJs": true,
+    "sourceMap": true,
+    "outDir": "./dist/",
+    // "lib": ["DOM", "ES6", "ScriptHost"],
+    // "outDir": "lib"
+  },
+  "exclude": ["node_modules"],
+  "include": ["./src"]
+}
