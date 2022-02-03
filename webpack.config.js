@@ -3,7 +3,7 @@ const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 // const isProduction = process.env.NODE_ENV == "production";
@@ -11,7 +11,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 // const stylesHandler = isProduction
 //   ? MiniCssExtractPlugin.loader
 //   : "style-loader";
-
 
 const baseConfig = {
   mode: 'development',
@@ -44,19 +43,15 @@ const baseConfig = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
-      // {
-      //   test: /\.css$/i,
-      //   use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      // },
-      // {
-      //   test: /\.s[ac]ss$/i,
-      //   use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-      // }
+      {
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
     ],
   },
   plugins: [
     new ESLintPlugin(),
-    // new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
