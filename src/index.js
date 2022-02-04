@@ -1,3 +1,5 @@
-import './scripts/components/methods/call-api';
-import './scripts/components/methods/get-words';
-import './scripts/components/methods/create-user';
+//дима
+import './scripts/niadi26/application';
+//лена
+//дима
+import './styles/niadi26/styles.css';

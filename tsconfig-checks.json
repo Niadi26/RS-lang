@@ -14,8 +14,8 @@
     // Linter Checks
     "noImplicitReturns": true, // https://eslint.org/docs/rules/consistent-return ?
     "noFallthroughCasesInSwitch": true, // https://eslint.org/docs/rules/no-fallthrough
-    "noUnusedLocals": true, // https://eslint.org/docs/rules/no-unused-vars
-    "noUnusedParameters": true, // https://eslint.org/docs/rules/no-unused-vars#args
+    "noUnusedLocals": false, // https://eslint.org/docs/rules/no-unused-vars
+    "noUnusedParameters": false, // https://eslint.org/docs/rules/no-unused-vars#args
     "allowUnreachableCode": false, // https://eslint.org/docs/rules/no-unreachable ?
     "allowUnusedLabels": false, // https://eslint.org/docs/rules/no-unused-labels
     // Base Strict Checks
@@ -23,6 +23,7 @@
     "suppressExcessPropertyErrors": false,
     "suppressImplicitAnyIndexErrors": false,
     "noStrictGenericChecks": false,
-    "noEmitOnError": false
+    "noEmitOnError": false,
+    "experimentalDecorators": true,
   }
 }

@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.5s;
+  color: #FFFFFF;
+}
+a:hover {
+  transform: scale(1.1)
+}
+
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #000;
+}
+
+.wrapper {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.header,
+.footer {
+  height:70px;
+  overflow: hidden;
+  background-color: rgb(60, 65, 107)
+}
+
+
+.header__wrapper,
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.nav__cont {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav__item {
+    padding: 10px 20px 10px 0;
+    font-size: 25px;
+}
+
+.button-log {
+    width: 150px;
+    height: 40px;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+.main {
+    flex: auto;
+}
+
+.section__name {
+    height: 90vh;
+    background-image: url('../../assets/niadi26/18124329_xl.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.game {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-image: url('../../assets/niadi26/5459272-games-games-icon-circle.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
