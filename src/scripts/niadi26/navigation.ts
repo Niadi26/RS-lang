@@ -1,11 +1,11 @@
 import { mainPage } from "./main-page";
 import { glosarryPage } from "./glossary-page";
 import { ElementHTML } from "./create-element";
+import { gamePage } from "./games-page";
 // eslint-disable-next-line prettier/prettier
 const rootElem = document.querySelector('.main') as HTMLElement;
 const navigation = document.querySelector('.nav__cont');
 
-const game = new ElementHTML('div', '', 'game');
 const stat = new ElementHTML('div', '', 'stat');
 const NAVIGATION_ID = {
   main: 'main',
@@ -24,7 +24,7 @@ function createPage(id: string) {
     rootElem.append(glosarryPage.node);
     break;
   case NAVIGATION_ID.minigames:
-    rootElem.append(game.node);
+    rootElem.append(gamePage.node);
     break;
   case NAVIGATION_ID.statistics:
     rootElem.append(stat.node);
