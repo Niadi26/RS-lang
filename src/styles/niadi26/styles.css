@@ -53,40 +53,41 @@ body {
 }
 
 .nav__cont {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .nav__item {
-    padding: 10px 20px 10px 0;
-    font-size: 25px;
+  padding: 10px 20px 10px 0;
+  font-size: 25px;
 }
 
 .button-log {
-    width: 150px;
-    height: 40px;
-    padding: 10px 20px;
-    font-size: 18px;
+  width: 150px;
+  height: 40px;
+  padding: 10px 20px;
+  font-size: 18px;
 }
 
 .main {
-    flex: auto;
+  flex: auto;
 }
 
 .section__name {
-    height: 90vh;
-    background-image: url('../../assets/niadi26/18124329_xl.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  height: 90vh;
+  background-image: url('../../assets/niadi26/18124329_xl.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .game {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background-image: url('../../assets/niadi26/5459272-games-games-icon-circle.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-image: url('../../assets/niadi26/5459272-games-games-icon-circle.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+

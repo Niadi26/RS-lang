@@ -13,7 +13,8 @@ const NAVIGATION_ID = {
   statistics: 'statistics'
 }
 
-function createPage(id: string) {
+export function createPage(id = 'main') {
+  localStorage.setItem('namePage', id);
   rootElem.innerHTML = '';
   switch(id) {
   case NAVIGATION_ID.main:
