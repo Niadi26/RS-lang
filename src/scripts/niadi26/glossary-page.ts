@@ -1,6 +1,7 @@
 import { ElementHTML } from "./create-element";
-const GROUPS_COUNT = 7; // 6 groups + difficult words
+import { getGroupCount, getPageCount } from "./glossary-functions";
 
+const GROUPS_COUNT = 7; // 6 groups + difficult words
 const CROUPS_COLOR = [
   'rgb(237, 20, 201)',
   'rgb(146, 20, 237)',
@@ -10,7 +11,7 @@ const CROUPS_COLOR = [
   'rgb(240, 168, 60)',
   'rgb(240, 87, 60)',
 ]
- 
+
 class Groups {
   // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;
@@ -24,7 +25,7 @@ class Groups {
       bookGroupCont.node.append(groupCont.node);
       if (i === num - 1) {
         groupCont.node.innerHTML = 'Repeat';
-        groupCont.node.setAttribute('id', `X`);                            //change id
+        groupCont.node.setAttribute('id', `X`);                                           //change id
         groupCont.node.setAttribute('disabled', 'true');
       } 
     }
@@ -54,12 +55,17 @@ class GlossaryPage {
 
     const buttonsPageCont = new ElementHTML('div', 'pagination__wrapper', '', '', mainWrapper.node);
     const buttonPrev = new ElementHTML('button', 'button-page button-page_prev', '', '', buttonsPageCont.node);
+    buttonPrev.node.setAttribute('id', 'prev');
     const buttonNext = new ElementHTML('button', 'button-page button-page_next', '', '', buttonsPageCont.node);
+    buttonNext.node.setAttribute('id', 'next');
+    buttonsPageCont.node.addEventListener('click', (e) => getPageCount(e));
 
     const bookCont = new ElementHTML('div', 'glossary__cont', '', '', mainWrapper.node);
     const bookGroupCont = new Groups(GROUPS_COUNT);
     bookCont.node.append(bookGroupCont.node);
+    bookGroupCont.node.addEventListener('click', (e) => getGroupCount(e));
     const bookWordsCont = new ElementHTML('div', 'glossary__pages', '', '', bookCont.node);
+
     this.node = mainWrapper.node;
   }
 }
