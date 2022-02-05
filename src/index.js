@@ -1,3 +1,6 @@
-import './scripts/components/methods/call-api';
-import './scripts/components/methods/get-words';
-import './scripts/components/methods/create-user';
+import './scripts/mowgle88/index';
+// строка Дианы
+// строка Лены
+// строка Димы
+// строка Дианы
+// строка Лены
