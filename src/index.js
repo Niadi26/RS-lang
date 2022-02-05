@@ -1,6 +1,6 @@
 import './scripts/mowgle88/index';
-// строка Дианы
-// строка Лены
-// строка Димы
-// строка Дианы
-// строка Лены
+import './scripts/niadi26/application';
+//лена
+//дима
+import './styles/niadi26/styles.css';
+//лена
