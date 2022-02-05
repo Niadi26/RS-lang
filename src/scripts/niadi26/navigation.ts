@@ -6,7 +6,7 @@ import { statisticsPage } from "./statistics";
 const rootElem = document.querySelector('.main') as HTMLElement;
 const navigation = document.querySelector('.nav__cont');
 
-const NAVIGATION_ID = {
+export const NAVIGATION_ID = {
   main: 'main',
   glossary: 'glossary',
   minigames: 'minigames',
@@ -37,6 +37,8 @@ if (navigation) {
       // eslint-disable-next-line prettier/prettier
       const elementClick = e.target as HTMLElement;
       if (elementClick && elementClick.tagName === 'LI') {
+        const actualPage = localStorage.getItem('namePage');
+        if (actualPage == elementClick.id) return;
         createPage(elementClick.id);
       }
     });
