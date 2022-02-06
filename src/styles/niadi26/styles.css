@@ -68,7 +68,24 @@ h1 {
 
 .nav__item {
   padding: 10px 20px 10px 0;
-  font-size: 25px;
+  font-size: 23px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 1s;
+}
+
+.nav__item:after {
+    display: block;
+    position: relative;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    content: "";
+    transition: width 0.8s ease-out;
+}
+.nav__item:hover:after {
+  width: 100%
 }
 
 .button-log {
@@ -115,6 +132,7 @@ h1 {
 }
 
 .buttons-wrapper {
+  position: relative;
   width: 400px;
   display: flex;
   justify-content: space-around;
@@ -376,3 +394,15 @@ h1 {
   border: 1px solid rgb(9, 131, 9);
 }
 
+.play_text {
+  position: absolute;
+  width: 120px;
+  height: 25px;
+  left: -60px;
+  background-color:rgb(8, 255, 8);
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  line-height: 25px;
+  transform: rotate(335deg);
+}

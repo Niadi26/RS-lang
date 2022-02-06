@@ -62,6 +62,7 @@ class GlossaryPage {
   constructor() {
     const mainWrapper = new ElementHTML('div', 'wrapper', '');
     const buttonsCont = new ElementHTML('div', 'buttons-wrapper', '', '', mainWrapper.node);
+    const playText = new ElementHTML('p', 'play_text', 'Play right now!', '', buttonsCont.node);
     const buttonSprint = new ElementHTML('button', 'button-glossary', '', '', buttonsCont.node);
     const buttonSprintBg = new Image();
     buttonSprintBg.src = '../assets/niadi26/race-cat.png';
