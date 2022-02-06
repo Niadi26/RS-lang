@@ -1,9 +1,9 @@
 import { callApi } from './call-api';
 
-const getWordss = async (page, group) => {
+export const getWordss = async (group, page) => {
   try {
     const method = 'GET';
-    const url = `/words?page=${page}&group=${group}`;
+    const url = `/words?group=${group}&page=${page}`;
     // const headers = {
     //   Accept: 'application/json',
     //   'Content-Type': 'application/json',
@@ -11,7 +11,7 @@ const getWordss = async (page, group) => {
     // const response = await callApi(method, url, headers);
     const response = await callApi(method, url);
     const dataWords = response.data;
-    // console.log(dataWords);
+    //console.log(dataWords);
     return dataWords;
   } catch (error) {
     console.log(error);
@@ -19,4 +19,4 @@ const getWordss = async (page, group) => {
   }
 };
 
-getWordss(0, 0);
+//getWordss(1, 0);
