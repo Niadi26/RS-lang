@@ -18,8 +18,21 @@ class Groups {
   // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;
 
+  public page: HTMLElement;
+
   constructor(num: number) {
-    const bookGroupCont = new ElementHTML('div', 'glossary__groups', '');
+    const container = new ElementHTML('div', 'groups_flex', '');
+
+    const buttonsPageCont = new ElementHTML('div', 'pagination__wrapper', '', '', container.node);
+    const pageCount = new ElementHTML('p', 'pagination__text', `1/${MAX_PAGE + 1}`, '', buttonsPageCont.node);
+    const buttonPrev = new ElementHTML('button', 'button-page button-page_prev', '', '', buttonsPageCont.node);
+    buttonPrev.node.setAttribute('id', 'prev');
+    const buttonNext = new ElementHTML('button', 'button-page button-page_next', '', '', buttonsPageCont.node);
+    buttonNext.node.setAttribute('id', 'next');
+    buttonsPageCont.node.addEventListener('click', (e) => getPageCount(e));
+    
+    const bookGroupCont = new ElementHTML('div', 'glossary__groups', '', '', container.node);
+    bookGroupCont.node.addEventListener('click', (e) => getGroupCount(e));
     const currentGroup = localStorage.getItem('glossaryGroup') || '0';
     for(let i = 0; i < num; i++) {
       const groupCont = new ElementHTML('button', 'glossary__group', `Level  ${i + 1}`);
@@ -34,7 +47,9 @@ class Groups {
         groupCont.node.setAttribute('disabled', 'true');
       } 
     }
-    this.node = bookGroupCont.node;
+
+    this.node = container.node;
+    this.page = pageCount.node;
   }
 }
 
@@ -60,24 +75,16 @@ class GlossaryPage {
       buttonAudio.node.style.backgroundImage = `url('${buttonAudioBg.src}')`;
     }
 
-    const buttonsPageCont = new ElementHTML('div', 'pagination__wrapper', '', '', mainWrapper.node);
-    const pageCount = new ElementHTML('p', '', `1/${MAX_PAGE + 1}`, '', buttonsPageCont.node);
-    const buttonPrev = new ElementHTML('button', 'button-page button-page_prev', '', '', buttonsPageCont.node);
-    buttonPrev.node.setAttribute('id', 'prev');
-    const buttonNext = new ElementHTML('button', 'button-page button-page_next', '', '', buttonsPageCont.node);
-    buttonNext.node.setAttribute('id', 'next');
-    buttonsPageCont.node.addEventListener('click', (e) => getPageCount(e));
-
     const bookCont = new ElementHTML('div', 'glossary__cont', '', '', mainWrapper.node);
-    const bookGroupCont = new Groups(GROUPS_COUNT);
-    bookCont.node.append(bookGroupCont.node);
-    bookGroupCont.node.addEventListener('click', (e) => getGroupCount(e));
+    const bookSettingsCont = new ElementHTML('div', 'glossary__settings', '', '', bookCont.node);
+    const bookSettings = new Groups(GROUPS_COUNT);
+    bookSettingsCont.node.append(bookSettings.node);
     const bookWordsCont = new ElementHTML('div', 'glossary__pages', '', '', bookCont.node);
     bookWordsCont.node.setAttribute('id', 'words');
     renderPage(bookWordsCont.node);
 
     this.node = mainWrapper.node;
-    this.page = pageCount.node;
+    this.page = bookSettings.page;
   }
 
   changePage(id?: number) {

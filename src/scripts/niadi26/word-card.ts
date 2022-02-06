@@ -29,8 +29,8 @@ export class WordCard {
     const mainTextWord = new ElementHTML('div', '', '', '', mainWord.node);
     mainWord.node.style.borderBottom = `3px solid ${GROUPS_COLOR[group]}`
     const enWord = new ElementHTML('p', 'main__text', `${word}`, '', mainTextWord.node);
-    const transWord = new ElementHTML('span', '', `${transcription}`, '', mainTextWord.node);
-    const ruWord = new ElementHTML('span', 'ru__text', `${wordTranslate}`, '', mainTextWord.node);
+    const transWord = new ElementHTML('span', '', `${transcription} `, '', mainTextWord.node);
+    const ruWord = new ElementHTML('span', 'ru__text', ` ${wordTranslate}`, '', mainTextWord.node);
     const mainAudiotWord = new ElementHTML('div', '', '', '', mainWord.node);
     const audioButton = new ElementHTML('button', 'button-audio', '', '', mainAudiotWord.node);
     const buttonsWord = new ElementHTML('div', 'word__buttons', '', '', descriptionWord.node);
