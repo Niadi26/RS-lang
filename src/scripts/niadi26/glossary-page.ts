@@ -67,7 +67,6 @@ class GlossaryPage {
     bookGroupCont.node.addEventListener('click', (e) => getGroupCount(e));
     const bookWordsCont = new ElementHTML('div', 'glossary__pages', '', '', bookCont.node);
     renderPage(bookWordsCont.node);
-
     this.node = mainWrapper.node;
   }
 }
