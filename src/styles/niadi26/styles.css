@@ -154,7 +154,7 @@ h1 {
   transform: translateX(15%);
 }
 
-.active {
+.group_active {
   transform: translateX(15%);
 }
 

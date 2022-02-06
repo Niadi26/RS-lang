@@ -5,7 +5,7 @@ import { Word } from '../components/interfaces/get-word';
 export async function renderPage(parent?: HTMLElement) {
   const group = localStorage.getItem('glossaryGroup');
   const page = localStorage.getItem('glossaryPage');
-  const rootElement = parent || document.querySelector('.glossary__pages');
+  const rootElement = parent || document.getElementById('words');
   const data = await getWordss(group, page);
   if (rootElement) {
     rootElement.innerHTML = '';
