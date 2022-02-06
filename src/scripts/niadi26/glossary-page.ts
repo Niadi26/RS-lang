@@ -1,10 +1,9 @@
 import { ElementHTML } from "./create-element";
 import { getGroupCount, getPageCount } from "./glossary-functions";
-import { WordCard } from "./word-card";
-import { getWordss } from "../components/methods/get-words";
+import { renderPage } from "./render-glossary-page";
 
 const GROUPS_COUNT = 7; // 6 groups + difficult words
-const CROUPS_COLOR = [
+ export const GROUPS_COLOR = [
   'rgb(237, 20, 201)',
   'rgb(146, 20, 237)',
   'rgb(20, 197, 237)',
@@ -13,18 +12,6 @@ const CROUPS_COLOR = [
   'rgb(240, 168, 60)',
   'rgb(240, 87, 60)',
 ]
-
-
-async function renderPage(parent: HTMLElement) {
-  const group = localStorage.getItem('glossaryGroup');
-  const page = localStorage.getItem('glossaryPage');
-  const data = await getWordss(group, page);
-  console.log(data[0]);
-//   data.map((el) => {
-//     const item = new WordCard();
-//     parent.append(item.node);
-//   })
-}
 
 class Groups {
   // eslint-disable-next-line prettier/prettier
@@ -35,7 +22,7 @@ class Groups {
     for(let i = 0; i < num; i++) {
       const groupCont = new ElementHTML('button', 'glossary__group', `Level  ${i + 1}`);
       groupCont.node.setAttribute('id', `${i}`);
-      groupCont.node.style.backgroundColor = `${CROUPS_COLOR[i]}`;
+      groupCont.node.style.backgroundColor = `${GROUPS_COLOR[i]}`;
       bookGroupCont.node.append(groupCont.node);
       if (i === num - 1) {
         groupCont.node.innerHTML = 'Repeat';
@@ -80,10 +67,6 @@ class GlossaryPage {
     bookGroupCont.node.addEventListener('click', (e) => getGroupCount(e));
     const bookWordsCont = new ElementHTML('div', 'glossary__pages', '', '', bookCont.node);
     renderPage(bookWordsCont.node);
-    const word = new WordCard();
-    const word2 = new WordCard();
-    const word3 = new WordCard();
-    bookWordsCont.node.append(word.node, word2.node, word3.node);
 
     this.node = mainWrapper.node;
   }
