@@ -1,6 +1,6 @@
 import { callApi } from './call-api';
 
-export const getWordss = async (group, page) => {
+export const getWords = async (group, page) => {
   try {
     const method = 'GET';
     const url = `/words?group=${group}&page=${page}`;
@@ -19,4 +19,4 @@ export const getWordss = async (group, page) => {
   }
 };
 
-getWordss(1, 0);
+// getWords(1, 0);
