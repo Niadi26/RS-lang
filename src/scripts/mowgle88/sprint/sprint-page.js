@@ -1,6 +1,6 @@
 import { sprintChooseLevelContent, sprintGameContent } from './sprint-page-contant';
 import { getWords } from '../../components/methods/get-words';
-import { countdown } from './timer';
+import { countdown } from '../../components/utilits/timer';
 import { addFullscreen } from '../../components/fullscreen';
 
 export const renderSprintPage = async (page, wraapper) => {
