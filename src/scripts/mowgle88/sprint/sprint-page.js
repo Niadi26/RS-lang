@@ -11,6 +11,13 @@ export const renderSprintPage = async (page, wraapper) => {
   wraapper.append(div);
 };
 
+export const startGame = async (num, container, func) => {
+  await getWords(num, 0);
+  await renderSprintPage(func, container);
+  countdown();
+  document.querySelector('.fullscreen').addEventListener('click', addFullscreen);
+};
+
 export const renderSprintGamePage = async (container) => {
   const sprintStartPage = sprintChooseLevelContent();
   const sprintGamePage = sprintGameContent();
@@ -23,10 +30,7 @@ export const renderSprintGamePage = async (container) => {
     if (elem.classList.contains('star')) {
       const id = elem.id;
       const num = id[id.length - 1] - 1;
-      await getWords(num, 0);
-      await renderSprintPage(sprintGamePage, container);
-      await countdown();
-      document.querySelector('.fullscreen').addEventListener('click', addFullscreen);
+      await startGame(num, container, sprintGamePage);
     }
   });
 };

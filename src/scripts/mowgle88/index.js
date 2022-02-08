@@ -13,3 +13,4 @@ import '../mowgle88/sprint/sprint-page-contant';
 import '../components/utilits/timer';
 import '../components/fullscreen';
 import '../components/utilits/random';
+import '../components/constants';

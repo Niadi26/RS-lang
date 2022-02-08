@@ -1,6 +1,6 @@
 import { ElementHTML } from "./create-element";
 import { renderSprintGamePage } from "../mowgle88/sprint/sprint-page";
-import { rootElem } from "./navigation"
+import { rootElem } from "../components/constants"
 
 class GamePage {
     // eslint-disable-next-line prettier/prettier
