@@ -19,4 +19,4 @@ export const getWords = async (group, page) => {
   }
 };
 
-getWords(1, 0);
+// getWords(1, 0);

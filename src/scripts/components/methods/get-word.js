@@ -6,7 +6,7 @@ export const getWord = async (integer) => {
     const url = `/words/${integer}`;
     const response = await callApi(method, url);
     const dataWord = response.data;
-    // console.log(dataWord);
+    console.log(dataWord);
     return dataWord;
   } catch (error) {
     console.log(error);

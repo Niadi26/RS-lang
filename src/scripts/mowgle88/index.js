@@ -1,3 +1,4 @@
+import '../../styles/mowgle88/style.css';
 import '../components/methods/call-api';
 import '../components/methods/get-words';
 import '../components/methods/get-word';
@@ -7,3 +8,7 @@ import '../components/methods/get-word';
 // import '../components/methods/update-user';
 // import '../components/methods/delete-user';
 // import '../components/methods/get-user-tokens';
+import '../mowgle88/sprint/sprint-page';
+import '../mowgle88/sprint/sprint-page-contant';
+import '../mowgle88/sprint/timer';
+import '../components/fullscreen';

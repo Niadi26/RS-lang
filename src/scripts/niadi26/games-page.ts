@@ -1,5 +1,5 @@
 import { ElementHTML } from "./create-element";
-//import { renderSprintGamePage } from "../mowgle88/sprint/sprint-page";
+import { renderSprintGamePage } from "../mowgle88/sprint/sprint-page";
 import { rootElem } from "./navigation"
 
 class GamePage {
@@ -22,7 +22,7 @@ class GamePage {
       const sprintPlay = new ElementHTML('button', 'button-play', 'Play', '', sprintCont.node);
       sprintPlay.node.addEventListener('click', () => {
         (document.querySelector('.footer') as HTMLElement).style.display = 'none';
-        //renderSprintGamePage(rootElem);
+        renderSprintGamePage(rootElem);
       });
       const audioCont = new ElementHTML('div', 'games__cont', '', '', gamesCont.node);
       const audioImg = new ElementHTML('div', 'games__img ', '', '', audioCont.node);
