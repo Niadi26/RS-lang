@@ -11,3 +11,4 @@ import '../components/methods/get-word';
 import '../mowgle88/sprint/sprint-page';
 import '../mowgle88/sprint/sprint-page-contant';
 import '../mowgle88/sprint/timer';
+import '../components/fullscreen';

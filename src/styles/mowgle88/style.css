@@ -135,7 +135,7 @@
   height: 100px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .score {
@@ -189,6 +189,34 @@
   -ms-transform: rotate(9deg);
   -webkit-transform: rotate(9deg);
   transform: rotate(36deg);
+}
+
+.fullscreen,
+.volume {
+  width: 50px;
+  height: 50px;
+  margin-top: 25px;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+.fullscreen {
+  width: 45px;
+  height: 45px;
+  background: url(../../assets//mowgle88/fullscreen.svg) no-repeat;
+  background-size: contain;
+}
+
+.volume {
+  background: url(../../assets//mowgle88/volumeup.svg) no-repeat;
+  background-size: contain;
+}
+
+.fullscreen:hover,
+.volume:hover {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 .count {
@@ -275,16 +303,62 @@
 
 .dots {
   display: flex;
-  min-width: 56px;
-  margin-top: 8px;
+  min-width: 150px;
   justify-content: space-between;
 }
 
 .dot {
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
   margin: 4px;
   border-radius: 50%;
-  background-color: #3c416b;
+  background: url(../../assets//mowgle88/star.svg) no-repeat;
+  background-size: contain;
+  opacity: 0.4;
+  transition: all .5s ease-in-out;
+}
+
+.dot:hover {
+  transform: rotate(360deg) scale(1.3);
+  -moz-transform: rotate(360deg) scale(1.3);
+  -webkit-transform: rotate(360deg) scale(1.3);
+  -ms-transform: rotate(360deg) scale(1.3);
+  -o-transform: rotate(360deg) scale(1.3);
+  opacity: 1;
+}
+
+.right-wrong {
+  width: 80%;
+  display: flex;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgb(60 65 107);
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+.right-btn,
+.wrong-btn {
+  border: 0;
+  width: 40%;
+  height: 30px;
+  color: #a0d2eb;
+  font-size: 17px;
+  text-transform: uppercase;
+  border: 2px solid #161c50;
+  border-radius: 8px;
+  background-color: rgb(91 103 203 / 60%);
+  box-shadow: 0 0 10px 10px #3c416b inset, 0 0 0 0 #3c416b;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease-in-out;
+}
+
+.right-btn:hover {
+  border-color: #234613;
+  box-shadow: 0 0 10px 0 #6b992d inset, 0 0 10px 10px #367a13;
+}
+
+.wrong-btn:hover {
+  border-color: #4e1616;
+  box-shadow: 0 0 10px 0 #742525 inset, 0 0 10px 10px #a32121;
 }
 

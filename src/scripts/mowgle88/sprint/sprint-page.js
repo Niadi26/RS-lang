@@ -1,6 +1,7 @@
 import { sprintChooseLevelContent, sprintGameContent } from './sprint-page-contant';
 import { getWords } from '../../components/methods/get-words';
 import { countdown } from './timer';
+import { addFullscreen } from '../../components/fullscreen';
 
 export const renderSprintPage = async (page, wraapper) => {
   wraapper.innerHTML = '';
@@ -25,6 +26,7 @@ export const renderSprintGamePage = async (container) => {
       await getWords(num, 0);
       await renderSprintPage(sprintGamePage, container);
       await countdown();
+      document.querySelector('.fullscreen').addEventListener('click', addFullscreen);
     }
   });
 };

@@ -18,6 +18,7 @@ export const sprintChooseLevelContent = () => {
 export const sprintGameContent = () => {
   return `
   <div class="top">
+    <div class="fullscreen"></div>
     <div class="score">
       <b class="letter">s</b>
       <b class="letter">c</b>
@@ -26,6 +27,7 @@ export const sprintGameContent = () => {
       <b class="letter">e</b>
       <h2 class="count">0</h2>
     </div>
+    <div class="volume"></div>
   </div>
   <div class="select-level">
     <div class="dots">
@@ -36,9 +38,9 @@ export const sprintGameContent = () => {
     <div class="points">+ <span>10</span> points</div>
     <h2 class="english-word">English</h2>
     <h3 class="russian-word">Russian</h3>
-    <div class="stars-container">
-      <button class="">right</button>
-      <button class="">wrong</button>
+    <div class="right-wrong">
+      <button class="right-btn">right</button>
+      <button class="wrong-btn">wrong</button>
     </div>
   </div>
   <div class="wrap">
