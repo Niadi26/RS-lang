@@ -10,5 +10,7 @@ import '../components/methods/get-word';
 // import '../components/methods/get-user-tokens';
 import '../mowgle88/sprint/sprint-page';
 import '../mowgle88/sprint/sprint-page-contant';
-import '../mowgle88/sprint/timer';
+import '../components/utilits/timer';
 import '../components/fullscreen';
+import '../components/utilits/random';
+import '../components/constants';

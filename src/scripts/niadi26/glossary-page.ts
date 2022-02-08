@@ -1,6 +1,9 @@
 import { ElementHTML } from "./create-element";
 import { getGroupCount, getPageCount } from "./glossary-functions";
 import { renderPage } from "./render-glossary-words";
+import { startGame } from "../mowgle88/sprint/sprint-page";
+import { sprintGameContent } from "../mowgle88/sprint/sprint-page-contant";
+import { rootElem } from "../components/constants";
 
 const GROUPS_COUNT = 7; // 6 groups + difficult words
 export const MAX_PAGE = 29;
@@ -69,8 +72,10 @@ class GlossaryPage {
     buttonSprintBg.onload = () => {  
       buttonSprint.node.style.backgroundImage = `url('${buttonSprintBg.src}')`;
     }
-    buttonSprint.node.addEventListener('click', () => {
-      console.log('sprint!')
+    buttonSprint.node.addEventListener('click', async () => {
+      const sprintGamePage = sprintGameContent();
+      const group = localStorage.getItem('glossaryGroup');
+      await startGame(group, rootElem, sprintGamePage);
     });
 
     const buttonAudio = new ElementHTML('button', 'button-glossary', '', '', buttonsCont.node);
