@@ -69,12 +69,19 @@ class GlossaryPage {
     buttonSprintBg.onload = () => {  
       buttonSprint.node.style.backgroundImage = `url('${buttonSprintBg.src}')`;
     }
+    buttonSprint.node.addEventListener('click', () => {
+      console.log('sprint!')
+    });
+
     const buttonAudio = new ElementHTML('button', 'button-glossary', '', '', buttonsCont.node);
     const buttonAudioBg = new Image();
     buttonAudioBg.src = '../assets/niadi26/audio-cat.png';
     buttonAudioBg.onload = () => {  
       buttonAudio.node.style.backgroundImage = `url('${buttonAudioBg.src}')`;
     }
+    buttonAudio.node.addEventListener('click', () => {
+      console.log('audio!')
+    });
 
     const bookCont = new ElementHTML('div', 'glossary__cont', '', '', mainWrapper.node);
     const bookSettingsCont = new ElementHTML('div', 'glossary__settings', '', '', bookCont.node);

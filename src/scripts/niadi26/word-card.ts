@@ -1,6 +1,8 @@
 import { ElementHTML } from "./create-element";
 import { GROUPS_COLOR } from "./glossary-page"
+import { playAudio } from "./play-audio";
 
+export const rootHTTP = 'https://react-rslang-by.herokuapp.com/';
 export class WordCard {
   // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;
@@ -15,11 +17,14 @@ export class WordCard {
       textExample: string, 
       textExampleTranslate: string, 
       textMeaning: string, 
-      textMeaningTranslate: string) {
+      textMeaningTranslate: string,
+      audioMain: string,
+      audioMeaning: string,
+      audioExample: string) {
     const wordWrapper = new ElementHTML('div', 'glossary__word', '');
     wordWrapper.node.setAttribute('id', id);
     const img = new Image();
-    img.src = `https://react-rslang-by.herokuapp.com/${image}`;
+    img.src = `${rootHTTP}${image}`;
     img.classList.add('word__img');
     img.onload = () => {  
         wordWrapper.node.prepend(img);
@@ -33,6 +38,9 @@ export class WordCard {
     const ruWord = new ElementHTML('span', 'ru__text', ` ${wordTranslate}`, '', mainTextWord.node);
     const mainAudiotWord = new ElementHTML('div', '', '', '', mainWord.node);
     const audioButton = new ElementHTML('button', 'button-audio', '', '', mainAudiotWord.node);
+    audioButton.node.addEventListener('click', () => {
+      playAudio(0, audioMain, audioMeaning, audioExample);
+    });
     const buttonsWord = new ElementHTML('div', 'word__buttons', '', '', descriptionWord.node);
     const goodButton = new ElementHTML('button', 'button-word', 'good', '', buttonsWord.node);
     const bedButton = new ElementHTML('button', 'button-word', 'bed', '', buttonsWord.node);

@@ -3,7 +3,7 @@ import { glosarryPage } from "./glossary-page";
 import { gamePage } from "./games-page";
 import { statisticsPage } from "./statistics";
 // eslint-disable-next-line prettier/prettier
-const rootElem = document.querySelector('.main') as HTMLElement;
+export const rootElem = document.querySelector('.main') as HTMLElement;
 const navigation = document.querySelector('.nav__cont');
 
 export const NAVIGATION_ID = {
@@ -31,6 +31,7 @@ export function createPage(id = 'main') {
     rootElem.append(statisticsPage.node);
     break;
     }
+    (document.querySelector('.footer') as HTMLElement).style.display = 'block';
   }
 
 if (navigation) {

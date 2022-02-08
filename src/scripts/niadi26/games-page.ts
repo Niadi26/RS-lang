@@ -1,4 +1,6 @@
 import { ElementHTML } from "./create-element";
+//import { renderSprintGamePage } from "../mowgle88/sprint/sprint-page";
+import { rootElem } from "./navigation"
 
 class GamePage {
     // eslint-disable-next-line prettier/prettier
@@ -18,7 +20,8 @@ class GamePage {
       const sprintName = new ElementHTML('div', 'games__title', 'Sprint', '', sprintCont.node);
       const sprintText = new ElementHTML('div', 'games__text', 'Try minigame sprint!', '', sprintCont.node);
       const sprintPlay = new ElementHTML('button', 'button-play', 'Play', '', sprintCont.node);
-
+      sprintPlay.node.addEventListener('click', () => {
+      });
       const audioCont = new ElementHTML('div', 'games__cont', '', '', gamesCont.node);
       const audioImg = new ElementHTML('div', 'games__img ', '', '', audioCont.node);
       const audioImgBg = new Image();
@@ -29,7 +32,8 @@ class GamePage {
       const audioName = new ElementHTML('div', 'games__title', 'Audiochallange', '', audioCont.node);
       const audioText = new ElementHTML('div', 'games__text', 'Try minigame audio!', '', audioCont.node);
       const audioPlay = new ElementHTML('button', 'button-play', 'Play', '', audioCont.node);
-
+      audioPlay.node.addEventListener('click', () => {
+      });
       this.node = mainWrapper.node;
     }
   }

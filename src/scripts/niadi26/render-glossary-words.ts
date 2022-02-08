@@ -20,7 +20,10 @@ export async function renderPage(parent?: HTMLElement) {
         el.textExample,
         el.textExampleTranslate,
         el.textMeaning,
-        el.textMeaningTranslate
+        el.textMeaningTranslate,
+        el.audio,
+        el.audioMeaning,
+        el.audioExample
       );
       rootElement.append(item.node);
     });
