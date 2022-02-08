@@ -22,6 +22,7 @@ export function createPage(id = 'main') {
     break;
   case NAVIGATION_ID.glossary:
     rootElem.append(glosarryPage.node);
+    glosarryPage.changePage();
     break;
   case NAVIGATION_ID.minigames:
     rootElem.append(gamePage.node);
