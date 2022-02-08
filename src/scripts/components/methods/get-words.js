@@ -1,6 +1,6 @@
 import { callApi } from './call-api';
 
-export const getWordss = async (group, page) => {
+export const getWords = async (group, page) => {
   try {
     const method = 'GET';
     const url = `/words?group=${group}&page=${page}`;
@@ -11,7 +11,7 @@ export const getWordss = async (group, page) => {
     // const response = await callApi(method, url, headers);
     const response = await callApi(method, url);
     const dataWords = response.data;
-    //console.log(dataWords);
+    console.log(dataWords);
     return dataWords;
   } catch (error) {
     console.log(error);
@@ -19,4 +19,4 @@ export const getWordss = async (group, page) => {
   }
 };
 
-//getWordss(1, 0);
+getWords(1, 0);

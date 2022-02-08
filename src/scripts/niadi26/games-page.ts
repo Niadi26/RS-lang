@@ -21,6 +21,8 @@ class GamePage {
       const sprintText = new ElementHTML('div', 'games__text', 'Try minigame sprint!', '', sprintCont.node);
       const sprintPlay = new ElementHTML('button', 'button-play', 'Play', '', sprintCont.node);
       sprintPlay.node.addEventListener('click', () => {
+        (document.querySelector('.footer') as HTMLElement).style.display = 'none';
+        //renderSprintGamePage(rootElem);
       });
       const audioCont = new ElementHTML('div', 'games__cont', '', '', gamesCont.node);
       const audioImg = new ElementHTML('div', 'games__img ', '', '', audioCont.node);
