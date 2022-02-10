@@ -1,18 +1,17 @@
-import { callApi } from './call-api';
+import { callApi } from '../call-api';
 
 const token = localStorage.getItem('token');
 
-export const getUser = async (integer) => {
+export const deleteUser = async (id) => {
   try {
-    const method = 'GET';
-    const url = `/users/${integer}`;
+    const method = 'DELETE';
+    const url = `/users/${id}`;
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${JSON.parse(token)}`,
     };
     const body = {};
-    console.log(headers);
     const response = await callApi(method, url, body, headers);
     const dataUser = response.data;
     console.log(response);
@@ -22,4 +21,4 @@ export const getUser = async (integer) => {
   }
 };
 
-// getUser('61fe572351aa2800163c35a3');
+// deleteUser('61fe572351aa2800163c35a3');
