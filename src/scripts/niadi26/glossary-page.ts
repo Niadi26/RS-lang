@@ -76,7 +76,8 @@ class GlossaryPage {
     buttonSprint.node.addEventListener('click', async () => {
       const sprintGamePage = sprintGameContent();
       const group = localStorage.getItem('glossaryGroup');
-      await startGame(group, rootElem, sprintGamePage);
+      const page = localStorage.getItem('glossaryPage');
+      await startGame(group, page, rootElem, sprintGamePage);
     });
 
     const buttonAudio = new ElementHTML('button', 'button-glossary', '', '', buttonsCont.node);

@@ -1,6 +1,6 @@
 export const sprintChooseLevelContent = () => {
   return `
-  <div class="select-level">
+  <div class="panel">
     <h1 class="sprint-title">Sprint</h1>
     <p class="sprint-text">Trains the skill of quick translation from English into Russian. You need to choose whether the translation matches the suggested word.</p>
     <div class="stars-container">
@@ -25,15 +25,15 @@ export const sprintGameContent = () => {
       <b class="letter">o</b>
       <b class="letter">r</b>
       <b class="letter">e</b>
-      <h2 class="count">0</h2>
+      <h2 class="score-count count">0</h2>
     </div>
     <div class="volume"></div>
   </div>
-  <div class="select-level">
+  <div class="panel">
     <div class="dots">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+      <div id="dot-1" class="dot"></div>
+      <div id="dot-2" class="dot"></div>
+      <div id="dot-3" class="dot"></div>
     </div>
     <div class="points">+ <span>10</span> points</div>
     <h2 class="english-word">English</h2>
@@ -54,7 +54,7 @@ export const sprintGameContent = () => {
 
 export const sprintResultContent = () => {
   return `
-  <div class="select-level">
+  <div class="panel">
     
   </div>`;
 };
