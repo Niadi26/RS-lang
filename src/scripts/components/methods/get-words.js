@@ -11,12 +11,10 @@ export const getWords = async (group, page) => {
     // const response = await callApi(method, url, headers);
     const response = await callApi(method, url);
     const dataWords = response.data;
-    console.log(dataWords);
+    // console.log(dataWords);
     return dataWords;
   } catch (error) {
     console.log(error);
     return;
   }
 };
-
-// getWords(1, 0);
