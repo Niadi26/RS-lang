@@ -1,6 +1,6 @@
 import { callApi } from './call-api';
 
-const signIn = async (user) => {
+export const signIn = async (user) => {
   try {
     const method = 'POST';
     const url = `/signin`;
@@ -19,4 +19,4 @@ const signIn = async (user) => {
   }
 };
 
-signIn({ email: 'mowgle1988@gmail.com', password: 'dmitriel6905784' });
+// signIn({ email: 'mowgle@gmail.com', password: 'dmitriel6905784' });
