@@ -3,6 +3,7 @@ import { getWords } from '../../components/methods/get-words';
 import { countdown } from '../../components/utilits/timer';
 import { addFullscreen } from '../../components/fullscreen';
 import { shuffle } from '../../components/utilits/random';
+import { right, wrong, turnOffSounds } from '../../components/utilits/audio';
 
 export const renderSprintPage = async (page, wraapper) => {
   wraapper.innerHTML = '';
@@ -42,6 +43,7 @@ export const startGame = async (group, page, container, func) => {
   const dot = document.querySelectorAll('.dot');
   const points = document.querySelector('.points span');
   const score = document.querySelector('.score-count');
+  const volume = document.querySelector('.volume');
 
   englishWord.textContent = `${word[index][1]}`;
   russianWord.textContent = `${wordTranslate[index][1]}`;
@@ -60,6 +62,8 @@ export const startGame = async (group, page, container, func) => {
       document.querySelector(`#dot-${count}`).classList.add('dot-active');
     }
     panel.classList.add('panel-right');
+    right.currentTime = 0;
+    right.play();
   };
 
   const isWrong = () => {
@@ -69,6 +73,8 @@ export const startGame = async (group, page, container, func) => {
       el.classList.remove('dot-active');
     });
     count = 0;
+    wrong.currentTime = 0;
+    wrong.play();
   };
 
   document.querySelector('.right-btn').addEventListener('click', async () => {
@@ -117,6 +123,9 @@ export const startGame = async (group, page, container, func) => {
 
   countdown();
   document.querySelector('.fullscreen').addEventListener('click', addFullscreen);
+  volume.addEventListener('click', () => {
+    turnOffSounds(volume);
+  });
 };
 
 export const renderSprintGamePage = async (container) => {

@@ -11,6 +11,7 @@ import '../components/methods/get-word';
 import '../mowgle88/sprint/sprint-page';
 import '../mowgle88/sprint/sprint-page-contant';
 import '../components/utilits/timer';
-import '../components/fullscreen';
+import '../components/utilits/audio';
 import '../components/utilits/random';
+import '../components/fullscreen';
 import '../components/constants';
