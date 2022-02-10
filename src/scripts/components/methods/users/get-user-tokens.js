@@ -1,4 +1,4 @@
-import { callApi } from './call-api';
+import { callApi } from '../call-api';
 
 const token = localStorage.getItem('token');
 
@@ -21,4 +21,4 @@ export const getUserTokens = async (integer) => {
   }
 };
 
-getUserTokens('61fe572351aa2800163c35a3');
+// getUserTokens('61fe572351aa2800163c35a3');

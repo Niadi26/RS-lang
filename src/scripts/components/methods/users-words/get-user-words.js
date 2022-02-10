@@ -1,11 +1,11 @@
-import { callApi } from './call-api';
+import { callApi } from '../call-api';
 
 const token = localStorage.getItem('token');
 
-const deleteUser = async (id) => {
+export const getUserWords = async (integer) => {
   try {
-    const method = 'DELETE';
-    const url = `/users/${id}`;
+    const method = 'GET';
+    const url = `/users/${integer}/words`;
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -13,12 +13,13 @@ const deleteUser = async (id) => {
     };
     const body = {};
     const response = await callApi(method, url, body, headers);
-    const dataUser = response.data;
-    console.log(response);
-    return dataUser;
+    const dataRes = response.data;
+    console.log(dataRes);
+    return dataRes;
   } catch (error) {
     console.log(error);
+    return;
   }
 };
 
-// deleteUser('61fe572351aa2800163c35a3');
+// getUserWords('62057f3148cc260016224ec1');
