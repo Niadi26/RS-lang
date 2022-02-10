@@ -1,6 +1,6 @@
-import { callApi } from './call-api';
+import { callApi } from '../call-api';
 
-const createUser = async (user) => {
+export const createUser = async (user) => {
   try {
     const method = 'POST';
     const url = `/users`;

@@ -13,4 +13,4 @@ export const getWord = async (integer) => {
   }
 };
 
-getWord('5e9f5ee35eb9e72bc21af4a0');
+// getWord('5e9f5ee35eb9e72bc21af4a0');
