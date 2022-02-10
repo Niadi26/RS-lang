@@ -1,6 +1,7 @@
 import { ElementHTML } from "./create-element";
 import { renderSprintGamePage } from "../mowgle88/sprint/sprint-page";
 import { rootElem } from "../components/constants"
+import { createPageGameAudioCall } from "../lenka-w1/app";
 
 class GamePage {
     // eslint-disable-next-line prettier/prettier
@@ -35,7 +36,9 @@ class GamePage {
       const audioText = new ElementHTML('div', 'games__text', 'Try minigame audio!', '', audioCont.node);
       const audioPlay = new ElementHTML('button', 'button-play', 'Play', '', audioCont.node);
       audioPlay.node.addEventListener('click', () => {
+        createPageGameAudioCall();
       });
+
       this.node = mainWrapper.node;
     }
   }

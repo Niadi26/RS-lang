@@ -1,4 +1,16 @@
 .audio-call {
-  width: 95%;
   margin: 0 auto;
+  height: calc(100vh - 70px);
+  background-image: url('../../assets/niadi26/main-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block-title {
+  text-transform: uppercase;
+  -webkit-text-stroke: 2px #000000;
 }

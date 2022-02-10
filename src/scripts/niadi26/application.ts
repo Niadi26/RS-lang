@@ -1,3 +1,4 @@
+import { createPageGameAudioCall } from '../lenka-w1/app';
 import './main-page';
 import './navigation';
 import { createPage } from './navigation';
@@ -10,4 +11,8 @@ if (pageName) {
   createPage(pageName);
 } else {
   createPage();
+}
+
+if (pageName === 'audio-call') {
+  createPageGameAudioCall();
 }
