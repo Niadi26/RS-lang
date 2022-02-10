@@ -9,4 +9,10 @@ export function createPageGameAudioCall() {
   footer.style.display = 'none';
 }
 
+export let pagePreloader = document.getElementById('preloader') as HTMLElement;
+export let dataBall = document.querySelector('[data-loader="ball-auto"]') as HTMLElement;
+export function preloader() {
+  pagePreloader.style.display = 'none';
+  dataBall.style.display = 'none';
+}
 

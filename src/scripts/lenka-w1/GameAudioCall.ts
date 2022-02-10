@@ -2,17 +2,16 @@ import '../../styles/lenka-w1/audio-call.css';
 import { rootElem } from '../components/constants';
 import { ElementHTML } from '../niadi26/create-element';
 import { gamePage } from '../niadi26/games-page';
-import { GROUPS_COLOR } from '../niadi26/glossary-page';
 
 class GameAudioCall {
   public node: HTMLElement;
 
   constructor() {
     const mainContainer = new ElementHTML('div', 'audio-call', '');
-    const blockAboutGame = new ElementHTML('div', 'select-level', '', '', mainContainer.node);
-    const blockTitle = new ElementHTML('h2', 'sprint-title block-title', 'Audio call');
+    const blockAboutGame = new ElementHTML('div', 'panel', '', '', mainContainer.node);
+    const blockTitle = new ElementHTML('h2', 'block-title', 'Audio call');
     blockAboutGame.node.append(blockTitle.node);
-    const paragraph = new ElementHTML('p', 'sprint-text block-text');
+    const paragraph = new ElementHTML('p', 'block-text');
     paragraph.node.textContent = `
     After pronouncing the word, choose the correct translation from the options provided.
     `
@@ -20,9 +19,22 @@ class GameAudioCall {
     const containerWithLevels = new ElementHTML('div', 'stars-container');
     blockAboutGame.node.append(containerWithLevels.node);
 
+    let btnStar;
 
+    for(let i = 1; i < 7; i++) {
+      btnStar = new ElementHTML('button', 'star btn-animation', `${i}`);
+      btnStar.node.style.backgroundImage = `url(../../assets/lenka-w1/star_${i}.svg)`;
+      if(i === 1) btnStar.node.classList.add('first');
+      if(i === 2) btnStar.node.classList.add('second');
+      if(i === 3) btnStar.node.classList.add('third');
+      if(i === 4) btnStar.node.classList.add('fourth');
+      if(i === 5) btnStar.node.classList.add('fifth');
+      if(i === 6) btnStar.node.classList.add('sixth');
 
-    const backButton = new ElementHTML('button', 'sprint-back-btn btn-animation', 'Back to home');
+      containerWithLevels.node.append(btnStar.node)
+    }
+
+    const backButton = new ElementHTML('button', 'back-button btn-animation', 'Back to home');
     blockAboutGame.node.append(backButton.node);
 
     backButton.node.addEventListener('click', () => {
