@@ -278,12 +278,10 @@ h1 {
   -webkit-box-shadow: 0px 5px 10px 2px rgba(25, 67, 99, 0.2) inset;
   -moz-box-shadow: 0px 5px 10px 2px rgba(25, 67, 99, 0.2) inset;
   box-shadow: 0px 5px 10px 2px rgba(25, 67, 99, 0.2) inset;
-  /*max-height: 55vh;
-  overflow-y: auto;
-  overflow-x: hidden;*/
 }
 
 .glossary__word {
+  position: relative;
   overflow: hidden;
   flex: 1 0 450px;
   display: flex;
@@ -346,14 +344,67 @@ h1 {
 }
 
 .word__buttons {
-  padding: 5px 0;
+  padding: 10px 0;
+}
+
+.hidden {
   visibility: hidden;
 }
 
 .button-word {
-  width: 80px;
-  height: 35px;
+  width: 100px;
+  height: 40px;
+  position: relative;
   margin-right: 20px;
+  z-index: 5000;
+  color: #232323;
+  background: transparent;
+  border: 1px solid #232323;
+  font-size: 14px;
+  letter-spacing: .2em;
+  padding: 7px 4px;
+  transition: .2s ease-in-out;
+}
+
+.button-word::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 100%;
+  height: 100%;
+  background-color: #303e4752;
+  z-index: -1;
+  transition: .25s ease;
+  transform: translate(0, 0);
+}
+
+.button-word:hover:before {
+    transform: translate(4px, 4px);
+}
+
+.difficult-flag {
+  letter-spacing: .2em;
+  width: 0;
+  height: 50px;
+  position: absolute;
+  overflow: hidden;
+  top: 10px;
+  left: -5px;
+  border: 2px solid #000;
+  transition: width 0.5s ease-out;
+  color: #000;
+  text-align: center;
+  padding: 10px 0;
+  opacity: 0.8;
+}
+.dificult-easy {
+  width: 150px;
+  background-color: rgb(92, 61, 233);
+}
+.dificult-hard {
+  width: 150px;
+  background-color: rgb(242, 71, 71);
 }
 
 .word__meaning {

@@ -22,6 +22,7 @@ export class WordCard {
       audioMeaning: string,
       audioExample: string) {
     const wordWrapper = new ElementHTML('div', 'glossary__word', '');
+    const flag = new ElementHTML('div', 'difficult-flag', '', '', wordWrapper.node)
     wordWrapper.node.setAttribute('id', id);
     const img = new Image();
     img.src = `${rootHTTP}${image}`;
@@ -42,8 +43,19 @@ export class WordCard {
       playAudio(0, audioMain, audioMeaning, audioExample);
     });
     const buttonsWord = new ElementHTML('div', 'word__buttons', '', '', descriptionWord.node);
-    const goodButton = new ElementHTML('button', 'button-word', 'good', '', buttonsWord.node);
-    const bedButton = new ElementHTML('button', 'button-word', 'bed', '', buttonsWord.node);
+    //buttonsWord.node.classList.add('hidden');
+    const goodButton = new ElementHTML('button', 'button-word', 'Learned', '', buttonsWord.node);
+    goodButton.node.addEventListener('click', () => {
+      flag.node.classList.remove('dificult-hard');
+      flag.node.classList.toggle('dificult-easy');
+      flag.node.innerHTML = 'Learned';
+    })
+    const bedButton = new ElementHTML('button', 'button-word', 'Difficult', '', buttonsWord.node);
+    bedButton.node.addEventListener('click', () => {
+      flag.node.classList.remove('dificult-easy');
+      flag.node.classList.toggle('dificult-hard');
+      flag.node.innerHTML = 'Difficult';
+    })
     const meaningWord = new ElementHTML('div', 'word__meaning', '', '', descriptionWord.node);
     const enMeaningWord = new ElementHTML('p', '', `${textMeaning}`, '', meaningWord.node);
     const ruMeaningWord = new ElementHTML('p', 'ru__text', `${textMeaningTranslate}`, '', meaningWord.node);
