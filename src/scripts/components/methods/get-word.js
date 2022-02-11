@@ -6,11 +6,11 @@ export const getWord = async (integer) => {
     const url = `/words/${integer}`;
     const response = await callApi(method, url);
     const dataWord = response.data;
-    console.log(dataWord);
+    // console.log(dataWord);
     return dataWord;
   } catch (error) {
     console.log(error);
   }
 };
 
-getWord('5e9f5ee35eb9e72bc21af4a0');
+// getWord('5e9f5ee35eb9e72bc21af4a0');
