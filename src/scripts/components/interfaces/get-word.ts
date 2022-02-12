@@ -1,4 +1,4 @@
-export interface Word {
+export interface IWord {
   audio: string;
   audioExample: string;
   audioMeaning: string;
@@ -15,4 +15,4 @@ export interface Word {
   wordTranslate: string;
 }
 
-export type Words = Word[];
+export type Words = IWord[];

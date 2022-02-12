@@ -7,6 +7,8 @@ export class WordCard {
   // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;
   
+  public flag: HTMLElement;
+  
   constructor(
       id: string, 
       group: number,
@@ -20,7 +22,8 @@ export class WordCard {
       textMeaningTranslate: string,
       audioMain: string,
       audioMeaning: string,
-      audioExample: string) {
+      audioExample: string,
+      autorized: string | null) {
     const wordWrapper = new ElementHTML('div', 'glossary__word', '');
     const flag = new ElementHTML('div', 'difficult-flag', '', '', wordWrapper.node)
     wordWrapper.node.setAttribute('id', id);
@@ -43,7 +46,7 @@ export class WordCard {
       playAudio(0, audioMain, audioMeaning, audioExample);
     });
     const buttonsWord = new ElementHTML('div', 'word__buttons', '', '', descriptionWord.node);
-    //buttonsWord.node.classList.add('hidden');
+    if(autorized == 'null') buttonsWord.node.classList.add('hidden');
     const goodButton = new ElementHTML('button', 'button-word', 'Learned', '', buttonsWord.node);
     goodButton.node.addEventListener('click', () => {
       flag.node.classList.remove('dificult-hard');
@@ -63,5 +66,6 @@ export class WordCard {
     const enExampleWord = new ElementHTML('div', '', `${textExample}`, '', exampleWord.node);
     const ruExampleWord = new ElementHTML('div', 'ru__text', `${textExampleTranslate}`, '', exampleWord.node);
     this.node = wordWrapper.node;
+    this.flag = flag.node;
   }
 }

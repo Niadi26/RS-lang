@@ -1,15 +1,16 @@
 import { WordCard } from './word-card';
 import { getWords } from '../components/methods/get-words';
-import { Word } from '../components/interfaces/get-word';
+import { IWord } from '../components/interfaces/get-word';
 
 export async function renderPage(parent?: HTMLElement) {
+  const rootElement = parent || document.getElementById('words');
   const group = localStorage.getItem('glossaryGroup');
   const page = localStorage.getItem('glossaryPage');
-  const rootElement = parent || document.getElementById('words');
+  const autorized = localStorage.getItem('userId');
   const data = await getWords(group, page);
   if (rootElement) {
     rootElement.innerHTML = '';
-    data.map((el: Word) => {
+    data.map((el: IWord) => {
       const item = new WordCard(
         el.id,
         el.group,
@@ -23,7 +24,8 @@ export async function renderPage(parent?: HTMLElement) {
         el.textMeaningTranslate,
         el.audio,
         el.audioMeaning,
-        el.audioExample
+        el.audioExample,
+        autorized
       );
       rootElement.append(item.node);
     });
