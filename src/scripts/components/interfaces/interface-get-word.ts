@@ -1,4 +1,5 @@
 export interface IWord {
+  optional: any;
   audio: string;
   audioExample: string;
   audioMeaning: string;
