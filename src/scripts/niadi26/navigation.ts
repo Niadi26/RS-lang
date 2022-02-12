@@ -3,6 +3,7 @@ import { glosarryPage } from "./glossary-page";
 import { gamePage } from "./games-page";
 import { statisticsPage } from "./statistics";
 import { rootElem, navigation } from "../components/constants";
+import { audio } from "./play-audio";
 // eslint-disable-next-line prettier/prettier
 
 export const NAVIGATION_ID = {
@@ -14,6 +15,7 @@ export const NAVIGATION_ID = {
 
 export function createPage(id = 'main') {
   localStorage.setItem('namePage', id);
+  audio.pause();
   rootElem.innerHTML = '';
   switch(id) {
   case NAVIGATION_ID.main:
@@ -30,6 +32,7 @@ export function createPage(id = 'main') {
     rootElem.append(statisticsPage.node);
     break;
     }
+    // eslint-disable-next-line prettier/prettier
     (document.querySelector('.footer') as HTMLElement).style.display = 'block';
   }
 

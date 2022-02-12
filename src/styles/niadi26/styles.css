@@ -356,7 +356,7 @@ h1 {
   height: 40px;
   position: relative;
   margin-right: 20px;
-  z-index: 5000;
+  z-index: 5;
   color: #232323;
   background: transparent;
   border: 1px solid #232323;
@@ -390,21 +390,22 @@ h1 {
   position: absolute;
   overflow: hidden;
   top: 10px;
-  left: -5px;
-  border: 2px solid #000;
+  left: -2px;
+  border: 1px solid #000;
   transition: width 0.5s ease-out;
   color: #000;
   text-align: center;
-  padding: 10px 0;
+  padding: 12px 0;
   opacity: 0.8;
 }
+
 .dificult-easy {
   width: 150px;
-  background-color: rgb(92, 61, 233);
+  background-color: rgba(45, 0, 248, 0.308);
 }
 .dificult-hard {
   width: 150px;
-  background-color: rgb(242, 71, 71);
+  background-color: rgba(252, 3, 3, 0.349);
 }
 
 .word__meaning {

@@ -1,6 +1,6 @@
 import { rootHTTP } from './word-card';
 
-const audio = new Audio();
+export const audio = new Audio();
 
 export function playAudio(num: number, ...audiosSrc: string[]) {
   if (num > audiosSrc.length) return;
