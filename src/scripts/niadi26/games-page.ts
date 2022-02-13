@@ -1,5 +1,5 @@
 import { ElementHTML } from "./create-element";
-import { renderSprintGamePage } from "../mowgle88/sprint/sprint-page";
+import { renderSprintGamePage } from "../mowgle88/sprint/render-sprint-game";
 import { rootElem } from "../components/constants"
 
 class GamePage {

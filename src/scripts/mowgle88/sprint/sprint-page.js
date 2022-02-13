@@ -1,92 +1,42 @@
-import { sprintChooseLevelContent, sprintGameContent } from './sprint-page-contant';
-import { getWords } from '../../components/methods/get-words';
 import { countdown } from '../../components/utilits/timer';
 import { addFullscreen } from '../../components/fullscreen';
-import { shuffle } from '../../components/utilits/random';
-
-export const renderSprintPage = async (page, wraapper) => {
-  wraapper.innerHTML = '';
-  const div = document.createElement('div');
-  div.classList.add('sprint-game');
-  div.innerHTML = `${page}`;
-  wraapper.append(div);
-};
-
-const getWord = async (group, page) => {
-  const wordsApi = await getWords(group, page);
-  const word = await wordsApi.map((el) => [el.id, el.word]);
-  shuffle(word);
-  return word;
-};
-
-const getWordTranslate = async (group, page) => {
-  const wordsApi = await getWords(group, page);
-  const wordTranslate = await wordsApi.map((el) => [el.id, el.wordTranslate]);
-  shuffle(wordTranslate);
-  return wordTranslate;
-};
+import { turnOffSounds } from '../../components/utilits/audio';
+import { renderSprintPage } from './render-sprint-game';
+import { getWordForSprint, getWordTranslateForSprint, getOption } from './get-words-for-sprint';
+import { isRight, isWrong } from './right-wrong';
 
 export const startGame = async (group, page, container, func) => {
-  let word = await getWord(group, page);
-  let wordTranslate = await getWordTranslate(group, page);
+  let word = await getWordForSprint(group, page);
+  let wordTranslate = await getWordTranslateForSprint(group, page);
   let index = 0;
-  let count = 0;
-  // console.log(word);
-  // console.log(wordTranslate);
+  let value = getOption(wordTranslate, index);
 
   await renderSprintPage(func, container);
 
   const englishWord = document.querySelector('.english-word');
   const russianWord = document.querySelector('.russian-word');
   const panel = document.querySelector('.panel');
-  const dot = document.querySelectorAll('.dot');
-  const points = document.querySelector('.points span');
-  const score = document.querySelector('.score-count');
+  const volume = document.querySelector('.volume');
 
   englishWord.textContent = `${word[index][1]}`;
-  russianWord.textContent = `${wordTranslate[index][1]}`;
-
-  const isRight = () => {
-    score.textContent = `${+score.textContent + +points.textContent}`;
-    count += 1;
-    if (count > 3) {
-      points.textContent = `${+points.textContent + 10}`;
-      dot.forEach((el) => {
-        el.classList.remove('dot-active');
-      });
-      count = 0;
-    }
-    if (count > 0) {
-      document.querySelector(`#dot-${count}`).classList.add('dot-active');
-    }
-    panel.classList.add('panel-right');
-  };
-
-  const isWrong = () => {
-    points.textContent = `${10}`;
-    panel.classList.add('panel-wrong');
-    dot.forEach((el) => {
-      el.classList.remove('dot-active');
-    });
-    count = 0;
-  };
+  russianWord.textContent = `${value[1]}`;
 
   document.querySelector('.right-btn').addEventListener('click', async () => {
     if (index === 19) {
       page += 1;
-      word = await getWord(group, page);
-      wordTranslate = await getWordTranslate(group, page);
+      word = await getWordForSprint(group, page);
+      wordTranslate = await getWordTranslateForSprint(group, page);
       index = 0;
-      console.log(word);
     }
-    if (word[index][0] === wordTranslate[index][0]) {
+    if (word[index][0] === value[0]) {
       isRight();
     } else {
       isWrong();
     }
     index += 1;
+    value = getOption(wordTranslate, index);
     englishWord.textContent = `${word[index][1]}`;
-    russianWord.textContent = `${wordTranslate[index][1]}`;
+    russianWord.textContent = `${value[1]}`;
     setTimeout(() => {
       panel.classList.remove('panel-right');
       panel.classList.remove('panel-wrong');
@@ -96,19 +46,19 @@ export const startGame = async (group, page, container, func) => {
   document.querySelector('.wrong-btn').addEventListener('click', async () => {
     if (index === 19) {
       page += 1;
-      word = await getWord(group, page);
-      wordTranslate = await getWordTranslate(group, page);
+      word = await getWordForSprint(group, page);
+      wordTranslate = await getWordTranslateForSprint(group, page);
       index = 0;
-      console.log(word);
     }
-    if (word[index][0] === wordTranslate[index][0]) {
+    if (word[index][0] === value[0]) {
       isWrong();
     } else {
       isRight();
     }
     index += 1;
+    value = getOption(wordTranslate, index);
     englishWord.textContent = `${word[index][1]}`;
-    russianWord.textContent = `${wordTranslate[index][1]}`;
+    russianWord.textContent = `${value[1]}`;
     setTimeout(() => {
       panel.classList.remove('panel-right');
       panel.classList.remove('panel-wrong');
@@ -117,21 +67,7 @@ export const startGame = async (group, page, container, func) => {
 
   countdown();
   document.querySelector('.fullscreen').addEventListener('click', addFullscreen);
-};
-
-export const renderSprintGamePage = async (container) => {
-  const sprintStartPage = sprintChooseLevelContent();
-  const sprintGamePage = sprintGameContent();
-
-  await renderSprintPage(sprintStartPage, container);
-  const stars = document.querySelector('.stars-container');
-
-  stars.addEventListener('click', async (event) => {
-    const elem = event.target;
-    if (elem.classList.contains('star')) {
-      const id = elem.id;
-      const num = id[id.length - 1] - 1;
-      await startGame(num, 0, container, sprintGamePage);
-    }
+  volume.addEventListener('click', () => {
+    turnOffSounds(volume);
   });
 };
