@@ -4,6 +4,7 @@ import { getUserWords } from '../components/methods/users-words/get-user-words';
 import { IWord } from '../components/interfaces/interface-get-word';
 import { IUserWord, UserWords } from '../components/interfaces/interface-user-word';
 import { renderDifficultPage } from './render-difficult-words';
+import { glosarryPage } from './glossary-page';
 
 const WORDS_ON_PAGE = 20;
 
@@ -52,7 +53,9 @@ export async function renderPage(parent?: HTMLElement) {
           item.flag.classList.add('dificult-hard');
         }
         if (userWords.length === WORDS_ON_PAGE) {
-          item.node.classList.add('glossary__pages-learned');
+          rootElement.classList.add('glossary__pages-learned');
+          glosarryPage.gameButtons.style.pointerEvents = 'none';
+          glosarryPage.notPlay.classList.remove('hidden');
         }
       }
       rootElement.append(item.node);

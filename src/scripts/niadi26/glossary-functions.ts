@@ -6,7 +6,10 @@ import { renderDifficultPage } from './render-difficult-words'
 function toggleGroupClass(index: string) {
   const allGroups = document.querySelectorAll("[data-group]");
   allGroups.forEach((el) => el.classList.remove('group_active'));
-  allGroups[+index]?.classList.add('group_active');
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  (index === 'difficult') 
+  ? allGroups[allGroups.length - 1]?.classList.add('group_active') 
+  : allGroups[+index]?.classList.add('group_active');
 }
 
 export function getGroupCount(event: Event) {

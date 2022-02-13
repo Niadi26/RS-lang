@@ -60,11 +60,16 @@ class GlossaryPage {
   public node: HTMLElement;
 
   public page: HTMLElement;
+
+  public gameButtons: HTMLElement;
+
+  public notPlay: HTMLElement;
   
   constructor() {
     const mainWrapper = new ElementHTML('div', 'wrapper', '');
     const buttonsCont = new ElementHTML('div', 'buttons-wrapper', '', '', mainWrapper.node);
     const playText = new ElementHTML('p', 'play_text', 'Play right now!', '', buttonsCont.node);
+    const notPlayText = new ElementHTML('p', 'play_text not-play_text hidden', 'All words learned!', '', buttonsCont.node);
     const buttonSprint = new ElementHTML('button', 'button-glossary', '', '', buttonsCont.node);
     const buttonSprintBg = new Image();
     buttonSprintBg.src = '../assets/niadi26/race-cat.png';
@@ -98,6 +103,8 @@ class GlossaryPage {
 
     this.node = mainWrapper.node;
     this.page = bookSettings.page;
+    this.gameButtons = buttonsCont.node;
+    this.notPlay = notPlayText.node;
   }
 
   changePage(id?: number) {

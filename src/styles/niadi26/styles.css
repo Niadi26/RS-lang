@@ -547,7 +547,13 @@ h1 {
   line-height: 25px;
   transform: rotate(335deg);
 }
-
+.not-play_text {
+  width: 150px;
+  left: -70px;
+  z-index: 5;
+  background-color:rgb(9, 131, 9);
+  transform: rotate(351deg);
+}
 .message-wrapper {
   position: relative;
   padding: 20px;
