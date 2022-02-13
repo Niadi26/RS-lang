@@ -1,7 +1,7 @@
 import { ElementHTML } from "./create-element";
 import { renderSprintGamePage } from "../mowgle88/sprint/sprint-page";
 import { rootElem } from "../components/constants"
-import { createPageGameAudioCall, dataBall, pagePreloader, preloader } from "../lenka-w1/app";
+import { createPageGameAudioCall } from "../lenka-w1/app";
 
 class GamePage {
     // eslint-disable-next-line prettier/prettier
@@ -24,11 +24,6 @@ class GamePage {
       sprintPlay.node.addEventListener('click', () => {
         (document.querySelector('.footer') as HTMLElement).style.display = 'none';
         renderSprintGamePage(rootElem);
-        pagePreloader.style.display = 'flex';
-        dataBall.style.display = 'flex';
-        setTimeout(function() {
-          preloader();
-        }, 2000);
       });
 
       const audioCont = new ElementHTML('div', 'games__cont', '', '', gamesCont.node);
@@ -44,11 +39,6 @@ class GamePage {
 
       audioPlay.node.addEventListener('click', () => {
         createPageGameAudioCall();
-        pagePreloader.style.display = 'flex';
-        dataBall.style.display = 'flex';
-        setTimeout(function() {
-          preloader();
-        }, 2000);
       });
 
       this.node = mainWrapper.node;
