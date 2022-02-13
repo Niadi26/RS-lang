@@ -20,7 +20,11 @@ import '../components/methods/users-words/delete-user-word';
 
 import '../mowgle88/sprint/sprint-page';
 import '../mowgle88/sprint/sprint-page-contant';
+import '../mowgle88/sprint/render-sprint-game';
+import '../mowgle88/sprint/get-words-for-sprint';
+import '../mowgle88/sprint/right-wrong';
 import '../components/utilits/timer';
-import '../components/fullscreen';
+import '../components/utilits/audio';
 import '../components/utilits/random';
+import '../components/fullscreen';
 import '../components/constants';

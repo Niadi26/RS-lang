@@ -221,12 +221,12 @@
 .fullscreen {
   width: 45px;
   height: 45px;
-  background: url(../../assets//mowgle88/fullscreen.svg) no-repeat;
+  background: url(../../assets/mowgle88/fullscreen.svg) no-repeat;
   background-size: contain;
 }
 
 .volume {
-  background: url(../../assets//mowgle88/volumeup.svg) no-repeat;
+  background: url(../../assets/mowgle88/volumeup.svg) no-repeat;
   background-size: contain;
 }
 
