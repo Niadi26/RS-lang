@@ -1,5 +1,6 @@
 import { renderPage } from "./render-glossary-words";
-import { MAX_PAGE, glosarryPage } from './glossary-page'
+import { MAX_PAGE, glosarryPage } from './glossary-page';
+import { renderDifficultPage } from './render-difficult-words'
 
 
 function toggleGroupClass(index: string) {
@@ -12,6 +13,7 @@ export function getGroupCount(event: Event) {
   // eslint-disable-next-line prettier/prettier
   const element = event.target as HTMLElement;
   if (!element.id) return;
+  if (element.id === 'difficult') renderDifficultPage();
   localStorage.setItem('glossaryGroup', `${element.id}`);
   renderPage();
   toggleGroupClass(element.id);

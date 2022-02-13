@@ -46,8 +46,7 @@ class Groups {
       bookGroupCont.node.append(groupCont.node);
       if (i === num - 1) {
         groupCont.node.innerHTML = 'Repeat';
-        groupCont.node.setAttribute('id', `X`);                                           //change id
-        groupCont.node.setAttribute('disabled', 'true');
+        groupCont.node.setAttribute('id', `difficult`);
       } 
     }
 
