@@ -1,4 +1,5 @@
 import { createPageGameAudioCall } from '../lenka-w1/app';
+import '../../styles/niadi26/styles.css';
 import './main-page';
 import './navigation';
 import { createPage } from './navigation';
