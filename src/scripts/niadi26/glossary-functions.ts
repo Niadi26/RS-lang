@@ -13,10 +13,13 @@ export function getGroupCount(event: Event) {
   // eslint-disable-next-line prettier/prettier
   const element = event.target as HTMLElement;
   if (!element.id) return;
-  if (element.id === 'difficult') renderDifficultPage();
   localStorage.setItem('glossaryGroup', `${element.id}`);
-  renderPage();
   toggleGroupClass(element.id);
+  if (element.id === 'difficult') {
+    renderDifficultPage();
+  } else {
+    renderPage();
+  }
 }
 
 export function getPageCount(event: Event) {

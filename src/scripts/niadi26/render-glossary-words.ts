@@ -3,16 +3,22 @@ import { getWords } from '../components/methods/get-words';
 import { getUserWords } from '../components/methods/users-words/get-user-words';
 import { IWord } from '../components/interfaces/interface-get-word';
 import { IUserWord, UserWords } from '../components/interfaces/interface-user-word';
+import { renderDifficultPage } from './render-difficult-words';
 
 const WORDS_ON_PAGE = 20;
 
 export async function renderPage(parent?: HTMLElement) {
   const rootElement = parent || document.getElementById('words');
   const group = localStorage.getItem('glossaryGroup');
+  if (group === 'difficult') {
+    renderDifficultPage();
+    return;
+  }
   const page = localStorage.getItem('glossaryPage');
   const autorized = localStorage.getItem('userId');
-  let userWords: UserWords;
-  if (autorized) {
+  let userWords: UserWords = [];
+  if (autorized !== 'null') {
+    //change
     const data = await getUserWords(autorized);
     userWords = data.filter(
       (el: IUserWord) =>
@@ -39,13 +45,15 @@ export async function renderPage(parent?: HTMLElement) {
         el.audioExample,
         autorized
       );
-      if (userWords.find((word: IUserWord) => word.wordId === item.node.id && word.optional.learned)) {
-        item.flag.classList.add('dificult-easy');
-      } else if (userWords.find((word: IUserWord) => word.wordId === item.node.id && word.optional.difficult)) {
-        item.flag.classList.add('dificult-hard');
-      }
-      if (userWords.length === WORDS_ON_PAGE) {
-        item.node.classList.add('glossary__pages-learned');
+      if (userWords.length) {
+        if (userWords.find((word: IUserWord) => word.wordId === item.node.id && word.optional.learned)) {
+          item.flag.classList.add('dificult-easy');
+        } else if (userWords.find((word: IUserWord) => word.wordId === item.node.id && word.optional.difficult)) {
+          item.flag.classList.add('dificult-hard');
+        }
+        if (userWords.length === WORDS_ON_PAGE) {
+          item.node.classList.add('glossary__pages-learned');
+        }
       }
       rootElement.append(item.node);
     });

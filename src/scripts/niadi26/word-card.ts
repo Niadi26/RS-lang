@@ -46,7 +46,7 @@ export class WordCard {
       playAudio(0, audioMain, audioMeaning, audioExample);
     });
     const buttonsWord = new ElementHTML('div', 'word__buttons', '', '', descriptionWord.node);
-    if(autorized == 'null') buttonsWord.node.classList.add('hidden');
+    if(autorized === 'null') buttonsWord.node.classList.add('hidden');
     const goodButton = new ElementHTML('button', 'button-word', 'Learned', '', buttonsWord.node);
     goodButton.node.addEventListener('click', () => {
       flag.node.classList.remove('dificult-hard');

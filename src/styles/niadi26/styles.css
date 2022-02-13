@@ -547,3 +547,19 @@ h1 {
   line-height: 25px;
   transform: rotate(335deg);
 }
+
+.message-wrapper {
+  position: relative;
+  padding: 20px;
+  font-size: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
