@@ -4,8 +4,8 @@ import { renderDifficultPage } from './render-difficult-words';
 import { getUserWord } from '../components/methods/users-words/get-user-word';
 import { createUserWord } from '../components/methods/users-words/create-user-words';
 import { updateUserWord } from '../components/methods/users-words/update-user-word';
-import { IUserWord } from '../components/interfaces/interface-user-word'; 
-
+import { UserWords } from '../components/interfaces/interface-user-word'; 
+import { checkAutorization } from '../components/utilits/check-autorization'; 
 
 function toggleGroupClass(index: string) {
   const allGroups = document.querySelectorAll("[data-group]");
@@ -48,7 +48,7 @@ export function getPageCount(event: Event) {
   renderPage();
 }
 
-export function isEmpty(obj: any) {
+export function isEmpty(obj: UserWords) {
   for (const key in obj) {
     return false;
   }
@@ -56,13 +56,14 @@ export function isEmpty(obj: any) {
 }
 
 export async function changeUserWord(type: string, wordId: string) {
-  const userId = localStorage.getItem('userId');
-  if (!userId || userId == 'null') {
+  const autorization = checkAutorization();
+  if (!autorization) {
     return;
   }
+  const userId = localStorage.getItem('userId');
   const group = localStorage.getItem('glossaryGroup') || '0';
   const page = localStorage.getItem('glossaryPage') || '0';
-  const data = await getUserWord(userId, wordId);
+  const data: UserWords = await getUserWord(userId, wordId);
   const optional = {
     learned: false,
     difficult: false,

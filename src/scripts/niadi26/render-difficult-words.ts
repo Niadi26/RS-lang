@@ -4,7 +4,7 @@ import { IUserWord, UserWords } from '../components/interfaces/interface-user-wo
 import { IWord } from '../components/interfaces/interface-get-word';
 import { WordCard } from './word-card';
 import { ElementHTML } from './create-element';
-
+import { checkAutorization } from '../components/utilits/check-autorization'; 
 
 class WarningGlossary {
   // eslint-disable-next-line prettier/prettier
@@ -20,12 +20,13 @@ class WarningGlossary {
 export async function renderDifficultPage() {
   const rootElement = document.getElementById('words');
   if (rootElement) rootElement.innerHTML = '';
-  const id = localStorage.getItem('userId');
-  if (id === 'null') {
-    const autorization = new WarningGlossary('Please, autorizate to use this opportunity!');
-    rootElement?.append(autorization.node);
+  const autorization = checkAutorization();
+  if (!autorization) {
+    const notise = new WarningGlossary('Please, autorizate to use this opportunity!');
+    rootElement?.append(notise.node);
     return;
   }
+  const id = localStorage.getItem('userId');
   const data: UserWords = await getUserWords(id);
   const userDifficultWords = data.filter((el) => el.optional.difficult);
   if (!userDifficultWords.length) {
@@ -50,7 +51,7 @@ export async function renderDifficultPage() {
       el.audio,
       el.audioMeaning,
       el.audioExample,
-      id
+      autorization
     );
     rootElement?.append(item.node);
   });

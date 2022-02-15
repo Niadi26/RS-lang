@@ -5,6 +5,7 @@ import { IWord } from '../components/interfaces/interface-get-word';
 import { IUserWord, UserWords } from '../components/interfaces/interface-user-word';
 import { renderDifficultPage } from './render-difficult-words';
 import { glosarryPage } from './glossary-page';
+import { checkAutorization } from '../components/utilits/check-autorization';
 
 const WORDS_ON_PAGE = 20;
 
@@ -16,11 +17,11 @@ export async function renderPage(parent?: HTMLElement) {
     return;
   }
   const page = localStorage.getItem('glossaryPage');
-  const autorized = localStorage.getItem('userId');
+  const autorization = checkAutorization();
   let userWords: UserWords = [];
-  if (autorized !== 'null') {
-    //change
-    const data = await getUserWords(autorized);
+  if (autorization) {
+    const userId = localStorage.getItem('userId');
+    const data = await getUserWords(userId);
     userWords = data.filter(
       (el: IUserWord) =>
         el.optional.page === page && el.optional.group === group && (el.optional.difficult || el.optional.learned)
@@ -44,7 +45,7 @@ export async function renderPage(parent?: HTMLElement) {
         el.audio,
         el.audioMeaning,
         el.audioExample,
-        autorized
+        autorization
       );
       if (userWords.length) {
         if (userWords.find((word: IUserWord) => word.wordId === item.node.id && word.optional.learned)) {
