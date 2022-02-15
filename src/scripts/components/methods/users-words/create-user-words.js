@@ -2,16 +2,16 @@ import { callApi } from '../call-api';
 
 const token = localStorage.getItem('token');
 
-export const createUserWord = async (obj) => {
+export const createUserWord = async (userId, wordId, word) => {
   try {
     const method = 'POST';
-    const url = `/users/${obj.userId}/words/${obj.wordId}`;
+    const url = `/users/${userId}/words/${wordId}`;
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${JSON.parse(token)}`,
     };
-    const body = JSON.stringify(obj.word);
+    const body = JSON.stringify(word);
     const response = await callApi(method, url, body, headers);
     const dataRes = response.data;
     console.log(dataRes);
@@ -22,8 +22,8 @@ export const createUserWord = async (obj) => {
   }
 };
 
-// createUserWord({
-//   userId: '62057f3148cc260016224ec1',
-//   wordId: '5e9f5ee35eb9e72bc21af4a4',
-//   word: { difficulty: 'weak', optional: { testFieldString: 'test', testFieldBoolean: true } },
-// });
+// createUserWord(
+//   '62057f3148cc260016224ec1',
+//   '5e9f5ee35eb9e72bc21af4a4',
+//   { difficulty: 'weak', optional: { testFieldString: 'test', testFieldBoolean: true } },
+// );

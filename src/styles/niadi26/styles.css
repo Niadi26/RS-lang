@@ -278,12 +278,13 @@ h1 {
   -webkit-box-shadow: 0px 5px 10px 2px rgba(25, 67, 99, 0.2) inset;
   -moz-box-shadow: 0px 5px 10px 2px rgba(25, 67, 99, 0.2) inset;
   box-shadow: 0px 5px 10px 2px rgba(25, 67, 99, 0.2) inset;
-  /*max-height: 55vh;
-  overflow-y: auto;
-  overflow-x: hidden;*/
+}
+.glossary__pages-learned {
+  background-color:rgba(0, 0, 0, 0.282);
 }
 
 .glossary__word {
+  position: relative;
   overflow: hidden;
   flex: 1 0 450px;
   display: flex;
@@ -346,14 +347,68 @@ h1 {
 }
 
 .word__buttons {
-  padding: 5px 0;
+  padding: 10px 0;
+}
+
+.hidden {
   visibility: hidden;
 }
 
 .button-word {
-  width: 80px;
-  height: 35px;
+  width: 100px;
+  height: 40px;
+  position: relative;
   margin-right: 20px;
+  z-index: 5;
+  color: #232323;
+  background: transparent;
+  border: 1px solid #232323;
+  font-size: 14px;
+  letter-spacing: .2em;
+  padding: 7px 4px;
+  transition: .2s ease-in-out;
+}
+
+.button-word::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 100%;
+  height: 100%;
+  background-color: #303e4752;
+  z-index: -1;
+  transition: .25s ease;
+  transform: translate(0, 0);
+}
+
+.button-word:hover:before {
+    transform: translate(4px, 4px);
+}
+
+.difficult-flag {
+  letter-spacing: .2em;
+  width: 0;
+  height: 50px;
+  position: absolute;
+  overflow: hidden;
+  top: 10px;
+  left: -2px;
+  border: 1px solid #000;
+  transition: width 0.5s ease-out;
+  color: #000;
+  text-align: center;
+  padding: 12px 0;
+  opacity: 0.8;
+}
+
+.dificult-easy {
+  width: 150px;
+  background-color: rgba(45, 0, 248, 0.308);
+}
+.dificult-hard {
+  width: 150px;
+  background-color: rgba(252, 3, 3, 0.349);
 }
 
 .word__meaning {
@@ -491,4 +546,26 @@ h1 {
   font-size: 18px;
   line-height: 25px;
   transform: rotate(335deg);
+}
+.not-play_text {
+  width: 150px;
+  left: -70px;
+  z-index: 5;
+  background-color:rgb(9, 131, 9);
+  transform: rotate(351deg);
+}
+.message-wrapper {
+  position: relative;
+  padding: 20px;
+  font-size: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
