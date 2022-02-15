@@ -1,6 +1,10 @@
 import { renderPage } from "./render-glossary-words";
 import { MAX_PAGE, glosarryPage } from './glossary-page';
-import { renderDifficultPage } from './render-difficult-words'
+import { renderDifficultPage } from './render-difficult-words';
+import { getUserWord } from '../components/methods/users-words/get-user-word';
+import { createUserWord } from '../components/methods/users-words/create-user-words';
+import { updateUserWord } from '../components/methods/users-words/update-user-word';
+import { IUserWord } from '../components/interfaces/interface-user-word'; 
 
 
 function toggleGroupClass(index: string) {
@@ -42,4 +46,38 @@ export function getPageCount(event: Event) {
   localStorage.setItem('glossaryPage', `${newPage}`);
   glosarryPage.changePage(newPage);
   renderPage();
+}
+
+export function isEmpty(obj: any) {
+  for (const key in obj) {
+    return false;
+  }
+  return true;
+}
+
+export async function changeUserWord(type: string, wordId: string) {
+  const userId = localStorage.getItem('userId');
+  if (!userId || userId == 'null') {
+    return;
+  }
+  const group = localStorage.getItem('glossaryGroup') || '0';
+  const page = localStorage.getItem('glossaryPage') || '0';
+  const obj: IUserWord = {
+    id: userId,
+    wordId: wordId,
+  }
+  const data = await getUserWord(obj);
+  const optional = {
+    learned: false,
+    difficult: false,
+    group: group,
+    page: page,
+  }
+  obj.optional = optional;
+  //optional[type] = !optional[type];
+  if(isEmpty(data)) {
+    createUserWord(obj)
+  } else {
+    updateUserWord(obj)
+  }
 }
