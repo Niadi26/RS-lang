@@ -62,22 +62,17 @@ export async function changeUserWord(type: string, wordId: string) {
   }
   const group = localStorage.getItem('glossaryGroup') || '0';
   const page = localStorage.getItem('glossaryPage') || '0';
-  const obj: IUserWord = {
-    id: userId,
-    wordId: wordId,
-  }
-  const data = await getUserWord(obj);
+  const data = await getUserWord(userId, wordId);
   const optional = {
     learned: false,
     difficult: false,
     group: group,
     page: page,
   }
-  obj.optional = optional;
   //optional[type] = !optional[type];
   if(isEmpty(data)) {
-    createUserWord(obj)
+    createUserWord(userId, wordId, optional)
   } else {
-    updateUserWord(obj)
+    updateUserWord(userId, wordId, optional)
   }
 }

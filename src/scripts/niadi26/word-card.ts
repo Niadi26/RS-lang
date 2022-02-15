@@ -1,6 +1,7 @@
 import { ElementHTML } from "./create-element";
-import { GROUPS_COLOR } from "./glossary-page"
+import { GROUPS_COLOR } from "./glossary-page";
 import { playAudio } from "./play-audio";
+import { changeUserWord } from "./glossary-functions";
 
 export const rootHTTP = 'https://react-rslang-by.herokuapp.com/';
 export class WordCard {
@@ -48,16 +49,22 @@ export class WordCard {
     const buttonsWord = new ElementHTML('div', 'word__buttons', '', '', descriptionWord.node);
     if(autorized === 'null') buttonsWord.node.classList.add('hidden');
     const goodButton = new ElementHTML('button', 'button-word', 'Learned', '', buttonsWord.node);
-    goodButton.node.addEventListener('click', () => {
+    goodButton.node.addEventListener('click', (e) => {
+      const elementClick = e.target as HTMLElement;
+      const parent = elementClick.closest('.glossary__word');
       flag.node.classList.remove('dificult-hard');
       flag.node.classList.toggle('dificult-easy');
       flag.node.innerHTML = 'Learned';
+      changeUserWord('learned',parent!.id);
     })
     const bedButton = new ElementHTML('button', 'button-word', 'Difficult', '', buttonsWord.node);
-    bedButton.node.addEventListener('click', () => {
+    bedButton.node.addEventListener('click', (e) => {
+      const elementClick = e.target as HTMLElement;
+      const parent = elementClick.closest('.glossary__word');
       flag.node.classList.remove('dificult-easy');
       flag.node.classList.toggle('dificult-hard');
       flag.node.innerHTML = 'Difficult';
+      changeUserWord('difficult',parent!.id);
     })
     const meaningWord = new ElementHTML('div', 'word__meaning', '', '', descriptionWord.node);
     const enMeaningWord = new ElementHTML('p', '', `${textMeaning}`, '', meaningWord.node);
