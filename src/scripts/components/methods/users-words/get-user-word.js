@@ -2,10 +2,10 @@ import { callApi } from '../call-api';
 
 const token = localStorage.getItem('token');
 
-export const getUserWord = async (obj) => {
+export const getUserWord = async (userId, wordId) => {
   try {
     const method = 'GET';
-    const url = `/users/${obj.userId}/words/${obj.wordId}`;
+    const url = `/users/${userId}/words/${wordId}`;
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export const getUserWord = async (obj) => {
   }
 };
 
-// getUserWord({
-//   userId: '62057f3148cc260016224ec1',
-//   wordId: '5e9f5ee35eb9e72bc21af716',
-// });
+// getUserWord(
+//   '62057f3148cc260016224ec1',
+//   '5e9f5ee35eb9e72bc21af716',
+// );
