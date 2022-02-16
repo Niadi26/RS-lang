@@ -490,6 +490,42 @@ h1 {
   transform: rotate(-90deg);
 }
 
+
+@media(max-width:750px) {
+  .glossary__settings {
+    flex: 0 0 100px;
+  }
+  .glossary__pages {
+    padding: 5px;
+  }
+}
+
+@media(max-width:600px) {
+  .glossary__cont {
+    flex-direction: column;
+  }
+  .glossary__settings {
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .glossary__word {
+    flex-direction: column;
+    flex: 1 0 270px;
+    height: 500px;
+  }
+  .word__img {
+    width: 80%;
+  }
+  .buttons-wrapper {
+    width: 60%;
+  }
+  .button-glossary {
+    width: 100px;
+    height: 60px;
+  } 
+}
+
 .games__wrapper {
   display: flex;
   justify-content: space-between;
