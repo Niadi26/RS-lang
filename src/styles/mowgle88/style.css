@@ -379,3 +379,166 @@
   box-shadow: 0 0 10px 0 #742525 inset, 0 0 10px 10px #a32121;
 }
 
+.login {
+  display: none;
+  width: 100%;
+  /* display: flex; */
+  flex-grow: 1;
+  padding-top: 24px;
+  flex-direction: column;
+  padding-bottom: 24px;
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -45%);
+}
+
+.signin-contant {
+  display: block;
+}
+
+.signup-contant {
+  display: none;
+}
+
+.username,
+.password,
+.email {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.submit {
+  background-color: rgb(60, 65, 107);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.submit:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: rgb(106, 243, 64);
+  border: 1px solid rgb(9, 131, 9);
+}
+
+label,
+b,
+.psw,
+.go-to-signin,
+.go-to-signup {
+  color: #3c416b;
+  /* text-align: center; */
+  text-shadow: 5px 0px 5px #3c416b;
+}
+
+.go-to-signin {
+  display: block;
+}
+
+.go-to-signup {
+  display: none;
+}
+
+.psw,
+.go-to-signin span,
+.go-to-signup span {
+  cursor: pointer;
+}
+
+.img-container {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.avatar {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.login-container {
+  padding: 5px 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+.modal-content {
+  margin: 5% auto 15% auto;
+  width: 500px;
+  height: 580px;
+  background-color: rgba(152, 211, 243, .3);
+  backdrop-filter: blur(6px);
+  border: 2px solid #3c416b;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #1575a9, 0 0 40px #3c416b, 0 0 80px #3c416b;
+}
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+.user-block {
+  display: flex;
+}
+
+.data-container {
+  margin-left: 10px;
+  text-align: right;
+}
+
+.svg-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.25rem;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1;
+  user-select: none;
+  border-radius: 50%;
+  justify-content: center;
+}

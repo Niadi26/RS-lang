@@ -11,7 +11,7 @@ export const createUser = async (user) => {
     };
     const response = await callApi(method, url, body, headers);
     console.log(response);
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
     return;
