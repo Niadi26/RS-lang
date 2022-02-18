@@ -11,3 +11,11 @@ export interface IUserWord {
 }
 
 export type UserWords = IUserWord[];
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export type flags = 'learned' | 'difficult';
+
+export interface Iflags {
+  learned: flags;
+  difficult: flags;
+}
