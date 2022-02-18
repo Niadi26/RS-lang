@@ -56,7 +56,7 @@ const signInUser = async () => {
   logIn.style.display = 'none';
   const nameUser = await getUser(data.userId);
   console.log(nameUser);
-  await createUserBlock(nameUser.name, nameUser.email);
+  await createUserBlock(data.name, nameUser.email);
 
   document.querySelector('.log-out').addEventListener('click', () => {
     document.querySelector('.user-block').remove();

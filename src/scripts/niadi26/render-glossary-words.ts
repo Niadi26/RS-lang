@@ -20,8 +20,10 @@ export async function renderPage(parent?: HTMLElement) {
   const autorization = checkAutorization();
   let userWords: UserWords = [];
   if (autorization) {
-    const userId = localStorage.getItem('userId');
-    const data = await getUserWords(userId);
+    // eslint-disable-next-line prettier/prettier
+    const userId = localStorage.getItem('userId') as string;
+    const data = await getUserWords(JSON.parse(userId));
+    //console.log(data);
     userWords = data.filter(
       (el: IUserWord) =>
         el.optional.page === page && el.optional.group === group && (el.optional.difficult || el.optional.learned)

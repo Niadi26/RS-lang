@@ -10,7 +10,9 @@ export const signIn = async (user) => {
     // const string = JSON.stringify(dataRes);
     // localStorage.setItem('userData', string);
     const token = JSON.stringify(dataRes.token);
+    const userId = JSON.stringify(dataRes.userId);
     localStorage.setItem('token', token);
+    localStorage.setItem('userId', userId);
     console.log(response);
     return response.data;
   } catch (error) {

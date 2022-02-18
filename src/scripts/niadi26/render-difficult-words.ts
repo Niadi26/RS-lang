@@ -26,8 +26,8 @@ export async function renderDifficultPage() {
     rootElement?.append(notise.node);
     return;
   }
-  const id = localStorage.getItem('userId');
-  const data: UserWords = await getUserWords(id);
+  const id = localStorage.getItem('userId') as string;
+  const data: UserWords = await getUserWords(JSON.parse(id));
   const userDifficultWords = data.filter((el) => el.optional.difficult);
   if (!userDifficultWords.length) {
     const empty = new WarningGlossary('You dont checked any difficult words!');
