@@ -25,6 +25,9 @@ class NewGame {
       Fullscreen();
     });
 
+    const cross = new ElementHTML('div', 'cross');
+    pageGame.node.append(cross.node);
+
     const audioBlock = new ElementHTML('div', 'audio-block', '', '', gameContainer.node);
     const imageBlock = new ElementHTML('div', 'image-block');
     audioBlock.node.append(imageBlock.node);

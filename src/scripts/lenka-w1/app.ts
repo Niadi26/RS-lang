@@ -2,7 +2,7 @@ import { rootElem } from '../components/constants';
 import { getWords } from '../components/methods/get-words';
 import { audioCall } from './GameAudioCall';
 import { newGameAudioCall } from './NewGame';
-import { Word } from '../components/interfaces/get-word';
+import { IWord } from '../components/interfaces/interface-get-word';
 import { shuffle } from '../components/utilits/random';
 
 export let footer = document.querySelector('.footer') as HTMLElement;;
@@ -23,14 +23,14 @@ export function createNewGameAudioCall() {
 
 const getWordTranslate = async (group: number, page: number) => {
   const wordsApi = await getWords(group, page);
-  const wordTranslate = await wordsApi.map((el: Word) => [el.id, el.wordTranslate]);
+  const wordTranslate = await wordsApi.map((el: IWord) => [el.id, el.wordTranslate]);
   return wordTranslate;
 };
 
 const getElementForAudioGame = async (group: number, page: number) => {
   const wordsApi = await getWords(group, page);
   console.log(wordsApi)
-  const word = await wordsApi.map((el: Word) => [el.id, el.word, el.audio, el.image]);
+  const word = await wordsApi.map((el: IWord) => [el.id, el.word, el.audio, el.image]);
   return word;
 };
 
@@ -60,6 +60,7 @@ export const start = async (group: number, page: number, container: HTMLElement,
   const img = document.querySelector('.image-block') as HTMLElement;
   const imgWord = document.querySelector('.current-image') as HTMLImageElement;
   imgWord.src = `${baseUrl}/${values[index][3]}`;
+  img.classList.remove('img-active');
 
   const sound = document.querySelector('.game-audio') as HTMLAudioElement;
   sound.src = `${baseUrl}/${values[index][2]}`;
@@ -68,16 +69,19 @@ export const start = async (group: number, page: number, container: HTMLElement,
     sound.play();
   });
 
+  sound.play();
+
   const blockWords = document.querySelector('.block-words') as HTMLElement;
   blockWords.innerHTML = addWords(wordTranslate, index);
   
   const englishWord = document.querySelector('.english-word') as HTMLElement;
   englishWord.textContent = `${values[index][1]}`;
+  englishWord.style.display = 'none';
 
   const btnNext = document.querySelector('.button-next') as HTMLElement;
+  btnNext.textContent = `I don't now`;
 
-  btnNext.addEventListener('click', () => {
-  
+  function switchFunction() {
     if (btnNext.textContent === `I don't now`) {
       img.classList.add('img-active');
       englishWord.style.display = 'block';
@@ -90,10 +94,25 @@ export const start = async (group: number, page: number, container: HTMLElement,
         imgWord.src = `${baseUrl}/${values[index + 1][3]}`;
         sound.src = `${baseUrl}/${values[index + 1][2]}`;
         blockWords.innerHTML = addWords(wordTranslate, index + 1);
+        sound.play();
         console.log(index++)
-        if(index === 19) index = 18;
+        if (index === 19) index = 18;
       }
-  }); 
+   } btnNext.addEventListener('click', switchFunction);
+
+  const navigation = document.querySelector('.nav__cont') as HTMLElement;
+  navigation.addEventListener('click', (event: Event) => {
+    const ev = event.target as HTMLElement;
+    if (ev.classList.contains('nav__item')) {
+      btnNext.removeEventListener('click', switchFunction);
+    }
+  });
+
+  const btnCross = document.querySelector('.cross') as HTMLElement;
+  btnCross.addEventListener('click', () => {
+    btnNext.removeEventListener('click', switchFunction);
+    createPageGameAudioCall();
+  });
 }
 
 const STARS = audioCall.node.querySelector('.stars') as HTMLElement;
