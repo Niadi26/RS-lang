@@ -1,8 +1,7 @@
 import { callApi } from '../call-api';
 
-const token = localStorage.getItem('token');
-
 export const getUserTokens = async (integer) => {
+  const token = localStorage.getItem('token');
   try {
     const method = 'GET';
     const url = `/users/${integer}/tokens`;

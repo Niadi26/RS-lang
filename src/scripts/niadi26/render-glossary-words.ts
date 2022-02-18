@@ -20,8 +20,8 @@ export async function renderPage(parent?: HTMLElement) {
   const autorization = checkAutorization();
   let userWords: UserWords = [];
   if (autorization) {
-    const userId = localStorage.getItem('userId');
-    const data = await getUserWords(userId);
+    const userId: string = localStorage.getItem('userId') as string;
+    const data = await getUserWords(JSON.parse(userId));
     userWords = data.filter(
       (el: IUserWord) =>
         el.optional.page === page && el.optional.group === group && (el.optional.difficult || el.optional.learned)

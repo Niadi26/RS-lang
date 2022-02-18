@@ -1,8 +1,7 @@
 import { callApi } from '../call-api';
 
-const token = localStorage.getItem('token');
-
 export const updateUser = async (id, email, password) => {
+  const token = localStorage.getItem('token');
   try {
     const method = 'PUT';
     const url = `/users/${id}`;

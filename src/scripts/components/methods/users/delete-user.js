@@ -1,8 +1,7 @@
 import { callApi } from '../call-api';
 
-const token = localStorage.getItem('token');
-
 export const deleteUser = async (id) => {
+  const token = localStorage.getItem('token');
   try {
     const method = 'DELETE';
     const url = `/users/${id}`;
