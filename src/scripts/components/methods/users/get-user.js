@@ -1,8 +1,7 @@
 import { callApi } from '../call-api';
 
-const token = localStorage.getItem('token');
-
 export const getUser = async (integer) => {
+  const token = localStorage.getItem('token');
   try {
     const method = 'GET';
     const url = `/users/${integer}`;
@@ -12,10 +11,9 @@ export const getUser = async (integer) => {
       Authorization: `Bearer ${JSON.parse(token)}`,
     };
     const body = {};
-    console.log(headers);
     const response = await callApi(method, url, body, headers);
     const dataUser = response.data;
-    console.log(response);
+    // console.log(response.data);
     return dataUser;
   } catch (error) {
     console.log(error);
