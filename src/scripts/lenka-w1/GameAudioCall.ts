@@ -10,7 +10,7 @@ class GameAudioCall {
   constructor() {
     const mainContainer = new ElementHTML('div', 'audio-call', '');
     const blockAboutGame = new ElementHTML('div', 'panel', '', '', mainContainer.node);
-    const blockTitle = new ElementHTML('h2', 'block-title', 'Audio call');
+    const blockTitle = new ElementHTML('h2', 'block-title', 'Audiochallange');
     blockAboutGame.node.append(blockTitle.node);
     const paragraph = new ElementHTML('p', 'block-text');
     paragraph.node.textContent = `

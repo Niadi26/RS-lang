@@ -37,7 +37,7 @@ class GamePage {
       const audioText = new ElementHTML('div', 'games__text', 'Try minigame audio!', '', audioCont.node);
       const audioPlay = new ElementHTML('button', 'button-play', 'Play', '', audioCont.node);
 
-      audioPlay.node.addEventListener('click', () => {
+      audioPlay.node.addEventListener('click', async () => {
         createPageGameAudioCall();
       });
 
@@ -46,4 +46,5 @@ class GamePage {
   }
   
   export const gamePage = new GamePage();
+
 

@@ -1,4 +1,5 @@
 import '../../styles/lenka-w1/audio-call.css';
+import { rootElem } from '../components/constants';
 import { ElementHTML } from '../niadi26/create-element';
 
 class NewGame {
@@ -8,6 +9,21 @@ class NewGame {
     const pageGame = new ElementHTML('div', 'page-game');
     const gameContainer = new ElementHTML('div', 'game-container');
     pageGame.node.append(gameContainer.node);
+
+    const fullScreenSvg = new ElementHTML('div', 'full-screen-svg', '', '', pageGame.node);
+
+    fullScreenSvg.node.addEventListener('click', () => {
+      const Fullscreen = () => {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+          pageGame.node.style.height = 'calc(100vh - 70px)';
+        } else {
+          rootElem.requestFullscreen();
+          pageGame.node.style.height = '100vh';
+        }
+      };
+      Fullscreen();
+    });
 
     const audioBlock = new ElementHTML('div', 'audio-block', '', '', gameContainer.node);
     const imageBlock = new ElementHTML('div', 'image-block');
@@ -27,11 +43,11 @@ class NewGame {
     currentWordBlock.node.append(englishWord.node);
 
     const wordBlock = new ElementHTML('div', 'block-words');
-    gameContainer.node.append(wordBlock.node)
+    gameContainer.node.append(wordBlock.node);
   
     const buttonNext = new ElementHTML('button', 'button-next', '', '', gameContainer.node);
     const btnText = new ElementHTML('span', 'btn-text', `I don't now`);
-    buttonNext.node.append(btnText.node)
+    buttonNext.node.append(btnText.node);
 
     this.node = pageGame.node;
   }

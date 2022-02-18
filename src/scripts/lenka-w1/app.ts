@@ -5,19 +5,19 @@ import { newGameAudioCall } from './NewGame';
 import { Word } from '../components/interfaces/get-word';
 import { shuffle } from '../components/utilits/random';
 
-export let footer: HTMLElement;
+export let footer = document.querySelector('.footer') as HTMLElement;;
 
 export function createPageGameAudioCall() {
   rootElem.innerHTML = '';
   rootElem.append(audioCall.node);
   localStorage.setItem('namePage', 'audio-call');
-  footer = document.querySelector('.footer') as HTMLElement;
   footer.style.display = 'none';
 }
 
 export function createNewGameAudioCall() {
   rootElem.innerHTML = '';
   rootElem.append(newGameAudioCall.node);
+  localStorage.setItem('namePage', 'audio-call');
   footer.style.display = 'none';
 }
 
@@ -29,6 +29,7 @@ const getWordTranslate = async (group: number, page: number) => {
 
 const getElementForAudioGame = async (group: number, page: number) => {
   const wordsApi = await getWords(group, page);
+  console.log(wordsApi)
   const word = await wordsApi.map((el: Word) => [el.id, el.word, el.audio, el.image]);
   return word;
 };
@@ -47,6 +48,7 @@ const addWords = (array: string[][], i: number) => {
   return textContent.join('\n');
 };
 
+
 export const start = async (group: number, page: number, container: HTMLElement, func: void) => {
   const baseUrl = 'https://react-rslang-by.herokuapp.com';
 
@@ -64,14 +66,34 @@ export const start = async (group: number, page: number, container: HTMLElement,
 
   (document.querySelector('.svg-block') as HTMLElement).addEventListener('click', () => {
     sound.play();
-    img.classList.add('img-active');
-
-    const englishWord = document.querySelector('.english-word') as HTMLElement;
-    englishWord.textContent = `${values[index][1]}`;
   });
 
   const blockWords = document.querySelector('.block-words') as HTMLElement;
   blockWords.innerHTML = addWords(wordTranslate, index);
+  
+  const englishWord = document.querySelector('.english-word') as HTMLElement;
+  englishWord.textContent = `${values[index][1]}`;
+
+  const btnNext = document.querySelector('.button-next') as HTMLElement;
+
+  btnNext.addEventListener('click', () => {
+  
+    if (btnNext.textContent === `I don't now`) {
+      img.classList.add('img-active');
+      englishWord.style.display = 'block';
+      btnNext.textContent = 'Next';
+    } else if (btnNext.textContent === `Next`) {
+        img.classList.remove('img-active');
+        btnNext.textContent = `I don't now`;
+        englishWord.style.display = 'none';
+        englishWord.textContent = `${values[index + 1][1]}`
+        imgWord.src = `${baseUrl}/${values[index + 1][3]}`;
+        sound.src = `${baseUrl}/${values[index + 1][2]}`;
+        blockWords.innerHTML = addWords(wordTranslate, index + 1);
+        console.log(index++)
+        if(index === 19) index = 18;
+      }
+  }); 
 }
 
 const STARS = audioCall.node.querySelector('.stars') as HTMLElement;
@@ -85,3 +107,6 @@ STARS.addEventListener('click', async (event: Event) => {
     await start(number, 0, rootElem, CREATE);
   }
 });
+
+
+

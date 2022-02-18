@@ -13,7 +13,7 @@
 .block-title {
   text-transform: uppercase;
   -webkit-text-stroke: 2px #000000;
-  font-size: 60px;
+  font-size: 40px;
   text-shadow: 10px 0px 10px #3c416b;
 }
 
@@ -64,6 +64,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(152, 211, 243);
+}
+
+.full-screen-svg {
+  width: 25px;
+  height: 25px;
+  background-image: url('../../assets/mowgle88/fullscreen.svg');
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-size: cover;
+  filter: invert(100%) sepia(93%) saturate(0%) hue-rotate(281deg) brightness(108%) contrast(108%);
+  position: absolute;
+  top: 80px;
+  right: 3.5%;
+  transition: all 0.3s;
+}
+
+.full-screen-svg:hover {
+  transform: scale(1.1);
 }
 
 .game-container {
@@ -120,6 +139,7 @@
 }
 
 .current-word {
+  display: none;
   align-self: center;
   margin-left: 8px;
 }

@@ -87,12 +87,10 @@ class GlossaryPage {
       buttonAudio.node.style.backgroundImage = `url('${buttonAudioBg.src}')`;
     }
     buttonAudio.node.addEventListener('click', async () => {
-      localStorage.setItem('namePage', 'audio-call');
       const createGameAudioCall = createNewGameAudioCall();
       const group = localStorage.getItem('glossaryGroup');
       const page = localStorage.getItem('glossaryPage');
       await start(Number(group), Number(page), rootElem, createGameAudioCall);
-      // createNewGameAudioCall();
     });
 
     const bookCont = new ElementHTML('div', 'glossary__cont', '', '', mainWrapper.node);
