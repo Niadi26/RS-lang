@@ -7,13 +7,12 @@ export const signIn = async (user) => {
     const body = JSON.stringify(user);
     const response = await callApi(method, url, body);
     const dataRes = response.data;
-    // const string = JSON.stringify(dataRes);
-    // localStorage.setItem('userData', string);
     const token = JSON.stringify(dataRes.token);
+    const refreshToken = JSON.stringify(dataRes.refreshToken);
     const userId = JSON.stringify(dataRes.userId);
     localStorage.setItem('token', token);
+    localStorage.setItem('refreshToken', refreshToken);
     localStorage.setItem('userId', userId);
-    console.log(response);
     return response.data;
   } catch (error) {
     console.log(error);

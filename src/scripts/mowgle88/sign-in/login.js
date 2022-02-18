@@ -6,7 +6,6 @@ import { signIn } from '../../components/methods/sign-in';
 const logIn = document.querySelector('.button-log');
 
 export const renderLogIn = async (page, wraapper) => {
-  // wraapper.innerHTML = '';
   const div = document.createElement('div');
   div.classList.add('login');
   div.innerHTML = `${page}`;
@@ -22,6 +21,25 @@ const createUserBlock = async (username, email) => {
   wrapper.appendChild(div);
 };
 
+const addUserBlock = async () => {
+  const id = localStorage.getItem('userId');
+  const nameUser = await getUser(JSON.parse(id));
+  await createUserBlock(nameUser.name, nameUser.email);
+  logIn.style.display = 'none';
+
+  document.querySelector('.log-out').addEventListener('click', () => {
+    document.querySelector('.user-block').remove();
+    logIn.style.display = 'block';
+    localStorage.setItem('token', 'null');
+    localStorage.setItem('refreshToken', 'null');
+    localStorage.setItem('userId', 'null');
+  });
+};
+
+if (localStorage.getItem('token') !== 'null') {
+  addUserBlock();
+}
+
 const signUp = async () => {
   const username = document.querySelector('.username');
   const emailSignup = document.querySelector('.email-signup');
@@ -34,14 +52,8 @@ const signUp = async () => {
   await createUser(obj);
   await signIn(obj);
   document.querySelector('.login').remove();
-  logIn.style.display = 'none';
-  await createUserBlock(obj.name, obj.email);
 
-  document.querySelector('.log-out').addEventListener('click', () => {
-    document.querySelector('.user-block').remove();
-    logIn.style.display = 'block';
-    localStorage.setItem('token', 'null');
-  });
+  addUserBlock();
 };
 
 const signInUser = async () => {
@@ -51,18 +63,9 @@ const signInUser = async () => {
   const obj = {};
   obj.email = emailSignin.value;
   obj.password = passwordSignin.value;
-  const data = await signIn(obj);
+  await signIn(obj);
   document.querySelector('.login').remove();
-  logIn.style.display = 'none';
-  const nameUser = await getUser(data.userId);
-  console.log(nameUser);
-  await createUserBlock(data.name, nameUser.email);
-
-  document.querySelector('.log-out').addEventListener('click', () => {
-    document.querySelector('.user-block').remove();
-    logIn.style.display = 'block';
-    localStorage.setItem('token', 'null');
-  });
+  addUserBlock();
 };
 
 logIn.addEventListener('click', () => {
