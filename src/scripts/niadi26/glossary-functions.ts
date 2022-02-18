@@ -4,7 +4,7 @@ import { renderDifficultPage } from './render-difficult-words';
 import { getUserWord } from '../components/methods/users-words/get-user-word';
 import { createUserWord } from '../components/methods/users-words/create-user-words';
 import { updateUserWord } from '../components/methods/users-words/update-user-word';
-import { UserWords } from '../components/interfaces/interface-user-word'; 
+import { IUserWord, UserWords, flags } from '../components/interfaces/interface-user-word'; 
 import { checkAutorization } from '../components/utilits/check-autorization'; 
 
 function toggleGroupClass(index: string) {
@@ -55,25 +55,27 @@ export function isEmpty(obj: UserWords) {
   return true;
 }
 
-export async function changeUserWord(type: 'learned' | 'difficult', wordId: string) {
+export async function changeUserWord(type: flags, wordId: string, otherType: 'learned' | 'difficult') {
   const autorization = checkAutorization();
   if (!autorization) {
     return;
   }
-  const userId = localStorage.getItem('userId');
+  const userId = localStorage.getItem('userId') as string;
   const group = localStorage.getItem('glossaryGroup') || '0';
   const page = localStorage.getItem('glossaryPage') || '0';
-  const data: UserWords = await getUserWord(userId, wordId);
-  const optional = {
-    learned: false,
-    difficult: false,
-    group: group,
-    page: page,
-  }
-  optional[type] = !optional[type];
-  if(isEmpty(data)) {
-    createUserWord(userId, wordId, optional)
+  const data: IUserWord = await getUserWord(JSON.parse(userId), wordId);
+  if(!data) {
+    const optional = {
+      learned: false,
+      difficult: false,
+      group: group,
+      page: page,
+    }
+    optional[type] = !optional[type];
+    const result = await createUserWord(JSON.parse(userId), wordId, { "difficulty": "weak", optional: optional});
   } else {
-    updateUserWord(userId, wordId, optional)
+    data.optional[type] = !data.optional[type];
+    data.optional[otherType] = false;
+    const result = await updateUserWord(JSON.parse(userId), wordId, { "difficulty": "weak", optional: data.optional});
   }
 }

@@ -52,16 +52,22 @@ export async function renderPage(parent?: HTMLElement) {
       if (userWords.length) {
         if (userWords.find((word: IUserWord) => word.wordId === item.node.id && word.optional.learned)) {
           item.flag.classList.add('dificult-easy');
+          item.flag.innerHTML = 'Learned';
         } else if (userWords.find((word: IUserWord) => word.wordId === item.node.id && word.optional.difficult)) {
           item.flag.classList.add('dificult-hard');
-        }
-        if (userWords.length === WORDS_ON_PAGE) {
-          rootElement.classList.add('glossary__pages-learned');
-          glosarryPage.gameButtons.style.pointerEvents = 'none';
-          glosarryPage.notPlay.classList.remove('hidden');
+          item.flag.innerHTML = 'Dificult';
         }
       }
       rootElement.append(item.node);
     });
+    if (userWords.length === WORDS_ON_PAGE) {
+      rootElement.classList.add('glossary__pages-learned');
+      glosarryPage.gameButtons.style.pointerEvents = 'none';
+      glosarryPage.notPlay.classList.remove('hidden');
+    } else {
+      rootElement.classList.remove('glossary__pages-learned');
+      glosarryPage.gameButtons.style.pointerEvents = 'auto';
+      glosarryPage.notPlay.classList.add('hidden');
+    }
   }
 }

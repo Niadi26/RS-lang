@@ -1,10 +1,17 @@
 import { getUserWords } from '../components/methods/users-words/get-user-words';
 import { getWord } from '../components/methods/get-word';
-import { IUserWord, UserWords } from '../components/interfaces/interface-user-word';
+import { UserWords, flags, Iflags } from '../components/interfaces/interface-user-word';
 import { IWord } from '../components/interfaces/interface-get-word';
 import { WordCard } from './word-card';
 import { ElementHTML } from './create-element';
+import { glosarryPage } from './glossary-page';
 import { checkAutorization } from '../components/utilits/check-autorization'; 
+import { changeUserWord } from "./glossary-functions";
+
+const BUTTONS_ROLES: Iflags = {
+  learned: 'difficult',
+  difficult: 'learned',
+}
 
 class WarningGlossary {
   // eslint-disable-next-line prettier/prettier
@@ -53,6 +60,20 @@ export async function renderDifficultPage() {
       el.audioExample,
       autorization
     );
+    item.flag.classList.add('dificult-hard');
+    item.flag.innerHTML = 'Dificult';
     rootElement?.append(item.node);
+    item.buttons.addEventListener('click', async (e) => {
+      const elementClick = e.target as HTMLElement;
+      if(elementClick.tagName === 'BUTTON') {
+        const parent = elementClick.closest('.glossary__word');
+        const role = elementClick.dataset['id'] as flags;
+        await changeUserWord( role, parent!.id, BUTTONS_ROLES[role]);
+        renderDifficultPage();
+      }
+    })
   });
+  rootElement?.classList.remove('glossary__pages-learned');
+  glosarryPage.gameButtons.style.pointerEvents = 'auto';
+  glosarryPage.notPlay.classList.add('hidden');
 }

@@ -10,6 +10,8 @@ export class WordCard {
   
   public flag: HTMLElement;
   
+  public buttons: HTMLElement;
+  
   constructor(
       id: string, 
       group: number,
@@ -49,22 +51,24 @@ export class WordCard {
     const buttonsWord = new ElementHTML('div', 'word__buttons', '', '', descriptionWord.node);
     if(!autorized) buttonsWord.node.classList.add('hidden');
     const goodButton = new ElementHTML('button', 'button-word', 'Learned', '', buttonsWord.node);
+    goodButton.node.dataset["id"] = 'learned'
     goodButton.node.addEventListener('click', (e) => {
       const elementClick = e.target as HTMLElement;
       const parent = elementClick.closest('.glossary__word');
       flag.node.classList.remove('dificult-hard');
       flag.node.classList.toggle('dificult-easy');
       flag.node.innerHTML = 'Learned';
-      changeUserWord('learned',parent!.id);
+      changeUserWord('learned', parent!.id, 'difficult');
     })
     const bedButton = new ElementHTML('button', 'button-word', 'Difficult', '', buttonsWord.node);
+    bedButton.node.dataset["id"] = 'difficult'
     bedButton.node.addEventListener('click', (e) => {
       const elementClick = e.target as HTMLElement;
       const parent = elementClick.closest('.glossary__word');
       flag.node.classList.remove('dificult-easy');
       flag.node.classList.toggle('dificult-hard');
       flag.node.innerHTML = 'Difficult';
-      changeUserWord('difficult',parent!.id);
+      changeUserWord('difficult', parent!.id, 'learned');
     })
     const meaningWord = new ElementHTML('div', 'word__meaning', '', '', descriptionWord.node);
     const enMeaningWord = new ElementHTML('p', '', `${textMeaning}`, '', meaningWord.node);
@@ -74,5 +78,6 @@ export class WordCard {
     const ruExampleWord = new ElementHTML('div', 'ru__text', `${textExampleTranslate}`, '', exampleWord.node);
     this.node = wordWrapper.node;
     this.flag = flag.node;
+    this.buttons = buttonsWord.node;
   }
 }

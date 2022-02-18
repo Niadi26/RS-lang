@@ -2,6 +2,7 @@ import { callApi } from '../call-api';
 
 export const createUserWord = async (userId, wordId, word) => {
   const token = localStorage.getItem('token');
+  console.log(token, userId, wordId, word);
   try {
     const method = 'POST';
     const url = `/users/${userId}/words/${wordId}`;

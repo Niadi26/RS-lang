@@ -2,6 +2,7 @@ import { callApi } from '../call-api';
 
 export const getUserWord = async (userId, wordId) => {
   const token = localStorage.getItem('token');
+  //console.log(token, userId, wordId);
   try {
     const method = 'GET';
     const url = `/users/${userId}/words/${wordId}`;
@@ -13,7 +14,7 @@ export const getUserWord = async (userId, wordId) => {
     const body = {};
     const response = await callApi(method, url, body, headers);
     const dataRes = response.data;
-    console.log(dataRes);
+    //console.log(dataRes);
     return dataRes;
   } catch (error) {
     console.log(error);
