@@ -55,7 +55,7 @@ export function isEmpty(obj: UserWords) {
   return true;
 }
 
-export async function changeUserWord(type: string, wordId: string) {
+export async function changeUserWord(type: 'learned' | 'difficult', wordId: string) {
   const autorization = checkAutorization();
   if (!autorization) {
     return;
@@ -70,7 +70,7 @@ export async function changeUserWord(type: string, wordId: string) {
     group: group,
     page: page,
   }
-  //optional[type] = !optional[type];
+  optional[type] = !optional[type];
   if(isEmpty(data)) {
     createUserWord(userId, wordId, optional)
   } else {
