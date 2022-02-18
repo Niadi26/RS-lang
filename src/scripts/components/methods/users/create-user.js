@@ -10,8 +10,8 @@ export const createUser = async (user) => {
       'Content-Type': 'application/json',
     };
     const response = await callApi(method, url, body, headers);
-    console.log(response);
-    return response;
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.log(error);
     return;

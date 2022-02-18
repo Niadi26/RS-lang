@@ -1,11 +1,14 @@
 import { ElementHTML } from "./create-element";
-import { GROUPS_COLOR } from "./glossary-page"
+import { GROUPS_COLOR } from "./glossary-page";
 import { playAudio } from "./play-audio";
+import { changeUserWord } from "./glossary-functions";
 
 export const rootHTTP = 'https://react-rslang-by.herokuapp.com/';
 export class WordCard {
   // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;
+  
+  public flag: HTMLElement;
   
   constructor(
       id: string, 
@@ -20,8 +23,10 @@ export class WordCard {
       textMeaningTranslate: string,
       audioMain: string,
       audioMeaning: string,
-      audioExample: string) {
+      audioExample: string,
+      autorized: boolean) {
     const wordWrapper = new ElementHTML('div', 'glossary__word', '');
+    const flag = new ElementHTML('div', 'difficult-flag', '', '', wordWrapper.node)
     wordWrapper.node.setAttribute('id', id);
     const img = new Image();
     img.src = `${rootHTTP}${image}`;
@@ -42,8 +47,25 @@ export class WordCard {
       playAudio(0, audioMain, audioMeaning, audioExample);
     });
     const buttonsWord = new ElementHTML('div', 'word__buttons', '', '', descriptionWord.node);
-    const goodButton = new ElementHTML('button', 'button-word', 'good', '', buttonsWord.node);
-    const bedButton = new ElementHTML('button', 'button-word', 'bed', '', buttonsWord.node);
+    if(!autorized) buttonsWord.node.classList.add('hidden');
+    const goodButton = new ElementHTML('button', 'button-word', 'Learned', '', buttonsWord.node);
+    goodButton.node.addEventListener('click', (e) => {
+      const elementClick = e.target as HTMLElement;
+      const parent = elementClick.closest('.glossary__word');
+      flag.node.classList.remove('dificult-hard');
+      flag.node.classList.toggle('dificult-easy');
+      flag.node.innerHTML = 'Learned';
+      changeUserWord('learned',parent!.id);
+    })
+    const bedButton = new ElementHTML('button', 'button-word', 'Difficult', '', buttonsWord.node);
+    bedButton.node.addEventListener('click', (e) => {
+      const elementClick = e.target as HTMLElement;
+      const parent = elementClick.closest('.glossary__word');
+      flag.node.classList.remove('dificult-easy');
+      flag.node.classList.toggle('dificult-hard');
+      flag.node.innerHTML = 'Difficult';
+      changeUserWord('difficult',parent!.id);
+    })
     const meaningWord = new ElementHTML('div', 'word__meaning', '', '', descriptionWord.node);
     const enMeaningWord = new ElementHTML('p', '', `${textMeaning}`, '', meaningWord.node);
     const ruMeaningWord = new ElementHTML('p', 'ru__text', `${textMeaningTranslate}`, '', meaningWord.node);
@@ -51,5 +73,6 @@ export class WordCard {
     const enExampleWord = new ElementHTML('div', '', `${textExample}`, '', exampleWord.node);
     const ruExampleWord = new ElementHTML('div', 'ru__text', `${textExampleTranslate}`, '', exampleWord.node);
     this.node = wordWrapper.node;
+    this.flag = flag.node;
   }
 }

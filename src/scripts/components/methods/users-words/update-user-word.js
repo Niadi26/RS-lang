@@ -1,12 +1,11 @@
 import { callApi } from '../call-api';
 
-const token = localStorage.getItem('token');
-
-export const updateUserWord = async (obj) => {
+export const updateUserWord = async (userId, wordId, word) => {
+  const token = localStorage.getItem('token');
   try {
     const method = 'PUT';
-    const url = `/users/${obj.userId}/words/${obj.wordId}`;
-    const body = JSON.stringify(obj.word);
+    const url = `/users/${userId}/words/${wordId}`;
+    const body = JSON.stringify(word);
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -21,8 +20,8 @@ export const updateUserWord = async (obj) => {
   }
 };
 
-// updateUserWord({
-//   userId: '62057f3148cc260016224ec1',
-//   wordId: '5e9f5ee35eb9e72bc21af716',
-//   word: { difficulty: 'strong', optional: { testFieldString: 'test', testFieldBoolean: true } },
-// });
+// updateUserWord(
+//   '62057f3148cc260016224ec1',
+//   '5e9f5ee35eb9e72bc21af716',
+//   { difficulty: 'strong', optional: { testFieldString: 'test', testFieldBoolean: true } },
+// );
