@@ -1,22 +1,24 @@
 import { callApi } from '../call-api';
 
 export const getUserTokens = async (integer) => {
-  const token = localStorage.getItem('token');
+  const refreshToken = localStorage.getItem('refreshToken');
   try {
     const method = 'GET';
     const url = `/users/${integer}/tokens`;
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${JSON.parse(token)}`,
+      Authorization: `Bearer ${JSON.parse(refreshToken)}`,
     };
     const body = {};
     const response = await callApi(method, url, body, headers);
-    // const dataUser = response.data;
-    console.log(response);
-    return response;
+    // console.log(response.data);
+    return response.data;
   } catch (error) {
     console.log(error);
+    if (error.response.status === 401) {
+      alert('You have been out of the system for too long! Log in again!');
+    }
   }
 };
 
