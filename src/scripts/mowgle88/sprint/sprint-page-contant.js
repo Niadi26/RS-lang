@@ -11,7 +11,7 @@ export const sprintChooseLevelContent = () => {
       <button id="sprint-level-btn-5" class="star star-blue btn-animation">5</button>
       <button id="sprint-level-btn-6" class="star star-navyblue btn-animation">6</button>
     </div>
-    <button class="sprint-back-btn btn-animation">back to home</button>
+    <button class="sprint-back-btn btn-animation">back to games</button>
   </div>`;
 };
 
