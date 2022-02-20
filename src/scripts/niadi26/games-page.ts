@@ -1,6 +1,7 @@
 import { ElementHTML } from "./create-element";
 import { renderSprintGamePage } from "../mowgle88/sprint/render-sprint-game";
 import { rootElem } from "../components/constants"
+import { createPageGameAudioCall } from "../lenka-w1/app";
 
 class GamePage {
     // eslint-disable-next-line prettier/prettier
@@ -24,6 +25,7 @@ class GamePage {
         (document.querySelector('.footer') as HTMLElement).style.display = 'none';
         renderSprintGamePage(rootElem);
       });
+
       const audioCont = new ElementHTML('div', 'games__cont', '', '', gamesCont.node);
       const audioImg = new ElementHTML('div', 'games__img ', '', '', audioCont.node);
       const audioImgBg = new Image();
@@ -34,10 +36,15 @@ class GamePage {
       const audioName = new ElementHTML('div', 'games__title', 'Audiochallange', '', audioCont.node);
       const audioText = new ElementHTML('div', 'games__text', 'Try minigame audio!', '', audioCont.node);
       const audioPlay = new ElementHTML('button', 'button-play', 'Play', '', audioCont.node);
-      audioPlay.node.addEventListener('click', () => {
+
+      audioPlay.node.addEventListener('click', async () => {
+        createPageGameAudioCall();
       });
+
       this.node = mainWrapper.node;
     }
   }
   
   export const gamePage = new GamePage();
+
+
