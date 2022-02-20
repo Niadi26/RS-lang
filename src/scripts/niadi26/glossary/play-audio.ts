@@ -1,4 +1,4 @@
-import { rootHTTP } from './word-card';
+import { rootHTTP } from '../../components/constants';
 
 export const audio = new Audio();
 

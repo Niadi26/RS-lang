@@ -1,11 +1,12 @@
 import { renderPage } from "./render-glossary-words";
-import { MAX_PAGE, glosarryPage } from './glossary-page';
+import { glosarryPage } from './glossary-page';
+import { MAX_PAGE } from "./constants";
 import { renderDifficultPage } from './render-difficult-words';
-import { getUserWord } from '../components/methods/users-words/get-user-word';
-import { createUserWord } from '../components/methods/users-words/create-user-words';
-import { updateUserWord } from '../components/methods/users-words/update-user-word';
-import { IUserWord, UserWords, flags } from '../components/interfaces/interface-user-word'; 
-import { checkAutorization } from '../components/utilits/check-autorization'; 
+import { getUserWord } from '../../components/methods/users-words/get-user-word';
+import { createUserWord } from '../../components/methods/users-words/create-user-words';
+import { updateUserWord } from '../../components/methods/users-words/update-user-word';
+import { IUserWord, UserWords, flags } from '../../components/interfaces/interface-user-word'; 
+import { checkAutorization } from '../../components/utilits/check-autorization'; 
 
 function toggleGroupClass(index: string) {
   const allGroups = document.querySelectorAll("[data-group]");

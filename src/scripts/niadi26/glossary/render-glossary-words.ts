@@ -1,14 +1,13 @@
 import { WordCard } from './word-card';
-import { getWords } from '../components/methods/get-words';
-import { getUserWords } from '../components/methods/users-words/get-user-words';
-import { IWord } from '../components/interfaces/interface-get-word';
-import { IUserWord, UserWords } from '../components/interfaces/interface-user-word';
+import { getWords } from '../../components/methods/get-words';
+import { getUserWords } from '../../components/methods/users-words/get-user-words';
+import { IWord } from '../../components/interfaces/interface-get-word';
+import { IUserWord, UserWords } from '../../components/interfaces/interface-user-word';
 import { renderDifficultPage } from './render-difficult-words';
 import { glosarryPage } from './glossary-page';
-import { checkAutorization } from '../components/utilits/check-autorization';
+import { checkAutorization } from '../../components/utilits/check-autorization';
 import { buttonAbove } from './scroll-button';
-
-const WORDS_ON_PAGE = 20;
+import { WORDS_ON_PAGE } from './constants';
 
 export async function renderPage(parent?: HTMLElement) {
   const rootElement = parent || document.getElementById('words');

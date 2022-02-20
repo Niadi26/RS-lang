@@ -1,4 +1,4 @@
-import { ElementHTML } from './create-element';
+import { ElementHTML } from '../create-element';
 
 class ScrollButton {
   constructor() {

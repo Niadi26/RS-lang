@@ -1,7 +1,6 @@
 import { ElementHTML } from "./create-element";
 import { checkAutorization } from '../components/utilits/check-autorization';
-import { WarningGlossary } from './render-difficult-words';
-import { rootElem } from "../components/constants";
+import { WarningGlossary } from './popap';
 
 class StatisticsPage {
   // eslint-disable-next-line prettier/prettier

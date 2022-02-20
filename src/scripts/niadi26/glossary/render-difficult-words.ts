@@ -1,27 +1,16 @@
-import { getUserWords } from '../components/methods/users-words/get-user-words';
-import { getWord } from '../components/methods/get-word';
-import { UserWords, flags, Iflags } from '../components/interfaces/interface-user-word';
-import { IWord } from '../components/interfaces/interface-get-word';
+import { getUserWords } from '../../components/methods/users-words/get-user-words';
+import { getWord } from '../../components/methods/get-word';
+import { UserWords, flags, Iflags } from '../../components/interfaces/interface-user-word';
+import { IWord } from '../../components/interfaces/interface-get-word';
 import { WordCard } from './word-card';
-import { ElementHTML } from './create-element';
 import { glosarryPage } from './glossary-page';
-import { checkAutorization } from '../components/utilits/check-autorization'; 
+import { checkAutorization } from '../../components/utilits/check-autorization'; 
 import { changeUserWord } from "./glossary-functions";
+import { WarningGlossary } from '../popap';
 
 const BUTTONS_ROLES: Iflags = {
   learned: 'difficult',
   difficult: 'learned',
-}
-
-export class WarningGlossary {
-  // eslint-disable-next-line prettier/prettier
-  public node: HTMLElement;
-  
-  constructor(text: string) {
-    const wrapper = new ElementHTML('div', 'message-wrapper', '');
-    const warningText = new ElementHTML('p', '', text, '', wrapper.node);
-    this.node = wrapper.node;
-  }
 }
 
 export async function renderDifficultPage() {
@@ -33,6 +22,7 @@ export async function renderDifficultPage() {
     rootElement?.append(notise.node);
     return;
   }
+  // eslint-disable-next-line prettier/prettier
   const id = localStorage.getItem('userId') as string;
   const data: UserWords = await getUserWords(JSON.parse(id));
   const userDifficultWords = data.filter((el) => el.optional.difficult);

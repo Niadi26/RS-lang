@@ -1,11 +1,10 @@
 import { ElementHTML } from "./create-element";
 import { createPage, NAVIGATION_ID } from "./navigation";
 import { TeamMember } from "./team-member";
-
-// eslint-disable-next-line prettier/prettier
-const rootElem = document.querySelector('.main') as HTMLElement;
+import { rootElem } from "../components/constants";
 
 class MainPage {
+    // eslint-disable-next-line prettier/prettier
     public node: HTMLElement;
 
     constructor(parent: HTMLElement) {
