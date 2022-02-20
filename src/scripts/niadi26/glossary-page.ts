@@ -5,6 +5,7 @@ import { startGame } from "../mowgle88/sprint/sprint-page";
 import { sprintGameContent } from "../mowgle88/sprint/sprint-page-contant";
 import { rootElem } from "../components/constants";
 import { MAX_PAGE, GROUPS_COLOR,GROUPS_COUNT } from './glossary/constants';
+import { createNewGameAudioCall, start } from "../lenka-w1/app";
 
 class Groups {
   // eslint-disable-next-line prettier/prettier
@@ -78,8 +79,11 @@ class GlossaryPage {
     buttonAudioBg.onload = () => {  
       buttonAudio.node.style.backgroundImage = `url('${buttonAudioBg.src}')`;
     }
-    buttonAudio.node.addEventListener('click', () => {
-      console.log('audio!')
+    buttonAudio.node.addEventListener('click', async () => {
+      const createGameAudioCall = createNewGameAudioCall();
+      const group = localStorage.getItem('glossaryGroup');
+      const page = localStorage.getItem('glossaryPage');
+      await start(Number(group), Number(page), rootElem, createGameAudioCall);
     });
 
     const bookCont = new ElementHTML('div', 'glossary__cont', '', '', mainWrapper.node);

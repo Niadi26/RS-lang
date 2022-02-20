@@ -17,7 +17,8 @@ export const getUserTokens = async (integer) => {
   } catch (error) {
     console.log(error);
     if (error.response.status === 401) {
-      alert('You have been out of the system for too long! Log in again!');
+      localStorage.setItem('token', 'null');
+      localStorage.setItem('refreshToken', 'null');
     }
   }
 };
