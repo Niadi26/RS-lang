@@ -640,6 +640,11 @@ h1 {
   border-radius: 10px;
 }
 
+.wrapper__statistics {
+  position: relative;
+  height: 70vh;
+}
+
 .menu-btn {
   display: none;
 	width: 50px;

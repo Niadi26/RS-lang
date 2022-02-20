@@ -13,7 +13,7 @@ const BUTTONS_ROLES: Iflags = {
   difficult: 'learned',
 }
 
-class WarningGlossary {
+export class WarningGlossary {
   // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;
   

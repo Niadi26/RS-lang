@@ -1,7 +1,7 @@
 import { mainPage } from "./main-page";
 import { glosarryPage } from "./glossary-page";
 import { gamePage } from "./games-page";
-import { statisticsPage } from "./statistics";
+import { statisticsPage, makeStatisticsPage } from "./statistics";
 import { rootElem, navigation } from "../components/constants";
 import { audio } from "./play-audio";
 // eslint-disable-next-line prettier/prettier
@@ -29,6 +29,7 @@ export function createPage(id = 'main') {
     rootElem.append(gamePage.node);
     break;
   case NAVIGATION_ID.statistics:
+    makeStatisticsPage();
     rootElem.append(statisticsPage.node);
     break;
     }
