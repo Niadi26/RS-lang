@@ -192,3 +192,13 @@
 .svg-block:hover {
   transform: scale(1.1);
 }
+
+.right {
+  color: #4b7218;
+  text-shadow: 5px 0px 5px #387e18;
+}
+
+.wrong {
+  color: #a73a3a;
+  text-shadow: 5px 0px 5px #9c3131;
+}

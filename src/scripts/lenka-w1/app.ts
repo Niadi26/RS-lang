@@ -4,6 +4,7 @@ import { audioCall } from './GameAudioCall';
 import { newGameAudioCall } from './NewGame';
 import { IWord } from '../components/interfaces/interface-get-word';
 import { shuffle } from '../components/utilits/random';
+import { right, wrong } from '../components/utilits/audio';
 
 export let footer = document.querySelector('.footer') as HTMLElement;;
 
@@ -44,7 +45,7 @@ const addWords = (array: string[][], i: number) => {
   const value = newArr.slice(0, 4).concat(arr);
   shuffle(value);
 
-  const textContent = value.map((el, j) => `<div id="eng-${el[0]}" class="words">${j + 1} ${el[1]}</div>`);
+  const textContent = value.map((el, j) => `<div id="rus-${el[0]}" class="words">${j + 1} ${el[1]}</div>`);
   return textContent.join('\n');
 };
 
@@ -76,6 +77,7 @@ export const start = async (group: number, page: number, container: HTMLElement,
   
   const englishWord = document.querySelector('.english-word') as HTMLElement;
   englishWord.textContent = `${values[index][1]}`;
+  englishWord.id = `${values[index][0]}`;
   englishWord.style.display = 'none';
 
   const btnNext = document.querySelector('.button-next') as HTMLElement;
@@ -86,31 +88,56 @@ export const start = async (group: number, page: number, container: HTMLElement,
       img.classList.add('img-active');
       englishWord.style.display = 'block';
       btnNext.textContent = 'Next';
+      wrong.play();
     } else if (btnNext.textContent === `Next`) {
         img.classList.remove('img-active');
         btnNext.textContent = `I don't now`;
         englishWord.style.display = 'none';
+        englishWord.id = `${values[index + 1][0]}`;
         englishWord.textContent = `${values[index + 1][1]}`
         imgWord.src = `${baseUrl}/${values[index + 1][3]}`;
         sound.src = `${baseUrl}/${values[index + 1][2]}`;
         blockWords.innerHTML = addWords(wordTranslate, index + 1);
         sound.play();
-        console.log(index++)
+        index++;
         if (index === 19) index = 18;
       }
    } btnNext.addEventListener('click', switchFunction);
 
+  function rightWrongFunction(event: Event) {
+    const evt = event.target as HTMLElement;
+
+    if (evt.classList.contains('words')) {
+      const rusID = evt.id.slice(4);
+      img.classList.add('img-active');
+      englishWord.style.display = 'block';
+      btnNext.textContent = 'Next';
+
+      if(englishWord.id === rusID) {
+        evt.classList.add('right');
+        right.play();
+      }
+      else if (englishWord.id !== rusID) {
+        evt.classList.add('wrong');
+        wrong.play();
+      }
+    }
+  } blockWords.addEventListener('click', rightWrongFunction);
+   
   const navigation = document.querySelector('.nav__cont') as HTMLElement;
   navigation.addEventListener('click', (event: Event) => {
     const ev = event.target as HTMLElement;
+
     if (ev.classList.contains('nav__item')) {
       btnNext.removeEventListener('click', switchFunction);
+      blockWords.removeEventListener('click', rightWrongFunction);
     }
   });
 
   const btnCross = document.querySelector('.cross') as HTMLElement;
   btnCross.addEventListener('click', () => {
     btnNext.removeEventListener('click', switchFunction);
+    blockWords.removeEventListener('click', rightWrongFunction);
     createPageGameAudioCall();
   });
 }
