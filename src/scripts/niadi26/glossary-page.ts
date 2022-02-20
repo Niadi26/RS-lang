@@ -4,49 +4,12 @@ import { renderPage } from "./glossary/render-glossary-words";
 import { startGame } from "../mowgle88/sprint/sprint-page";
 import { sprintGameContent } from "../mowgle88/sprint/sprint-page-contant";
 import { rootElem } from "../components/constants";
-import { MAX_PAGE, GROUPS_COLOR,GROUPS_COUNT } from './glossary/constants';
+import { MAX_PAGE, GROUPS_COUNT } from './glossary/constants';
 import { createNewGameAudioCall, start } from "../lenka-w1/app";
-
-class Groups {
-  // eslint-disable-next-line prettier/prettier
-  public node: HTMLElement;
-
-  public page: HTMLElement;
-
-  constructor(num: number) {
-    const container = new ElementHTML('div', 'groups_flex', '');
-
-    const buttonsPageCont = new ElementHTML('div', 'pagination__wrapper', '', '', container.node);
-    const pageCount = new ElementHTML('p', 'pagination__text', `1/${MAX_PAGE + 1}`, '', buttonsPageCont.node);
-    const buttonPrev = new ElementHTML('button', 'button-page button-page_prev', '', '', buttonsPageCont.node);
-    buttonPrev.node.setAttribute('id', 'prev');
-    const buttonNext = new ElementHTML('button', 'button-page button-page_next', '', '', buttonsPageCont.node);
-    buttonNext.node.setAttribute('id', 'next');
-    buttonsPageCont.node.addEventListener('click', (e) => getPageCount(e));
-    
-    const bookGroupCont = new ElementHTML('div', 'glossary__groups', '', '', container.node);
-    bookGroupCont.node.addEventListener('click', (e) => getGroupCount(e));
-    const currentGroup = localStorage.getItem('glossaryGroup') || '0';
-    for(let i = 0; i < num; i++) {
-      const groupCont = new ElementHTML('button', 'glossary__group', `Level  ${i + 1}`);
-      groupCont.node.setAttribute('id', `${i}`);
-      groupCont.node.dataset["group"] = 'group';
-      groupCont.node.style.backgroundColor = `${GROUPS_COLOR[i]}`;
-      if (i == +currentGroup) groupCont.node.classList.add('group_active');
-      bookGroupCont.node.append(groupCont.node);
-      if (i === num - 1) {
-        groupCont.node.innerHTML = 'Repeat';
-        groupCont.node.setAttribute('id', `difficult`);
-      } 
-    }
-
-    this.node = container.node;
-    this.page = pageCount.node;
-  }
-}
+import { Groups } from './glossary/glossary-groups';
 
 class GlossaryPage {
-  
+  // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;
 
   public page: HTMLElement;
