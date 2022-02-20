@@ -17,6 +17,7 @@ import '../components/methods/users-words/create-user-words';
 import '../components/methods/users-words/get-user-word';
 import '../components/methods/users-words/update-user-word';
 import '../components/methods/users-words/delete-user-word';
+import '../components/methods/replace-token';
 
 import '../mowgle88/sprint/sprint-page';
 import '../mowgle88/sprint/sprint-page-contant';
