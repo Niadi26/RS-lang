@@ -4,6 +4,7 @@ import { renderPage } from "./render-glossary-words";
 import { startGame } from "../mowgle88/sprint/sprint-page";
 import { sprintGameContent } from "../mowgle88/sprint/sprint-page-contant";
 import { rootElem } from "../components/constants";
+import { createNewGameAudioCall, start } from "../lenka-w1/app";
 
 const GROUPS_COUNT = 7; // 6 groups + difficult words
 export const MAX_PAGE = 29;
@@ -89,8 +90,11 @@ class GlossaryPage {
     buttonAudioBg.onload = () => {  
       buttonAudio.node.style.backgroundImage = `url('${buttonAudioBg.src}')`;
     }
-    buttonAudio.node.addEventListener('click', () => {
-      console.log('audio!')
+    buttonAudio.node.addEventListener('click', async () => {
+      const createGameAudioCall = createNewGameAudioCall();
+      const group = localStorage.getItem('glossaryGroup');
+      const page = localStorage.getItem('glossaryPage');
+      await start(Number(group), Number(page), rootElem, createGameAudioCall);
     });
 
     const bookCont = new ElementHTML('div', 'glossary__cont', '', '', mainWrapper.node);

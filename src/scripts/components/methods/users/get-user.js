@@ -1,5 +1,5 @@
 import { callApi } from '../call-api';
-import { getUserTokens } from './get-user-tokens';
+import { replaceToken } from '../replace-token';
 
 export const getUser = async (integer) => {
   const tokenLocal = localStorage.getItem('token');
@@ -18,11 +18,7 @@ export const getUser = async (integer) => {
   } catch (error) {
     console.log(error);
     if (error.response.status === 401) {
-      const dataRes = await getUserTokens(integer);
-      const newToken = JSON.stringify(dataRes.token);
-      const newRefreshToken = JSON.stringify(dataRes.refreshToken);
-      localStorage.setItem('token', newToken);
-      localStorage.setItem('refreshToken', newRefreshToken);
+      replaceToken();
     }
     tokenLocal = localStorage.getItem('token');
     const headers = {
