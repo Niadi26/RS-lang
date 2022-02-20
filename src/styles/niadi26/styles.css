@@ -683,6 +683,7 @@ h1 {
   z-index: 100;
   font-size: 25px;
   text-transform: uppercase;
+  opacity: 0;
 }
 
 .menu__item {
@@ -692,6 +693,7 @@ h1 {
 
 .menu.active {
 	transform: translateX(0);
+  opacity: 1;
 }
 
 .menu-btn.active span:nth-of-type(1) {
