@@ -1,4 +1,4 @@
-import { sprintChooseLevelContent, sprintGameContent, sprintResultContent } from './sprint-page-contant';
+import { sprintChooseLevelContent, sprintGameContent } from './sprint-page-contant';
 import { startGame } from './sprint-page';
 import { gamePage } from '../../niadi26/games-page';
 
@@ -11,9 +11,9 @@ export const renderSprintPage = async (page, wraapper) => {
 };
 
 export const renderSprintGamePage = async (container) => {
-  // const sprintStartPage = sprintChooseLevelContent();
+  const sprintStartPage = sprintChooseLevelContent();
   const sprintGamePage = sprintGameContent();
-  const sprintStartPage = sprintResultContent();
+  // const sprintStartPage = sprintResultContent();
 
   await renderSprintPage(sprintStartPage, container);
   const stars = document.querySelector('.stars-container');
@@ -32,10 +32,4 @@ export const renderSprintGamePage = async (container) => {
     container.innerHTML = '';
     container.append(gamePage.node);
   });
-};
-
-export const renderSprinResultPage = async (container) => {
-  const sprintResultPage = sprintResultContent();
-
-  await renderSprintPage(sprintResultPage, container);
 };

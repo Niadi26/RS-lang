@@ -71,19 +71,9 @@ export const sprintResultContent = () => {
       <div class="sprint-result-words">
 
         <div class="result-right">
-          <h3 class="result-right-title">Right <span>0</span></h3>
-          <div class="sprint-word">
-            <div class="sprint-swg-right"></div>
-            <p class="sprint-">English - Russian</p>
-          </div>
         </div>
 
         <div class="result-wrong">
-          <h3 class="result-wrong-title">Wrong <span>0</span></h3>
-          <div class="sprint-word">
-            <div class="sprint-swg-wrong"></div>
-            <p class="sprint-">English - Russian</p>
-          </div>
         </div>
 
       </div>

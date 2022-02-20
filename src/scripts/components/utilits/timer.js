@@ -1,4 +1,4 @@
-import { renderSprinResultPage } from '../../mowgle88/sprint/render-sprint-game';
+import { renderSprinResultPage } from '../../mowgle88/sprint/render-sprint-result-page';
 import { rootElem } from '../constants';
 
 export const countdown = () => {
