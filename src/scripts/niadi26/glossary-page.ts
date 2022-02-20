@@ -1,21 +1,11 @@
-import { ElementHTML } from "../create-element";
-import { getGroupCount, getPageCount } from "./glossary-functions";
-import { renderPage } from "./render-glossary-words";
-import { startGame } from "../../mowgle88/sprint/sprint-page";
-import { sprintGameContent } from "../../mowgle88/sprint/sprint-page-contant";
-import { rootElem } from "../../components/constants";
+import { ElementHTML } from "./create-element";
+import { getGroupCount, getPageCount } from "./glossary/glossary-functions";
+import { renderPage } from "./glossary/render-glossary-words";
+import { startGame } from "../mowgle88/sprint/sprint-page";
+import { sprintGameContent } from "../mowgle88/sprint/sprint-page-contant";
+import { rootElem } from "../components/constants";
+import { MAX_PAGE, GROUPS_COLOR,GROUPS_COUNT } from './glossary/constants';
 
-const GROUPS_COUNT = 7; // 6 groups + difficult words
-export const MAX_PAGE = 29;
- export const GROUPS_COLOR = [
-  'rgb(237, 20, 201)',
-  'rgb(146, 20, 237)',
-  'rgb(20, 197, 237)',
-  'rgb(99, 237, 20)',
-  'rgb(237, 230, 20)',
-  'rgb(240, 168, 60)',
-  'rgb(240, 87, 60)',
-]
 class Groups {
   // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;
@@ -55,7 +45,7 @@ class Groups {
 }
 
 class GlossaryPage {
-  // eslint-disable-next-line prettier/prettier
+  
   public node: HTMLElement;
 
   public page: HTMLElement;

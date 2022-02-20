@@ -3,7 +3,7 @@ import { getWord } from '../../components/methods/get-word';
 import { UserWords, flags, Iflags } from '../../components/interfaces/interface-user-word';
 import { IWord } from '../../components/interfaces/interface-get-word';
 import { WordCard } from './word-card';
-import { glosarryPage } from './glossary-page';
+import { glosarryPage } from '../glossary-page';
 import { checkAutorization } from '../../components/utilits/check-autorization'; 
 import { changeUserWord } from "./glossary-functions";
 import { WarningGlossary } from '../popap';

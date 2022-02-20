@@ -1,5 +1,5 @@
 import { renderPage } from "./render-glossary-words";
-import { glosarryPage } from './glossary-page';
+import { glosarryPage } from '../glossary-page';
 import { MAX_PAGE } from "./constants";
 import { renderDifficultPage } from './render-difficult-words';
 import { getUserWord } from '../../components/methods/users-words/get-user-word';

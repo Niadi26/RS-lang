@@ -4,7 +4,7 @@ import { getUserWords } from '../../components/methods/users-words/get-user-word
 import { IWord } from '../../components/interfaces/interface-get-word';
 import { IUserWord, UserWords } from '../../components/interfaces/interface-user-word';
 import { renderDifficultPage } from './render-difficult-words';
-import { glosarryPage } from './glossary-page';
+import { glosarryPage } from '../glossary-page';
 import { checkAutorization } from '../../components/utilits/check-autorization';
 import { buttonAbove } from './scroll-button';
 import { WORDS_ON_PAGE } from './constants';

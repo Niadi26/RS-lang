@@ -1,5 +1,5 @@
 import { mainPage } from "./main-page";
-import { glosarryPage } from "./glossary/glossary-page";
+import { glosarryPage } from "./glossary-page";
 import { gamePage } from "./games-page";
 import { statisticsPage, makeStatisticsPage } from "./statistics";
 import { rootElem, navigation } from "../components/constants";
