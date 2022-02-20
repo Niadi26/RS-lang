@@ -256,6 +256,7 @@ h1 {
   flex: 0 0 150px;
   background-color: rgb(60, 65, 107);
   position: relative;
+  z-index: 1;
 }
 
 .groups_flex {
@@ -517,7 +518,8 @@ h1 {
   .glossary__word {
     flex-direction: column;
     flex: 1 0 290px;
-    height: 500px;
+    height: auto;
+    padding-top: 65px;
   }
   .word__img {
     width: 80%;
