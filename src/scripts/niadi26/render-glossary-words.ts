@@ -6,6 +6,7 @@ import { IUserWord, UserWords } from '../components/interfaces/interface-user-wo
 import { renderDifficultPage } from './render-difficult-words';
 import { glosarryPage } from './glossary-page';
 import { checkAutorization } from '../components/utilits/check-autorization';
+import { buttonAbove } from './scroll-button';
 
 const WORDS_ON_PAGE = 20;
 
@@ -59,6 +60,7 @@ export async function renderPage(parent?: HTMLElement) {
       }
       rootElement.append(item.node);
     });
+    rootElement.append(buttonAbove.node);
     if (userWords.length === WORDS_ON_PAGE) {
       rootElement.classList.add('glossary__pages-learned');
       glosarryPage.gameButtons.style.pointerEvents = 'none';
