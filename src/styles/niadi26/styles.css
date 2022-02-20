@@ -456,9 +456,9 @@ h1 {
 }
 
 .pagination__wrapper {
-  width: 90px;
-  height: 50px;
-  margin: 20px auto;
+  width: 150px;
+  height: 70px;
+  margin: 10px auto;
   padding: 5px;
 }
 
@@ -491,6 +491,10 @@ h1 {
   transform: rotate(-90deg);
 }
 
+.button-little {
+  width: 25px;
+  height: 25px;
+}
 
 @media(max-width:750px) {
   .glossary__settings {
@@ -501,7 +505,7 @@ h1 {
   }
 }
 
-@media(max-width:600px) {
+@media(max-width:650px) {
   .glossary__cont {
     flex-direction: column;
   }
@@ -512,7 +516,7 @@ h1 {
   }
   .glossary__word {
     flex-direction: column;
-    flex: 1 0 270px;
+    flex: 1 0 290px;
     height: 500px;
   }
   .word__img {

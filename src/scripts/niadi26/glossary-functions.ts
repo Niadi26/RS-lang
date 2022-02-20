@@ -43,6 +43,14 @@ export function getPageCount(event: Event) {
     newPage = +currentPage + 1;
     if(newPage > MAX_PAGE) return;
   }
+  if (element.id === 'first') {
+    newPage = 0;
+    if(newPage > MAX_PAGE) return;
+  }
+  if (element.id === 'last') {
+    newPage = MAX_PAGE;
+    if(newPage > MAX_PAGE) return;
+  }
   localStorage.setItem('glossaryPage', `${newPage}`);
   glosarryPage.changePage(newPage);
   renderPage();

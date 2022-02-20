@@ -28,10 +28,14 @@ class Groups {
 
     const buttonsPageCont = new ElementHTML('div', 'pagination__wrapper', '', '', container.node);
     const pageCount = new ElementHTML('p', 'pagination__text', `1/${MAX_PAGE + 1}`, '', buttonsPageCont.node);
+    const buttonFirst = new ElementHTML('button', 'button-page button-page_prev button-little', '', '', buttonsPageCont.node);
+    buttonFirst.node.setAttribute('id', 'first');
     const buttonPrev = new ElementHTML('button', 'button-page button-page_prev', '', '', buttonsPageCont.node);
     buttonPrev.node.setAttribute('id', 'prev');
     const buttonNext = new ElementHTML('button', 'button-page button-page_next', '', '', buttonsPageCont.node);
     buttonNext.node.setAttribute('id', 'next');
+    const buttonLast = new ElementHTML('button', 'button-page button-page_next button-little', '', '', buttonsPageCont.node);
+    buttonLast.node.setAttribute('id', 'last');
     buttonsPageCont.node.addEventListener('click', (e) => getPageCount(e));
     
     const bookGroupCont = new ElementHTML('div', 'glossary__groups', '', '', container.node);
