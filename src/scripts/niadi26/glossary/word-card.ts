@@ -1,9 +1,9 @@
-import { ElementHTML } from "./create-element";
-import { GROUPS_COLOR } from "./glossary-page";
+import { ElementHTML } from "../create-element";
+import { GROUPS_COLOR } from "./constants";
 import { playAudio } from "./play-audio";
 import { changeUserWord } from "./glossary-functions";
+import { rootHTTP } from "../../components/constants";
 
-export const rootHTTP = 'https://react-rslang-by.herokuapp.com/';
 export class WordCard {
   // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;

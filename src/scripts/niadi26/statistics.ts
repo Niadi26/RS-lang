@@ -1,11 +1,13 @@
 import { ElementHTML } from "./create-element";
+import { checkAutorization } from '../components/utilits/check-autorization';
+import { WarningGlossary } from './popap';
 
 class StatisticsPage {
   // eslint-disable-next-line prettier/prettier
   public node: HTMLElement;
   
   constructor() {
-    const mainWrapper = new ElementHTML('div', 'wrapper', '');
+    const mainWrapper = new ElementHTML('div', 'wrapper wrapper__statistics', '');
     const pageName = new ElementHTML('h2', '', 'Statistics for today', '', mainWrapper.node);
     const countsCont = new ElementHTML('div', '', '', '', mainWrapper.node);
     const newCount = new ElementHTML('div', '', '', '', countsCont.node);
@@ -33,4 +35,16 @@ class StatisticsPage {
   }
 }
 
-export const statisticsPage = new StatisticsPage();
+export let statisticsPage = new StatisticsPage();
+
+export function makeStatisticsPage() {
+  const autorization = checkAutorization();
+  if (!autorization) {
+    const statisticsWarning = new WarningGlossary('Please, autorizate to use this opportunity!');
+    statisticsPage.node.innerHTML = '';
+    statisticsPage.node.append(statisticsWarning.node);
+  } else {
+    statisticsPage.node.innerHTML = '';
+    statisticsPage = new StatisticsPage();
+  }
+}

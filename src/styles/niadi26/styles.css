@@ -256,6 +256,7 @@ h1 {
   flex: 0 0 150px;
   background-color: rgb(60, 65, 107);
   position: relative;
+  z-index: 1;
 }
 
 .groups_flex {
@@ -285,6 +286,7 @@ h1 {
 }
 
 .glossary__pages {
+  position: relative;
   flex: auto;
   display: flex;
   gap: 15px;
@@ -455,9 +457,9 @@ h1 {
 }
 
 .pagination__wrapper {
-  width: 90px;
-  height: 50px;
-  margin: 20px auto;
+  width: 150px;
+  height: 70px;
+  margin: 10px auto;
   padding: 5px;
 }
 
@@ -490,6 +492,10 @@ h1 {
   transform: rotate(-90deg);
 }
 
+.button-little {
+  width: 25px;
+  height: 25px;
+}
 
 @media(max-width:750px) {
   .glossary__settings {
@@ -500,7 +506,7 @@ h1 {
   }
 }
 
-@media(max-width:600px) {
+@media(max-width:650px) {
   .glossary__cont {
     flex-direction: column;
   }
@@ -511,8 +517,9 @@ h1 {
   }
   .glossary__word {
     flex-direction: column;
-    flex: 1 0 270px;
-    height: 500px;
+    flex: 1 0 290px;
+    height: auto;
+    padding-top: 65px;
   }
   .word__img {
     width: 80%;
@@ -633,6 +640,11 @@ h1 {
   border-radius: 10px;
 }
 
+.wrapper__statistics {
+  position: relative;
+  height: 70vh;
+}
+
 .menu-btn {
   display: none;
 	width: 50px;
@@ -678,6 +690,7 @@ h1 {
   z-index: 100;
   font-size: 25px;
   text-transform: uppercase;
+  opacity: 0;
 }
 
 .menu__item {
@@ -687,6 +700,7 @@ h1 {
 
 .menu.active {
 	transform: translateX(0);
+  opacity: 1;
 }
 
 .menu-btn.active span:nth-of-type(1) {
@@ -721,4 +735,50 @@ h1 {
     padding: 30px 5px;
     font-size: 13px;
   }
+}
+
+.wrapper__button-scroll{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 90%;
+  left: 90%;
+  background-image: url(../../assets/niadi26/scroll.svg);
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  opacity: 0.2;
+}
+
+.button-above {
+  width: 40px;
+  height: 40px;
+  bottom: 2%;
+  right: 4%;
+  position: fixed;
+  display: none;
+  background-image: url(../../assets/niadi26/scroll.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 10;
+  cursor: pointer;
+  filter: brightness(0) saturate(100%) invert(0) sepia(0) saturate(549%)
+      hue-rotate(356deg) brightness(100%) contrast(92%) drop-shadow( -3px 3px 3px rgba(0, 0, 0, .7));
+  user-select: none;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.3;
+}
+
+.button-above:hover {
+  transform: scale(0.9);
+  opacity: 1;
+}
+
+.button-above:active {
+  transform: scale(0.8);
+}
+
+.button-above.but-active {
+  display: block;
 }
