@@ -54,7 +54,39 @@ export const sprintGameContent = () => {
 
 export const sprintResultContent = () => {
   return `
-  <div class="panel">
-    
+  <div class="result-panel">
+    <div class="result-header">
+      <h1 class="sprint-result-title">Result</h1>
+      <div class="result-buttons">
+        <button class="play-again-btn">play again</button>
+        <button class="sprint-result-back-btn">back to games</button>
+      </div>
+    </div>
+    <div class="result-main">
+      <div class="sprint-result-score">You have scored <span>0</span> points</div>
+      <div class="sprint-result-container">
+        <div class="right-answers">Right answers <span>0</span></div>
+        <div class="mistakes">Mistakes <span>0</span></div>
+      </div>
+      <div class="sprint-result-words">
+
+        <div class="result-right">
+          <h3 class="result-right-title">Right <span>0</span></h3>
+          <div class="sprint-word">
+            <div class="sprint-swg-right"></div>
+            <p class="sprint-">English - Russian</p>
+          </div>
+        </div>
+
+        <div class="result-wrong">
+          <h3 class="result-wrong-title">Wrong <span>0</span></h3>
+          <div class="sprint-word">
+            <div class="sprint-swg-wrong"></div>
+            <p class="sprint-">English - Russian</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>`;
 };

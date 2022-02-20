@@ -2,7 +2,7 @@ import { callApi } from '../call-api';
 import { getUserTokens } from './get-user-tokens';
 
 export const getUser = async (integer) => {
-  const token = localStorage.getItem('token');
+  const tokenLocal = localStorage.getItem('token');
   const method = 'GET';
   const url = `/users/${integer}`;
   const body = {};
@@ -10,7 +10,7 @@ export const getUser = async (integer) => {
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${JSON.parse(token)}`,
+      Authorization: `Bearer ${JSON.parse(tokenLocal)}`,
     };
     const response = await callApi(method, url, body, headers);
     // console.log(response.data);
@@ -24,11 +24,11 @@ export const getUser = async (integer) => {
       localStorage.setItem('token', newToken);
       localStorage.setItem('refreshToken', newRefreshToken);
     }
-    token = localStorage.getItem('token');
+    tokenLocal = localStorage.getItem('token');
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${JSON.parse(token)}`,
+      Authorization: `Bearer ${JSON.parse(tokenLocal)}`,
     };
     const response = await callApi(method, url, body, headers);
     return response.data;
