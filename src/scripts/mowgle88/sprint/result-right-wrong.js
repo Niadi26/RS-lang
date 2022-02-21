@@ -4,13 +4,15 @@ export const addRightResults = async () => {
   if (localStorage.getItem('rightID')) {
     const rightId = localStorage.getItem('rightID');
     const rightIdArray = JSON.parse(rightId);
-    const IdArray = [];
-    for await (let id of rightIdArray) {
+
+    const resultsArray = rightIdArray.map(async (id) => {
       const data = await getWord(id);
       const options = [data.audio, data.word, data.wordTranslate];
-      IdArray.push(options);
-    }
-    let contant = IdArray.map(
+      return options;
+    });
+    const endResult = await Promise.all(resultsArray);
+
+    let contant = endResult.map(
       (el, ind) =>
         `<div class="sprint-word">
           <div id="sprint-audio-${ind}" class="sprint-swg-right">
@@ -19,7 +21,6 @@ export const addRightResults = async () => {
           <p class="sprint-">${el[1]} - ${el[2]}</p>
         </div>`
     );
-    // console.log(contant.join('\n'));
     return contant.join('\n');
   } else {
     return '';
@@ -30,13 +31,14 @@ export const addWrongResults = async () => {
   if (localStorage.getItem('wrongID')) {
     const wrongId = localStorage.getItem('wrongID');
     const wrongIdArray = JSON.parse(wrongId);
-    const IdArray = [];
-    for await (let id of wrongIdArray) {
+
+    const resultsArray = wrongIdArray.map(async (id) => {
       const data = await getWord(id);
       const options = [data.audio, data.word, data.wordTranslate];
-      IdArray.push(options);
-    }
-    let contant = IdArray.map(
+      return options;
+    });
+    const endResult = await Promise.all(resultsArray);
+    let contant = endResult.map(
       (el) =>
         `<div class="sprint-word">
           <div class="sprint-swg-right">
@@ -45,7 +47,6 @@ export const addWrongResults = async () => {
           <p class="sprint-">${el[1]} - ${el[2]}</p>
         </div>`
     );
-    // console.log(contant.join('\n'));
     return contant.join('\n');
   } else {
     return '';
