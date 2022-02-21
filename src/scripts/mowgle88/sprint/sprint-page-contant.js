@@ -70,11 +70,9 @@ export const sprintResultContent = () => {
       </div>
       <div class="sprint-result-words">
 
-        <div class="result-right">
-        </div>
+        <div class="result-right">Wait for the results</div>
 
-        <div class="result-wrong">
-        </div>
+        <div class="result-wrong">Wait for the results</div>
 
       </div>
     </div>

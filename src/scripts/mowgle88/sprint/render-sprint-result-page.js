@@ -18,8 +18,9 @@ export const renderSprinResultPage = async (container) => {
 
   const rightContainer = document.querySelector('.result-right');
   const wrongContainer = document.querySelector('.result-wrong');
-  rightContainer.innerHTML = rightResults;
-  wrongContainer.innerHTML = wrongResults;
+
+  rightContainer.innerHTML = rightResults ? rightResults : 'no correct answer';
+  wrongContainer.innerHTML = wrongResults ? wrongResults : 'no wrong answer';
   localStorage.removeItem('rightID');
   localStorage.removeItem('wrongID');
 
@@ -31,9 +32,9 @@ export const renderSprinResultPage = async (container) => {
     });
   });
 
-  sprintScore.textContent = localStorage.getItem('sprintScore');
-  rightAnswers.textContent = localStorage.getItem('rightCount');
-  mistakes.textContent = localStorage.getItem('wrongCount');
+  sprintScore.textContent = localStorage.getItem('sprintScore') ? localStorage.getItem('sprintScore') : 0;
+  rightAnswers.textContent = localStorage.getItem('rightCount') ? localStorage.getItem('rightCount') : 0;
+  mistakes.textContent = localStorage.getItem('wrongCount') ? localStorage.getItem('wrongCount') : 0;
 
   playAgainBtn.addEventListener('click', async () => {
     localStorage.removeItem('sprintScore');

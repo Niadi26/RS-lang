@@ -38,14 +38,14 @@ export const startGame = async (group, page, container, func) => {
       isRight();
       rightArray.push(word[index][0]);
       localStorage.setItem('rightID', JSON.stringify(rightArray));
-      console.log(rightArray);
+      // console.log(rightArray);
       rightCount += 1;
       localStorage.setItem('rightCount', rightCount);
     } else {
       isWrong();
       wrongArray.push(word[index][0]);
       localStorage.setItem('wrongID', JSON.stringify(wrongArray));
-      console.log(wrongArray);
+      // console.log(wrongArray);
       wrongCount += 1;
       localStorage.setItem('wrongCount', wrongCount);
     }
@@ -72,12 +72,12 @@ export const startGame = async (group, page, container, func) => {
       localStorage.setItem('wrongID', JSON.stringify(wrongArray));
       wrongCount += 1;
       localStorage.setItem('wrongCount', wrongCount);
-      console.log(wrongArray);
+      // console.log(wrongArray);
     } else {
       isRight();
       rightArray.push(word[index][0]);
       localStorage.setItem('rightID', JSON.stringify(rightArray));
-      console.log(rightArray);
+      // console.log(rightArray);
       rightCount += 1;
       localStorage.setItem('rightCount', rightCount);
     }
