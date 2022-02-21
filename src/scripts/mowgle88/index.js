@@ -24,6 +24,9 @@ import '../mowgle88/sprint/sprint-page-contant';
 import '../mowgle88/sprint/render-sprint-game';
 import '../mowgle88/sprint/get-words-for-sprint';
 import '../mowgle88/sprint/right-wrong';
+import '../mowgle88/sprint/result-right-wrong';
+import '../mowgle88/sprint/render-sprint-result-page';
+
 import '../components/utilits/timer';
 import '../components/utilits/audio';
 import '../components/utilits/random';

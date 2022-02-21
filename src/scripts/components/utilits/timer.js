@@ -1,3 +1,6 @@
+import { renderSprinResultPage } from '../../mowgle88/sprint/render-sprint-result-page';
+import { rootElem } from '../constants';
+
 export const countdown = () => {
   let timer;
   let x = 60;
@@ -7,6 +10,7 @@ export const countdown = () => {
       x -= 1;
       if (x < 0) {
         clearTimeout(timer);
+        renderSprinResultPage(rootElem);
         x = 60;
       } else {
         timer = setTimeout(turnOnTimer, 1000);

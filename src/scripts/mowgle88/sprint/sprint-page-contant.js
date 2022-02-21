@@ -11,7 +11,7 @@ export const sprintChooseLevelContent = () => {
       <button id="sprint-level-btn-5" class="star star-blue btn-animation">5</button>
       <button id="sprint-level-btn-6" class="star star-navyblue btn-animation">6</button>
     </div>
-    <button class="sprint-back-btn btn-animation">back to home</button>
+    <button class="sprint-back-btn btn-animation">back to games</button>
   </div>`;
 };
 
@@ -54,7 +54,29 @@ export const sprintGameContent = () => {
 
 export const sprintResultContent = () => {
   return `
-  <div class="panel">
-    
+  <div class="result-panel">
+    <div class="result-header">
+      <h1 class="sprint-result-title">Result</h1>
+      <div class="result-buttons">
+        <button class="play-again-btn">play again</button>
+        <button class="sprint-result-back-btn">back to games</button>
+      </div>
+    </div>
+    <div class="result-main">
+      <div class="sprint-result-score">You have scored <span>0</span> points</div>
+      <div class="sprint-result-container">
+        <div class="right-answers">Right answers <span>0</span></div>
+        <div class="mistakes">Mistakes <span>0</span></div>
+      </div>
+      <div class="sprint-result-words">
+
+        <div class="result-right">
+        </div>
+
+        <div class="result-wrong">
+        </div>
+
+      </div>
+    </div>
   </div>`;
 };
