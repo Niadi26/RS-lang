@@ -202,3 +202,63 @@
   color: #a73a3a;
   text-shadow: 5px 0px 5px #9c3131;
 }
+
+@media screen and (max-width: 731px) {
+
+  .block-words {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  
+  .block-about-game {
+    width: 400px;
+    height: 300px;
+  }
+
+  .block-title {
+    font-size: 35px;
+  }
+
+  .block-text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 439px) {
+  
+  .block-about-game {
+    width: 85%;
+    height: 720px;
+    justify-content: space-around;
+    padding: 20px;
+  }
+
+  .block-title {
+    font-size: 32px;
+  }
+
+  .block-text {
+    font-size: 30px;
+  }
+
+  .stars {
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .back-button {
+    height: 40px;
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .block-title {
+    font-size: 30px;
+  }
+}

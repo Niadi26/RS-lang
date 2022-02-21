@@ -30,7 +30,6 @@ const getWordTranslate = async (group: number, page: number) => {
 
 const getElementForAudioGame = async (group: number, page: number) => {
   const wordsApi = await getWords(group, page);
-  console.log(wordsApi)
   const word = await wordsApi.map((el: IWord) => [el.id, el.word, el.audio, el.image]);
   return word;
 };
@@ -48,7 +47,6 @@ const addWords = (array: string[][], i: number) => {
   const textContent = value.map((el, j) => `<div id="rus-${el[0]}" class="words">${j + 1} ${el[1]}</div>`);
   return textContent.join('\n');
 };
-
 
 export const start = async (group: number, page: number, container: HTMLElement, func: void) => {
   const baseUrl = 'https://react-rslang-by.herokuapp.com';
@@ -84,10 +82,18 @@ export const start = async (group: number, page: number, container: HTMLElement,
   btnNext.textContent = `I don't now`;
 
   function switchFunction() {
+    const allWords = document.querySelectorAll('.words') as NodeListOf<Element>;
+
     if (btnNext.textContent === `I don't now`) {
       img.classList.add('img-active');
       englishWord.style.display = 'block';
       btnNext.textContent = 'Next';
+
+      for (let item of allWords) {
+        if (englishWord.id === item.id.slice(4)) {
+          item.classList.add('right');
+        }
+      }
       wrong.play();
     } else if (btnNext.textContent === `Next`) {
         img.classList.remove('img-active');
@@ -100,11 +106,13 @@ export const start = async (group: number, page: number, container: HTMLElement,
         blockWords.innerHTML = addWords(wordTranslate, index + 1);
         sound.play();
         index++;
+        
         if (index === 19) index = 18;
       }
    } btnNext.addEventListener('click', switchFunction);
 
   function rightWrongFunction(event: Event) {
+    const allWords = document.querySelectorAll('.words') as NodeListOf<Element>;
     const evt = event.target as HTMLElement;
 
     if (evt.classList.contains('words')) {
@@ -113,12 +121,19 @@ export const start = async (group: number, page: number, container: HTMLElement,
       englishWord.style.display = 'block';
       btnNext.textContent = 'Next';
 
-      if(englishWord.id === rusID) {
+      if (englishWord.id === rusID) {
         evt.classList.add('right');
         right.play();
       }
       else if (englishWord.id !== rusID) {
         evt.classList.add('wrong');
+
+        for (let item of allWords) {
+          if (englishWord.id === item.id.slice(4)) {
+            item.classList.add('right');
+          }
+        }
+
         wrong.play();
       }
     }
