@@ -11,7 +11,7 @@ class MainPage {
         const mainWrapper = new ElementHTML('div', 'main__wrapper', '', '', parent);
         const sectionName = new ElementHTML('section', 'section section__name', '', '', mainWrapper.node);
         const sectionNameBg = new Image();
-        sectionNameBg.src = '../assets/niadi26/main-bg.jpg';
+        sectionNameBg.src = 'assets/niadi26/main-bg.jpg';
         sectionNameBg.onload = () => {  
             sectionName.node.style.backgroundImage = `url('${sectionNameBg.src}')`;
         }
@@ -20,14 +20,14 @@ class MainPage {
         const buttonsCont = new ElementHTML('div', '', '', '', sectionNameWrapper.node);
         const grammaButton = new ElementHTML('button', 'button-main', '', '', buttonsCont.node);
         const grammaButtonBg = new Image();
-        grammaButtonBg.src = '../assets/niadi26/book-icon.jpg';
+        grammaButtonBg.src = 'assets/niadi26/book-icon.jpg';
         grammaButtonBg.onload = () => {  
             grammaButton.node.style.backgroundImage = `url('${grammaButtonBg.src}')`;
         }
         grammaButton.node.addEventListener('click', () => createPage(NAVIGATION_ID.glossary));
         const gamesButton = new ElementHTML('button', 'button-main', '', '', buttonsCont.node);
         const gamesButtonBg = new Image();
-        gamesButtonBg.src = '../assets/niadi26/games-icon.png';
+        gamesButtonBg.src = 'assets/niadi26/games-icon.png';
         gamesButtonBg.onload = () => {  
             gamesButton.node.style.backgroundImage = `url('${gamesButtonBg.src}')`;
         }
@@ -56,9 +56,12 @@ class MainPage {
         const sectionTeam = new ElementHTML('section', 'section section__team', '', '', mainWrapper.node);
         const titleTeam = new ElementHTML('h2', 'section__title', 'About our team', '', sectionTeam.node);
         const sectionTeamWrapper = new ElementHTML('div', 'section__wrapper wrapper', '', '', sectionTeam.node);
-        const teamMember1 = new TeamMember('Diana', 'Team Lead, Frontend developer', '', 'https://github.com/Niadi26', 'Glossary');
-        const teamMember2 = new TeamMember('Dmitry', 'Frontend developer', '', 'https://github.com/Mowgle88', 'Sprint');
-        const teamMember3 = new TeamMember('Elena', 'Frontend developer', '', 'https://github.com/lenka-w1', 'Audiochallange');
+        const teamMember1 = new TeamMember('Diana', 'Team Lead, Frontend developer', '1', 'https://github.com/Niadi26', `
+                            Designed layout of the application, made main,minigames and statistics page. Set up page navigation and burger-menu. 
+                            Developed all stuffs on textbook page: design, word cards, links to mini games, group selection, pagination.`);
+        const teamMember2 = new TeamMember('Dmitry', 'Frontend developer', '2', 'https://github.com/Mowgle88', `
+                            Did basic project settings, setting up webpack, ESlint, typescript, set up user registration and authorization, backend, author of the mini-game "Sprint"!`);
+        const teamMember3 = new TeamMember('Elena', 'Frontend developer', '3', 'https://github.com/lenka-w1', 'Author of the mini-game Audiochallange');
         sectionTeamWrapper.node.append(teamMember1.node, teamMember2.node, teamMember3.node);
         this.node = mainWrapper.node;
     }

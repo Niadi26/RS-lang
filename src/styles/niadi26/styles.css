@@ -139,7 +139,7 @@ h1 {
   justify-content: space-between;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 860px) {
   .section__wrapper {
     flex-direction: column;
     align-items: center;
@@ -177,11 +177,14 @@ h1 {
 }
 
 .member {
+  flex: 0 0 30%;
+  min-width: 200px;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
+
 .member__photo {
   width: 170px;
   height: 170px;
@@ -304,7 +307,7 @@ h1 {
 .glossary__word {
   position: relative;
   overflow: hidden;
-  flex: 1 0 450px;
+  flex: 1 0 458px;
   display: flex;
   align-items: center;
   width: 49%;
@@ -411,7 +414,7 @@ h1 {
   position: absolute;
   overflow: hidden;
   top: 10px;
-  left: -2px;
+  left: -3px;
   border: 1px solid #000;
   transition: width 0.5s ease-out;
   color: #000;
@@ -679,7 +682,7 @@ h1 {
 
 .menu {
 	position: absolute;
-	top: 10vh;
+	top: 8vh;
 	left: 0;
 	width: 220px;
 	height: 260px;
@@ -743,7 +746,7 @@ h1 {
   position: fixed;
   top: 90%;
   left: 90%;
-  background-image: url(../../assets/niadi26/scroll.svg);
+  background-image: url('../../assets/niadi26/scroll.svg');
   background-position: center;
   background-size: cover;
   cursor: pointer;
@@ -757,7 +760,7 @@ h1 {
   right: 4%;
   position: fixed;
   display: none;
-  background-image: url(../../assets/niadi26/scroll.svg);
+  background-image: url('../../assets/niadi26/scroll.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

@@ -25,7 +25,7 @@ class GlossaryPage {
     const notPlayText = new ElementHTML('p', 'play_text not-play_text hidden', 'All words learned!', '', buttonsCont.node);
     const buttonSprint = new ElementHTML('button', 'button-glossary', '', '', buttonsCont.node);
     const buttonSprintBg = new Image();
-    buttonSprintBg.src = '../assets/niadi26/race-cat.png';
+    buttonSprintBg.src = 'assets/niadi26/race-cat.png';
     buttonSprintBg.onload = () => {  
       buttonSprint.node.style.backgroundImage = `url('${buttonSprintBg.src}')`;
     }
@@ -38,7 +38,7 @@ class GlossaryPage {
 
     const buttonAudio = new ElementHTML('button', 'button-glossary', '', '', buttonsCont.node);
     const buttonAudioBg = new Image();
-    buttonAudioBg.src = '../assets/niadi26/audio-cat.png';
+    buttonAudioBg.src = 'assets/niadi26/audio-cat.png';
     buttonAudioBg.onload = () => {  
       buttonAudio.node.style.backgroundImage = `url('${buttonAudioBg.src}')`;
     }
