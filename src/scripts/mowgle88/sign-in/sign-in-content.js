@@ -3,7 +3,7 @@ export const authorizationContant = () => {
   <form class="modal-content animate" action="/action_page.php">
       <div class="img-container">
         <span class="close" title="Close Modal">×</span>
-        <img src="../../../assets/img_avatar2.png" alt="Avatar" class="avatar">
+        <img src="./assets/img_avatar2.png" alt="Avatar" class="avatar">
       </div>
 
       <div class="login-container">
