@@ -13,7 +13,7 @@ export const createUserWord = async (userId, wordId, word) => {
     const body = JSON.stringify(word);
     const response = await callApi(method, url, body, headers);
     const dataRes = response.data;
-    console.log(dataRes);
+    // console.log(dataRes);
     return dataRes;
   } catch (error) {
     console.log(error);
