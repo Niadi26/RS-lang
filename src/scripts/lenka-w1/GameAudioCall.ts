@@ -25,7 +25,7 @@ class GameAudioCall {
     for(let i = 1; i < 7; i++) {
       btnStar = new ElementHTML('button', 'star btn-animation num-stars', `${i}`);
       btnStar.node.id = `star-level-${i}`;
-      btnStar.node.style.backgroundImage = `url(../../assets/lenka-w1/star_${i}.svg)`;
+      btnStar.node.style.backgroundImage = `url(./assets/lenka-w1/star_${i}.svg)`;
       if(i === 1) btnStar.node.classList.add('first');
       if(i === 2) btnStar.node.classList.add('second');
       if(i === 3) btnStar.node.classList.add('third');
