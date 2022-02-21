@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.5s;
+  color: #FFFFFF;
+ }
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #FFFFFF;
+  background-color: rgb(152, 211, 243);
+}
+
+.wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.header,
+.footer {
+  height:70px;
+  overflow: hidden;
+  background-color: rgb(60, 65, 107)
+}
+
+
+.header__wrapper,
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.footer__wrapper {
+  padding: 25px;
+  text-transform: uppercase;
+}
+
+.nav__cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__item {
+  padding: 10px 20px 10px 0;
+  font-size: 23px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 1s;
+}
+
+@media (max-width: 750px){
+  .nav__item {
+    display: none;
+  }
+}
+
+.nav__item:after,
+.menu__item::after {
+  display: block;
+  position: relative;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: rgb(255, 255, 255);
+  content: "";
+  transition: width 0.8s ease-out;
+}
+
+
+.button-log {
+  width: 150px;
+  height: 40px;
+  padding: 10px 20px;
+  font-size: 18px;
+  transition: 1.5s;
+  border: 2px solid #000000
+}
+
+@media (max-width: 750px){
+  .menu-btn {
+    display: block;
+  }
+}
+
+.menu-btn {
+  display: none;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  z-index:2;
+  overflow: hidden;
+}
+
+
+.menu-btn span {
+  width: 30px;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  background-color: #ffffff;
+  transition: all 0.5s;
+}
+.menu-btn span:nth-of-type(2) {
+  top: calc(50% - 5px);
+}
+.menu-btn span:nth-of-type(3) {
+  top: calc(50% + 5px);
+}
+
+.menu {
+  position: absolute;
+  transform: translateX(-100%);
+  top: 10vh;
+  left: 0;
+  width: 220px;
+  height: 260px;
+  padding: 15px;
+  background-color: rgb(60, 65, 107);
+  transition: transform 0.5s; 
+  z-index: 100;
+  font-size: 25px;
+  text-transform: uppercase;
+}
