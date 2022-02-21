@@ -6,10 +6,16 @@ import { getWordForSprint, getWordTranslateForSprint, getOption } from './get-wo
 import { isRight, isWrong } from './right-wrong';
 
 export const startGame = async (group, page, container, func) => {
+  localStorage.setItem('currentGroup', group);
+  localStorage.setItem('currentPage', page);
   let word = await getWordForSprint(group, page);
   let wordTranslate = await getWordTranslateForSprint(group, page);
   let index = 0;
+  let rightCount = 0;
+  let wrongCount = 0;
   let value = getOption(wordTranslate, index);
+  const wrongArray = [];
+  const rightArray = [];
 
   await renderSprintPage(func, container);
 
@@ -30,8 +36,18 @@ export const startGame = async (group, page, container, func) => {
     }
     if (word[index][0] === value[0]) {
       isRight();
+      rightArray.push(word[index][0]);
+      localStorage.setItem('rightID', JSON.stringify(rightArray));
+      console.log(rightArray);
+      rightCount += 1;
+      localStorage.setItem('rightCount', rightCount);
     } else {
       isWrong();
+      wrongArray.push(word[index][0]);
+      localStorage.setItem('wrongID', JSON.stringify(wrongArray));
+      console.log(wrongArray);
+      wrongCount += 1;
+      localStorage.setItem('wrongCount', wrongCount);
     }
     index += 1;
     value = getOption(wordTranslate, index);
@@ -52,8 +68,18 @@ export const startGame = async (group, page, container, func) => {
     }
     if (word[index][0] === value[0]) {
       isWrong();
+      wrongArray.push(word[index][0]);
+      localStorage.setItem('wrongID', JSON.stringify(wrongArray));
+      wrongCount += 1;
+      localStorage.setItem('wrongCount', wrongCount);
+      console.log(wrongArray);
     } else {
       isRight();
+      rightArray.push(word[index][0]);
+      localStorage.setItem('rightID', JSON.stringify(rightArray));
+      console.log(rightArray);
+      rightCount += 1;
+      localStorage.setItem('rightCount', rightCount);
     }
     index += 1;
     value = getOption(wordTranslate, index);

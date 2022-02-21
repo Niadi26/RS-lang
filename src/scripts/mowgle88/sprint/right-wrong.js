@@ -22,6 +22,7 @@ export const isRight = () => {
   panel.classList.add('panel-right');
   right.currentTime = 0;
   right.play();
+  localStorage.setItem('sprintScore', score.textContent);
 };
 
 export const isWrong = () => {

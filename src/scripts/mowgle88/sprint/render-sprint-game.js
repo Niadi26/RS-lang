@@ -1,5 +1,6 @@
 import { sprintChooseLevelContent, sprintGameContent } from './sprint-page-contant';
 import { startGame } from './sprint-page';
+import { gamePage } from '../../niadi26/games-page';
 
 export const renderSprintPage = async (page, wraapper) => {
   wraapper.innerHTML = '';
@@ -12,9 +13,11 @@ export const renderSprintPage = async (page, wraapper) => {
 export const renderSprintGamePage = async (container) => {
   const sprintStartPage = sprintChooseLevelContent();
   const sprintGamePage = sprintGameContent();
+  // const sprintStartPage = sprintResultContent();
 
   await renderSprintPage(sprintStartPage, container);
   const stars = document.querySelector('.stars-container');
+  const backBtn = document.querySelector('.sprint-back-btn');
 
   stars.addEventListener('click', async (event) => {
     const elem = event.target;
@@ -23,5 +26,10 @@ export const renderSprintGamePage = async (container) => {
       const num = id[id.length - 1] - 1;
       await startGame(num, 0, container, sprintGamePage);
     }
+  });
+
+  backBtn.addEventListener('click', async () => {
+    container.innerHTML = '';
+    container.append(gamePage.node);
   });
 };
