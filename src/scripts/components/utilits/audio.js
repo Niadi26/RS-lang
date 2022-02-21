@@ -1,10 +1,10 @@
 let isAudio = true;
 
 export const right = new Audio();
-right.src = '../../assets/audio/right.mp3';
+right.src = './assets/audio/right.mp3';
 
 export const wrong = new Audio();
-wrong.src = '../../assets/audio/wrong.mp3';
+wrong.src = './assets/audio/wrong.mp3';
 
 export const turnOffSounds = (el) => {
   if (isAudio) {
