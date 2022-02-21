@@ -11,11 +11,11 @@ export const turnOffSounds = (el) => {
     isAudio = false;
     right.volume = 0;
     wrong.volume = 0;
-    el.style.background = 'url(../../assets/mowgle88/volumeoff.svg) no-repeat';
+    el.style.background = 'url(./assets/mowgle88/volumeoff.svg) no-repeat';
   } else {
     isAudio = true;
     right.volume = 1;
     wrong.volume = 1;
-    el.style.background = 'url(../../assets/mowgle88/volumeup.svg) no-repeat';
+    el.style.background = 'url(./assets/mowgle88/volumeup.svg) no-repeat';
   }
 };
