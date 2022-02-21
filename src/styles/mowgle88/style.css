@@ -434,7 +434,7 @@
 }
 
 label,
-b,
+.b,
 .psw,
 .go-to-signin,
 .go-to-signup {
@@ -460,7 +460,7 @@ b,
 .psw:hover,
 .go-to-signin span:hover,
 .go-to-signup span:hover {
-  transform: rotate(360deg) scale(1.1);
+  transform: scale(1.1);
 }
 
 .img-container {

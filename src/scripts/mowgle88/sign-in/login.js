@@ -78,6 +78,7 @@ logIn.addEventListener('click', () => {
   const goToSignin = document.querySelector('.go-to-signin');
   const goToSignup = document.querySelector('.go-to-signup');
   const psw = document.querySelector('.psw');
+  const remember = document.querySelector('.remember');
 
   document.querySelector('.close').addEventListener('click', () => {
     document.querySelector('.login').remove();
@@ -92,7 +93,8 @@ logIn.addEventListener('click', () => {
     signUpContant.style.display = 'none';
     goToSignin.style.display = 'block';
     goToSignup.style.display = 'none';
-    psw.style.display = 'none';
+    psw.style.display = 'block';
+    remember.style.display = 'block';
   });
 
   document.querySelector('.go-to-signin span').addEventListener('click', () => {
@@ -100,7 +102,8 @@ logIn.addEventListener('click', () => {
     signinContant.style.display = 'none';
     goToSignup.style.display = 'block';
     goToSignin.style.display = 'none';
-    psw.style.display = 'block';
+    psw.style.display = 'none';
+    remember.style.display = 'none';
   });
 
   document.querySelector('.submit-signin').addEventListener('click', signInUser);
