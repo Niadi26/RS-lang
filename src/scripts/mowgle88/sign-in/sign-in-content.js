@@ -9,29 +9,29 @@ export const authorizationContant = () => {
       <div class="login-container">
 
         <div class="signin-contant">
-          <label for="email"><b>Email</b></label>
+          <label for="email"><b class="b">Email</b></label>
           <input type="text" class="email email-signin" placeholder="Enter Email" name="email" required>
 
-          <label for="psw"><b>Password</b></label>
+          <label for="psw"><b class="b">Password</b></label>
           <input type="password" class="password password-signin" placeholder="Enter Password" name="psw" required>
       
           <button type="button" class="submit submit-signin">Login</button>
         </div>
 
         <div class="signup-contant">
-          <label for="username"><b>Username</b></label>
+          <label for="username"><b class="b">Username</b></label>
           <input type="text" class="username" placeholder="Enter Username" name="username" required>
 
-          <label for="email"><b>Email</b></label>
+          <label for="email"><b class="b">Email</b></label>
           <input type="text" class="email email-signup" placeholder="Enter Email" name="email" required>
 
-          <label for="psw"><b>Password</b></label>
+          <label for="psw"><b class="b">Password</b></label>
           <input type="password-signup" class="password password-signup" placeholder="Enter Password" name="psw" required>
   
           <button type="button" class="submit submit-signup">Sign Up</button>
         </div>
 
-        <label>
+        <label class="remember">
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
       </div>
