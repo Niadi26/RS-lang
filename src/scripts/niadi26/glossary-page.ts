@@ -67,6 +67,10 @@ class GlossaryPage {
     const num = id || localStorage.getItem('glossaryPage') || 0;
     this.page.innerHTML = `${+num + 1}/${MAX_PAGE + 1}`;
   }
+
+  rerenderPage() {
+    renderPage();
+  }
 }
 
 export const glosarryPage = new GlossaryPage();
