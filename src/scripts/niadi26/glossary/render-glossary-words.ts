@@ -11,12 +11,12 @@ import { WORDS_ON_PAGE } from './constants';
 
 export async function renderPage(parent?: HTMLElement) {
   const rootElement = parent || document.getElementById('words');
-  const group = localStorage.getItem('glossaryGroup');
+  const group = localStorage.getItem('glossaryGroup') || 0;
   if (group === 'difficult') {
     renderDifficultPage();
     return;
   }
-  const page = localStorage.getItem('glossaryPage');
+  const page = localStorage.getItem('glossaryPage') || 0;
   const autorization = checkAutorization();
   let userWords: UserWords = [];
   if (autorization) {

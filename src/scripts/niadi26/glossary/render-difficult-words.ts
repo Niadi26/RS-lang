@@ -17,8 +17,6 @@ export async function renderDifficultPage() {
   const rootElement = document.getElementById('words');
   if (rootElement) rootElement.innerHTML = '';
   rootElement?.classList.remove('glossary__pages-learned');
-  glosarryPage.gameButtons.style.pointerEvents = 'auto';
-  glosarryPage.notPlay.classList.add('hidden');
   const autorization = checkAutorization();
   if (!autorization) {
     const notise = new WarningGlossary('Please, autorizate to use this opportunity!');
@@ -66,4 +64,6 @@ export async function renderDifficultPage() {
       }
     })
   });
+  glosarryPage.gameButtons.style.pointerEvents = 'auto';
+  glosarryPage.notPlay.classList.add('hidden');
 }

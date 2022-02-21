@@ -8,7 +8,7 @@ export class TeamMember {
         const container = new ElementHTML('div', 'section__item member', '');
         const avatar = new ElementHTML('div', 'member__photo', '', '', container.node);
         const img = new Image();
-        img.src = '../assets/niadi26/login.png';
+        img.src = `assets/photo/${imgSrc}.jpg`;
         img.onload = () => {  
             avatar.node.style.backgroundImage = `url('${img.src}')`;
         }

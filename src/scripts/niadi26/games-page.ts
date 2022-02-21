@@ -14,7 +14,7 @@ class GamePage {
       const sprintCont = new ElementHTML('div', 'games__cont', '', '', gamesCont.node);
       const sprintImg = new ElementHTML('div', 'games__img ', '', '', sprintCont.node);
       const sprintImgBg = new Image();
-      sprintImgBg.src = '../assets/niadi26/race-cat.png';
+      sprintImgBg.src = 'assets/niadi26/race-cat.png';
       sprintImgBg.onload = () => {  
         sprintImg.node.style.backgroundImage = `url('${sprintImgBg.src}')`;
       }
@@ -29,7 +29,7 @@ class GamePage {
       const audioCont = new ElementHTML('div', 'games__cont', '', '', gamesCont.node);
       const audioImg = new ElementHTML('div', 'games__img ', '', '', audioCont.node);
       const audioImgBg = new Image();
-      audioImgBg.src = '../assets/niadi26/audio-cat.png';
+      audioImgBg.src = 'assets/niadi26/audio-cat.png';
       audioImgBg.onload = () => {  
         audioImg.node.style.backgroundImage = `url('${audioImgBg.src}')`;
       }
