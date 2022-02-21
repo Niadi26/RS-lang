@@ -30,7 +30,6 @@ const getWordTranslate = async (group: number, page: number) => {
 
 const getElementForAudioGame = async (group: number, page: number) => {
   const wordsApi = await getWords(group, page);
-  console.log(wordsApi)
   const word = await wordsApi.map((el: IWord) => [el.id, el.word, el.audio, el.image]);
   return word;
 };
@@ -84,6 +83,7 @@ export const start = async (group: number, page: number, container: HTMLElement,
 
   function switchFunction() {
     const allWords = document.querySelectorAll('.words') as NodeListOf<Element>;
+
     if (btnNext.textContent === `I don't now`) {
       img.classList.add('img-active');
       englishWord.style.display = 'block';
@@ -106,6 +106,7 @@ export const start = async (group: number, page: number, container: HTMLElement,
         blockWords.innerHTML = addWords(wordTranslate, index + 1);
         sound.play();
         index++;
+        
         if (index === 19) index = 18;
       }
    } btnNext.addEventListener('click', switchFunction);
