@@ -2,7 +2,7 @@ import { callApi } from '../call-api';
 import { replaceToken } from '../replace-token';
 
 export const getUser = async (integer) => {
-  const tokenLocal = localStorage.getItem('token');
+  let tokenLocal = localStorage.getItem('token');
   const method = 'GET';
   const url = `/users/${integer}`;
   const body = {};
@@ -20,14 +20,16 @@ export const getUser = async (integer) => {
     if (error.response.status === 401) {
       replaceToken();
     }
-    tokenLocal = localStorage.getItem('token');
-    const headers = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${JSON.parse(tokenLocal)}`,
-    };
-    const response = await callApi(method, url, body, headers);
-    return response.data;
+    if (localStorage.getItem('token') !== 'null') {
+      tokenLocal = localStorage.getItem('token');
+      const headers = {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${JSON.parse(tokenLocal)}`,
+      };
+      const response = await callApi(method, url, body, headers);
+      return response.data;
+    }
   }
 };
 

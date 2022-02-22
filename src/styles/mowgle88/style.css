@@ -485,8 +485,8 @@ span.psw {
 
 .modal-content {
   margin: 5% auto 15% auto;
-  width: 500px;
-  height: 580px;
+  width: 360px;
+  height: 490px;
   background-color: rgba(152, 211, 243, .3);
   backdrop-filter: blur(6px);
   border: 2px solid #3c416b;
