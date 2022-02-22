@@ -8,9 +8,10 @@ import { updateUserWord } from '../../components/methods/users-words/update-user
 import { IUserWord, UserWords, flags } from '../../components/interfaces/interface-user-word'; 
 import { checkAutorization } from '../../components/utilits/check-autorization'; 
 
-function toggleGroupClass(index: string) {
+export function toggleGroupClass(index: string) {
   const allGroups = document.querySelectorAll("[data-group]");
   allGroups.forEach((el) => el.classList.remove('group_active'));
+  console.log(index);
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   (index === 'difficult') 
   ? allGroups[allGroups.length - 1]?.classList.add('group_active') 
