@@ -25,25 +25,7 @@ class StatisticsPage {
     const diffCont = new ElementHTML('div', 'statistics__item', '', '', countsCont.node);
     const diffNum = new ElementHTML('div', 'statistics__num', '', '', diffCont.node);
     const diffText = new ElementHTML('h3', 'statistics__txt', 'Difficult words', '', diffCont.node);
-
     const imgCont = new ElementHTML('div', 'statistics__item statistics__img', '', '', glossaryStatistic.node);
-    // const imgProgress = new Image();
-    // imgProgress.src = 'assets/niadi26/learn-progress/1.jpg';
-    // imgProgress.onload = () => {  
-    //   imgCont.node.style.backgroundImage = `url('${imgProgress.src}')`;
-    // }
-
-    // const gamesCont = new ElementHTML('div', '', '', '', mainWrapper.node);
-    // const sprintCont = new ElementHTML('div', '', '', '', gamesCont.node);
-    // const sprintName = new ElementHTML('h3', '', 'Sprint', '', sprintCont.node);
-    // const sprintNew = new ElementHTML('h3', '', 'New words: 0', '', sprintCont.node);
-    // const sprintLearn = new ElementHTML('h3', '', 'Learned words: 0', '', sprintCont.node);
-    // const sprintPrecent = new ElementHTML('h3', '', 'Right answers: 0%', '', sprintCont.node);
-    // const audioCont = new ElementHTML('div', '', '', '', gamesCont.node);
-    // const audioName = new ElementHTML('h3', '', 'Audiochallange', '', audioCont.node);
-    // const audioNew = new ElementHTML('h3', '', 'New words: 0', '', audioCont.node);
-    // const audioLearn = new ElementHTML('h3', '', 'Learned words: 0', '', audioCont.node);
-    // const audioPrecent = new ElementHTML('h3', '', 'Right answers: 0%', '', audioCont.node);
 
     this.node = mainWrapper.node;
     this.learn = learnCount.node;
@@ -62,7 +44,6 @@ class StatisticsPage {
   changeImg(num: number) {
     const imgProgress = new Image();
     imgProgress.src = `assets/niadi26/learn-progress/${num}.jpg`;
-    console.log(imgProgress, this.img)
     imgProgress.onload = () => {  
       this.img.style.backgroundImage = `url('${imgProgress.src}')`;
     }
