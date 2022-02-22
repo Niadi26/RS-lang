@@ -5,7 +5,7 @@ import { IWord } from '../../components/interfaces/interface-get-word';
 import { WordCard } from './word-card';
 import { glosarryPage } from '../glossary-page';
 import { checkAutorization } from '../../components/utilits/check-autorization'; 
-import { changeUserWord } from "./glossary-functions";
+import { changeUserWord, toggleGroupClass } from "./glossary-functions";
 import { WarningGlossary } from '../popap';
 
 const BUTTONS_ROLES: Iflags = {
@@ -15,6 +15,7 @@ const BUTTONS_ROLES: Iflags = {
 
 export async function renderDifficultPage() {
   const rootElement = document.getElementById('words');
+  toggleGroupClass('difficult');
   if (rootElement) rootElement.innerHTML = '';
   rootElement?.classList.remove('glossary__pages-learned');
   const autorization = checkAutorization();
