@@ -156,6 +156,7 @@ h1 {
   font-size: 35px;
   text-align: center;
   margin: 15px 0;
+  padding: 5px;
   text-transform: uppercase;
 }
 
@@ -648,7 +649,7 @@ h1 {
 
 .wrapper__statistics {
   position: relative;
-  height: 70vh;
+  min-height: 70vh;
 }
 
 .menu-btn {
@@ -787,4 +788,66 @@ h1 {
 
 .button-above.but-active {
   display: block;
+}
+
+.statistics__cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: auto;
+}
+
+.statistics__item {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.statistics__num {
+  font-size: 38px;
+  color: #1a7660;
+}
+
+.statistics__txt {
+  font-size: 20px;
+  color: #1a7660;
+}
+
+@media (max-width: 500px) {
+  .statistics__count {
+    display: flex;
+  }
+  .statistics__cont {
+    flex-direction: column;
+    align-items: center;
+  }
+  .statistics__item {
+    width: 145px;
+    height: 145px;
+    margin: 5px;
+  }
+  .statistics__num {
+    font-size: 25px;
+  }
+  .statistics__txt {
+    font-size: 18px;
+  }
+}
+
+.statistics__img {
+  width: 240px;
+  height: 240px;
+  margin: 15px 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: -1px 0px 80px 20px rgba(249, 249, 249);
+  -moz-box-shadow: -1px 0px 80px 20px rgba(249, 249, 249);
+  box-shadow: -1px 0px 80px 20px rgba(249, 249, 249);
 }
