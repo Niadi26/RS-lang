@@ -506,6 +506,7 @@ h1 {
   }
   .glossary__pages {
     padding: 5px;
+    min-height: 200px;
   }
 }
 
@@ -610,25 +611,27 @@ h1 {
 
 .play_text {
   position: absolute;
-  width: 120px;
-  height: 25px;
+  width: 140px;
+  height: 30px;
   left: -60px;
   background-color:rgb(8, 255, 8);
   color: #FFFFFF;
   text-align: center;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 16px;
+  line-height: 28px;
   transform: rotate(335deg);
 }
+
 .not-play_text {
-  width: 150px;
-  left: -70px;
+  width: 190px;
+  left: -65px;
   z-index: 5;
   background-color:rgb(9, 131, 9);
   transform: rotate(351deg);
 }
+
 .message-wrapper {
-  position: relative;
+  position: absolute;
   padding: 20px;
   font-size: 20px;
   top: 50%;
