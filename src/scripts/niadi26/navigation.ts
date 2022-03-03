@@ -4,13 +4,15 @@ import { gamePage } from "./games-page";
 import { statisticsPage, makeStatisticsPage } from "./statistics";
 import { rootElem, navigation } from "../components/constants";
 import { audio } from "./glossary/play-audio";
+import { renderSprintGamePage } from "../mowgle88/sprint/render-sprint-game";
 // eslint-disable-next-line prettier/prettier
 
 export const NAVIGATION_ID = {
   main: 'main',
   glossary: 'glossary',
   minigames: 'minigames',
-  statistics: 'statistics'
+  statistics: 'statistics',
+  sprintGame: 'sprint-game'
 }
 
 export function createPage(id = 'main') {
@@ -32,6 +34,10 @@ export function createPage(id = 'main') {
   case NAVIGATION_ID.statistics:
     makeStatisticsPage();
     rootElem.append(statisticsPage.node);
+    break;
+  case NAVIGATION_ID.sprintGame:
+    renderSprintGamePage(rootElem);
+    (document.querySelector('.footer') as HTMLElement).style.display = 'none';
     break;
     }
     // eslint-disable-next-line prettier/prettier

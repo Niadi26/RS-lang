@@ -19,6 +19,12 @@ export const startGame = async (group, page, container, func) => {
 
   await renderSprintPage(func, container);
 
+  document.querySelector('#minigames').addEventListener('click', (e) => {
+    console.log(e);
+    container.innerHTML = '';
+    container.append(gamePage.node);
+  });
+
   const englishWord = document.querySelector('.english-word');
   const russianWord = document.querySelector('.russian-word');
   const panel = document.querySelector('.panel');
@@ -29,11 +35,13 @@ export const startGame = async (group, page, container, func) => {
 
   document.querySelector('.right-btn').addEventListener('click', async () => {
     if (index === 19) {
-      page += 1;
+      page = +page + 1;
+      if (+page > 29) page = 0;
       word = await getWordForSprint(group, page);
       wordTranslate = await getWordTranslateForSprint(group, page);
       index = 0;
     }
+
     if (word[index][0] === value[0]) {
       isRight();
       rightArray.push(word[index][0]);
@@ -61,7 +69,8 @@ export const startGame = async (group, page, container, func) => {
 
   document.querySelector('.wrong-btn').addEventListener('click', async () => {
     if (index === 19) {
-      page += 1;
+      page = +page + 1;
+      if (+page > 29) page = 0;
       word = await getWordForSprint(group, page);
       wordTranslate = await getWordTranslateForSprint(group, page);
       index = 0;

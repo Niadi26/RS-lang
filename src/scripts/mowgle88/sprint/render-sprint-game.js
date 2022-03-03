@@ -31,5 +31,6 @@ export const renderSprintGamePage = async (container) => {
   backBtn.addEventListener('click', async () => {
     container.innerHTML = '';
     container.append(gamePage.node);
+    document.querySelector('.footer').style.display = 'block';
   });
 };
