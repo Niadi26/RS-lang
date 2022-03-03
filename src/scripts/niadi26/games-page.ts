@@ -24,6 +24,7 @@ class GamePage {
       sprintPlay.node.addEventListener('click', () => {
         (document.querySelector('.footer') as HTMLElement).style.display = 'none';
         renderSprintGamePage(rootElem);
+        localStorage.setItem('namePage', 'sprint-game');
       });
 
       const audioCont = new ElementHTML('div', 'games__cont', '', '', gamesCont.node);
