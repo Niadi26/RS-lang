@@ -7,6 +7,7 @@ import { rootElem } from "../components/constants";
 import { MAX_PAGE, GROUPS_COUNT } from './glossary/constants';
 import { createNewGameAudioCall, start } from "../lenka-w1/app";
 import { Groups } from './glossary/glossary-groups';
+import { clearContent } from "../lenka-w1/PopupResults";
 
 class GlossaryPage {
   // eslint-disable-next-line prettier/prettier
@@ -43,6 +44,7 @@ class GlossaryPage {
       buttonAudio.node.style.backgroundImage = `url('${buttonAudioBg.src}')`;
     }
     buttonAudio.node.addEventListener('click', async () => {
+      clearContent();
       const createGameAudioCall = createNewGameAudioCall();
       const group = localStorage.getItem('glossaryGroup');
       const page = localStorage.getItem('glossaryPage');
