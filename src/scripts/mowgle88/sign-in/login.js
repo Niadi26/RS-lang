@@ -45,27 +45,29 @@ const signUp = async () => {
   const emailSignup = document.querySelector('.email-signup');
   const passwordSignup = document.querySelector('.password-signup');
 
-  const obj = {};
-  obj.name = username.value;
-  obj.email = emailSignup.value;
-  obj.password = passwordSignup.value;
-  await createUser(obj);
-  await signIn(obj);
-  document.querySelector('.login').remove();
-
-  addUserBlock();
+  if (username.value && emailSignup.value && passwordSignup.value) {
+    const obj = {};
+    obj.name = username.value;
+    obj.email = emailSignup.value;
+    obj.password = passwordSignup.value;
+    await createUser(obj);
+    await signIn(obj);
+    document.querySelector('.login').remove();
+    addUserBlock();
+  }
 };
 
 const signInUser = async () => {
   const emailSignin = document.querySelector('.email-signin');
   const passwordSignin = document.querySelector('.password-signin');
-
-  const obj = {};
-  obj.email = emailSignin.value;
-  obj.password = passwordSignin.value;
-  await signIn(obj);
-  document.querySelector('.login').remove();
-  addUserBlock();
+  if (emailSignin.value && passwordSignin.value) {
+    const obj = {};
+    obj.email = emailSignin.value;
+    obj.password = passwordSignin.value;
+    await signIn(obj);
+    document.querySelector('.login').remove();
+    addUserBlock();
+  }
 };
 
 logIn.addEventListener('click', () => {

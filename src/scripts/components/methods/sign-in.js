@@ -16,6 +16,9 @@ export const signIn = async (user) => {
     return response.data;
   } catch (error) {
     console.log(error);
+    if (error.response.status === 404) {
+      alert('User does not exist');
+    }
     return;
   }
 };

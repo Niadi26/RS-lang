@@ -391,6 +391,7 @@
   top:50%;
   left:50%;
   transform:translate(-50%, -45%);
+  z-index: 10;
 }
 
 .signin-contant {
@@ -485,8 +486,8 @@ span.psw {
 
 .modal-content {
   margin: 5% auto 15% auto;
-  width: 500px;
-  height: 580px;
+  width: 360px;
+  height: 490px;
   background-color: rgba(152, 211, 243, .3);
   backdrop-filter: blur(6px);
   border: 2px solid #3c416b;
@@ -721,4 +722,48 @@ span.psw {
 .sprint-swg-wrong:hover {
   opacity: 1;
   transform: scale(1.2);
+}
+
+@media (max-width: 500px) {
+  .panel {
+    width: 290px;
+    height: 390px;
+    padding: 0 10px;
+  }
+
+  .star {
+    width: 40px;
+    height: 40px;
+    font-size: 11px;
+  }
+
+  .sprint-back-btn {
+    width: 60%;
+  }
+
+  .top {
+    width: 310px;
+  }
+  .result-panel {
+    width: 310px;
+  }
+
+  .play-again-btn,
+  .sprint-result-back-btn {
+    width: 110px;
+    font-size: 10px;
+  }
+
+  .sprint-result-score {
+    font-size: 22px;
+  }
+
+  .sprint-result-container {
+    font-size: 15px;
+  }
+
+  .modal-content {
+    width: 310px;
+  }
+
 }
