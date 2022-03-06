@@ -5,8 +5,9 @@ import { cross, fullScreenSvg, gameContainer, newGameAudioCall } from './NewGame
 import { IWord } from '../components/interfaces/interface-get-word';
 import { shuffle } from '../components/utilits/random';
 import { right, wrong } from '../components/utilits/audio';
-import { popUpResults } from './PopupResults';
+import { backtogames, backToGames, clearContent, playAgain, popUpResults } from './PopupResults';
 import { addRightResults, addWrongResults } from '../mowgle88/sprint/result-right-wrong';
+import { gamePage } from '../niadi26/games-page';
 
 export let footer = document.querySelector('.footer') as HTMLElement;;
 
@@ -71,10 +72,28 @@ export async function showGameResults() {
   localStorage.removeItem('wrongID');
   localStorage.removeItem('rightCount');
   localStorage.removeItem('wrongCount');
+
+  playAgain.node.addEventListener('click', async () => {
+    clearContent();
+
+    localStorage.removeItem('rightCount');
+    localStorage.removeItem('wrongCount');
+
+    const createNewGame = createNewGameAudioCall();
+    const group = localStorage.getItem('currentGroup');
+    const page = localStorage.getItem('currentPage');
+    await start(Number(group), Number(page), rootElem, createNewGame);
+  });
 }
 
 export const start = async (group: number, page: number, container: HTMLElement, func: void) => {
   const baseUrl = 'https://react-rslang-by.herokuapp.com';
+
+  localStorage.setItem('currentGroup', `${group}`);
+  localStorage.setItem('currentPage', `${page}`);
+
+  console.log(group);
+  console.log(page);
 
   let values = await getElementForAudioGame(group, page);
   let wordTranslate = await getWordTranslate(group, page);
@@ -190,10 +209,7 @@ export const start = async (group: number, page: number, container: HTMLElement,
     if (ev.classList.contains('nav__item')) {
       btnNext.removeEventListener('click', switchFunction);
       blockWords.removeEventListener('click', rightWrongFunction);
-      newGameAudioCall.node.innerHTML = '';
-      newGameAudioCall.node.append(gameContainer.node);
-      newGameAudioCall.node.append(fullScreenSvg.node);
-      newGameAudioCall.node.append(cross.node);
+      clearContent();
     }
   });
 
@@ -202,6 +218,12 @@ export const start = async (group: number, page: number, container: HTMLElement,
     btnNext.removeEventListener('click', switchFunction);
     blockWords.removeEventListener('click', rightWrongFunction);
     createPageGameAudioCall();
+  });
+
+  backToGames.node.addEventListener('click', () => {
+    btnNext.removeEventListener('click', switchFunction);
+    blockWords.removeEventListener('click', rightWrongFunction);
+    backtogames();
   });
 }
 
@@ -213,9 +235,9 @@ STARS.addEventListener('click', async (event: Event) => {
   if (item.classList.contains('num-stars')) {
     const ID = item.id;
     const number = Number(ID[ID.length - 1]) - 1;
+    
     await start(number, 0, rootElem, CREATE);
   }
 });
-
 
 

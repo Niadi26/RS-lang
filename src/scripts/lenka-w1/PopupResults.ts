@@ -5,13 +5,38 @@ import { gamePage } from '../niadi26/games-page';
 import { footer } from './app';
 import { cross, fullScreenSvg, gameContainer, newGameAudioCall } from './NewGame';
 
+export let playAgain: ElementHTML;
+export let backToGames: ElementHTML;
+
 export function clearContent() {
+  newGameAudioCall.node.innerHTML = '';
+  newGameAudioCall.node.append(gameContainer.node);
+  newGameAudioCall.node.append(fullScreenSvg.node);
+  newGameAudioCall.node.append(cross.node);
+
+  localStorage.removeItem('rightCount');
+  localStorage.removeItem('wrongCount');
+  // localStorage.removeItem('currentPage');
+  // localStorage.removeItem('currentGroup');
+  localStorage.removeItem('wrongID');
+  localStorage.removeItem('rightID');
+}
+
+export function backtogames() {
   rootElem.innerHTML = '';
   newGameAudioCall.node.innerHTML = '';
   newGameAudioCall.node.append(gameContainer.node);
   newGameAudioCall.node.append(fullScreenSvg.node);
-  newGameAudioCall.node.append(cross.node)
+  newGameAudioCall.node.append(cross.node);
   footer.style.display = 'block';
+  rootElem.append(gamePage.node);
+
+  localStorage.removeItem('rightCount');
+  localStorage.removeItem('wrongCount');
+  localStorage.removeItem('currentPage');
+  localStorage.removeItem('currentGroup');
+  localStorage.removeItem('wrongID');
+  localStorage.removeItem('rightID');
 }
 
 class PopupResults {
@@ -25,15 +50,10 @@ class PopupResults {
     popupHeader.node.append(popupTitle.node);
 
     const popupBtns = new ElementHTML('div', 'popup-btns', '', '', popupHeader.node);
-    const playAgain = new ElementHTML('button', 'play-again', 'Play again');
-    const backToGames = new ElementHTML('button', 'back-to-games', 'Back to games');
+    playAgain = new ElementHTML('button', 'play-again', 'Play again');
+    backToGames = new ElementHTML('button', 'back-to-games', 'Back to games');
     popupBtns.node.append(playAgain.node);
     popupBtns.node.append(backToGames.node);
-
-    backToGames.node.addEventListener('click', () => {
-      clearContent();
-      rootElem.append(gamePage.node);
-    });
 
     const resultBlock = new ElementHTML('div', 'result-block', '', '', popup.node);
     const gameResultsContainer = new ElementHTML('div', 'game-results-container', '', '', resultBlock.node);
