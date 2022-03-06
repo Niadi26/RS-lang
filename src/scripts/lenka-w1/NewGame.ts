@@ -2,15 +2,19 @@ import '../../styles/lenka-w1/audio-call.css';
 import { rootElem } from '../components/constants';
 import { ElementHTML } from '../niadi26/create-element';
 
+export let gameContainer: ElementHTML;
+export let cross: ElementHTML;
+export let fullScreenSvg: ElementHTML;
+
 class NewGame {
   public node: HTMLElement;
 
   constructor() {
     const pageGame = new ElementHTML('div', 'page-game');
-    const gameContainer = new ElementHTML('div', 'game-container');
+    gameContainer = new ElementHTML('div', 'game-container');
     pageGame.node.append(gameContainer.node);
 
-    const fullScreenSvg = new ElementHTML('div', 'full-screen-svg', '', '', pageGame.node);
+    fullScreenSvg = new ElementHTML('div', 'full-screen-svg', '', '', pageGame.node);
 
     fullScreenSvg.node.addEventListener('click', () => {
       const Fullscreen = () => {
@@ -25,7 +29,7 @@ class NewGame {
       Fullscreen();
     });
 
-    const cross = new ElementHTML('div', 'cross');
+    cross = new ElementHTML('div', 'cross');
     pageGame.node.append(cross.node);
 
     const audioBlock = new ElementHTML('div', 'audio-block', '', '', gameContainer.node);

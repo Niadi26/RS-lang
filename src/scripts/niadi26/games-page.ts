@@ -2,6 +2,7 @@ import { ElementHTML } from "./create-element";
 import { renderSprintGamePage } from "../mowgle88/sprint/render-sprint-game";
 import { rootElem } from "../components/constants"
 import { createPageGameAudioCall } from "../lenka-w1/app";
+import { clearContent } from "../lenka-w1/PopupResults";
 
 class GamePage {
     // eslint-disable-next-line prettier/prettier
