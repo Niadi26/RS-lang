@@ -16,8 +16,6 @@ export function clearContent() {
 
   localStorage.removeItem('rightCount');
   localStorage.removeItem('wrongCount');
-  // localStorage.removeItem('currentPage');
-  // localStorage.removeItem('currentGroup');
   localStorage.removeItem('wrongID');
   localStorage.removeItem('rightID');
 }
