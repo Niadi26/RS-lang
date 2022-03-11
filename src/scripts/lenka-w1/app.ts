@@ -1,13 +1,12 @@
 import { rootElem } from '../components/constants';
 import { getWords } from '../components/methods/get-words';
 import { audioCall } from './GameAudioCall';
-import { cross, fullScreenSvg, gameContainer, newGameAudioCall } from './NewGame';
+import { newGameAudioCall } from './NewGame';
 import { IWord } from '../components/interfaces/interface-get-word';
 import { shuffle } from '../components/utilits/random';
 import { right, wrong } from '../components/utilits/audio';
 import { backtogames, backToGames, clearContent, playAgain, popUpResults } from './PopupResults';
 import { addRightResults, addWrongResults } from '../mowgle88/sprint/result-right-wrong';
-import { gamePage } from '../niadi26/games-page';
 
 export let footer = document.querySelector('.footer') as HTMLElement;;
 
@@ -73,6 +72,14 @@ export async function showGameResults() {
   localStorage.removeItem('rightCount');
   localStorage.removeItem('wrongCount');
 
+  const sprintSvgRight = document.querySelectorAll('.sprint-swg-right') as NodeListOf<HTMLElement>;
+
+  sprintSvgRight.forEach((elem: HTMLElement) => {
+    elem.addEventListener('click', async (e) => {
+      ((<HTMLElement>e.target).firstElementChild as HTMLAudioElement).play();
+    });
+  });
+
   playAgain.node.addEventListener('click', async () => {
     clearContent();
 
@@ -91,9 +98,6 @@ export const start = async (group: number, page: number, container: HTMLElement,
 
   localStorage.setItem('currentGroup', `${group}`);
   localStorage.setItem('currentPage', `${page}`);
-
-  console.log(group);
-  console.log(page);
 
   let values = await getElementForAudioGame(group, page);
   let wordTranslate = await getWordTranslate(group, page);
@@ -117,7 +121,6 @@ export const start = async (group: number, page: number, container: HTMLElement,
     sound.play();
   });
   
-  sound.currentTime = 0;
   sound.play();
 
   const blockWords = document.querySelector('.block-words') as HTMLElement;
@@ -133,7 +136,10 @@ export const start = async (group: number, page: number, container: HTMLElement,
 
   async function switchFunction() {
     const allWords = document.querySelectorAll('.words') as NodeListOf<Element>;
-
+    if (index === 19) {
+      showGameResults();
+      return;
+    } 
     if (btnNext.textContent === `I don't now`) {
       img.classList.add('img-active');
       englishWord.style.display = 'block';
@@ -160,12 +166,10 @@ export const start = async (group: number, page: number, container: HTMLElement,
         sound.src = `${baseUrl}/${values[index][2]}`;
         blockWords.innerHTML = addWords(wordTranslate, index);
         sound.play();
-        
-        if (index === 2) {
-          showGameResults();
-        } 
       }
-   } btnNext.addEventListener('click', switchFunction);
+   } 
+
+   btnNext.onclick = () => switchFunction();
 
   function rightWrongFunction(event: Event) {
     const allWords = document.querySelectorAll('.words') as NodeListOf<Element>;
